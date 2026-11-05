@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/FNNDSC/chris-plugins/schema/plugin.schema.json",
+  "title": "ChRIS plugin descriptor",
+  "description": "One plugin version, in the form CUBE's admin upload (/chris-admin/api/v1/, field fname) accepts. Required fields and parameter types follow ChRIS_ultron_backEnd plugins/admin.py.",
+  "type": "object",
+  "required": ["name", "version", "dock_image", "type", "execshell", "selfpath", "selfexec", "parameters"],
+  "additionalProperties": false,
+  "properties": {
+    "name": { "type": "string", "minLength": 1, "description": "Also the file name: plugins/<name>.json." },
+    "version": { "type": "string", "minLength": 1 },
+    "dock_image": { "type": "string", "minLength": 1, "description": "A publicly pullable image reference, by tag or digest." },
+    "public_repo": { "type": "string" },
+    "type": { "enum": ["ds", "fs", "ts"] },
+    "title": { "type": "string" },
+    "category": { "type": "string" },
+    "description": { "type": "string" },
+    "documentation": { "type": "string" },
+    "license": { "type": "string" },
+    "icon": { "type": "string" },
+    "authors": { "type": "string" },
+    "execshell": { "type": "string", "minLength": 1 },
+    "selfpath": { "type": "string" },
+    "selfexec": { "type": "string", "minLength": 1 },
+    "min_number_of_workers": { "type": "integer", "minimum": 1 },
+    "max_number_of_workers": { "type": "integer", "minimum": 1 },
+    "min_cpu_limit": { "$ref": "#/$defs/cpu" },
+    "max_cpu_limit": { "$ref": "#/$defs/cpu" },
+    "min_memory_limit": { "$ref": "#/$defs/memory" },
+    "max_memory_limit": { "$ref": "#/$defs/memory" },
+    "min_gpu_limit": { "type": "integer", "minimum": 0 },
+    "max_gpu_limit": { "type": "integer", "minimum": 0 },
+    "parameters": { "type": "array", "items": { "$ref": "#/$defs/parameter" } }
+  },
+  "$defs": {
+    "cpu": {
+      "description": "Millicores, written as in Kubernetes: 1000m.",
+      "type": "string",
+      "pattern": "^[0-9]+m$"
+    },
+    "memory": {
+      "description": "Mebibytes or gibibytes: 512Mi, 2Gi.",
+      "type": "string",
+      "pattern": "^[0-9]+(Mi|Gi)$"
+    },
+    "parameter": {
+      "type": "object",
+      "required": ["name", "type", "optional", "flag", "action", "help"],
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "type": {
+          "description": "CUBE's back-end type names. The read API shows them as string, integer, boolean; the upload accepts only these.",
+          "enum": ["str", "int", "float", "bool", "path", "unextpath"]
+        },
+        "optional": { "type": "boolean" },
+        "default": {},
+        "flag": { "type": "string", "minLength": 1 },
+        "short_flag": { "type": "string" },
+        "action": { "type": "string" },
+        "help": { "type": "string" },
+        "ui_exposed": { "type": "boolean" }
+      }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+# Plugins deliberately left out of plugins/, each with the reason.
+# A plugin leaves the index by moving here, never by silent deletion.
+#
+# - name: pl-example
+#   version: 1.2.3          # last known version
+#   reason: image no longer pullable from any public registry
+[]
