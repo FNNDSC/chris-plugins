@@ -1,0 +1,99 @@
+{
+  "name": "pl-pacs_retrieve",
+  "version": "1.0.7",
+  "dock_image": "ghcr.io/fnndsc/pl-pacs_retrieve:1.0.7",
+  "public_repo": "https://github.com/FNNDSC/pl-pacs_retrieve",
+  "type": "ds",
+  "title": "A ChRIS plugin to retrieve from a remote PACS",
+  "category": "",
+  "description": "A plugin to retrieve DICOM images from a remote PACS using pfdcm",
+  "documentation": "https://github.com/FNNDSC/pl-pacs_retr",
+  "license": "MIT",
+  "icon": "",
+  "authors": "FNNDSC <dev@babyMRI.org>",
+  "execshell": "/usr/local/bin/python",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "pacs_retrieve",
+  "max_number_of_workers": 1,
+  "min_memory_limit": "100Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "inputJSONfile",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--inputJSONfile",
+      "short_flag": "--inputJSONfile",
+      "action": "store",
+      "help": "name of the JSON file containing DICOM data to be retrieved",
+      "ui_exposed": true
+    },
+    {
+      "name": "copyInputFile",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--copyInputFile",
+      "short_flag": "--copyInputFile",
+      "action": "store_true",
+      "help": "If specified, copy input JSON to output dir",
+      "ui_exposed": true
+    },
+    {
+      "name": "query_model",
+      "type": "str",
+      "optional": true,
+      "default": "study",
+      "flag": "--query-model",
+      "short_flag": "--query-model",
+      "action": "store",
+      "help": "Query/Retrieve model [choices: study, patient]",
+      "ui_exposed": true
+    },
+    {
+      "name": "src_aet",
+      "type": "str",
+      "optional": false,
+      "default": null,
+      "flag": "--src-aet",
+      "short_flag": "--src-aet",
+      "action": "store",
+      "help": "Called AET  (PACS AE title)",
+      "ui_exposed": true
+    },
+    {
+      "name": "src_ip",
+      "type": "str",
+      "optional": false,
+      "default": null,
+      "flag": "--src-ip",
+      "short_flag": "--src-ip",
+      "action": "store",
+      "help": "PACS host / IP address",
+      "ui_exposed": true
+    },
+    {
+      "name": "src_port",
+      "type": "int",
+      "optional": false,
+      "default": null,
+      "flag": "--src-port",
+      "short_flag": "--src-port",
+      "action": "store",
+      "help": "PACS DICOM port",
+      "ui_exposed": true
+    },
+    {
+      "name": "dst_aet",
+      "type": "str",
+      "optional": false,
+      "default": null,
+      "flag": "--dst-aet",
+      "short_flag": "--dst-aet",
+      "action": "store",
+      "help": "Calling AET (our AE title, must be registered on PACS)",
+      "ui_exposed": true
+    }
+  ]
+}

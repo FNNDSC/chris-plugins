@@ -1,0 +1,89 @@
+{
+  "name": "pl-dcm2mha_cnvtr",
+  "version": "1.2.26",
+  "dock_image": "ghcr.io/fnndsc/pl-dcm2mha_cnvtr:1.2.26",
+  "public_repo": "https://github.com/FNNDSC/pl-dcm2mha_cnvtr",
+  "type": "ds",
+  "title": "A ChRIS plugin app to convert dcm files to mha and vice-versa",
+  "category": "",
+  "description": "An app to convert dcm files to mha and vice-versa",
+  "documentation": "https://github.com/FNNDSC/pl-dcm2mha_cnvtr#readme",
+  "license": "MIT",
+  "icon": "",
+  "authors": "FNNDSC <dev@babyMRI.org>",
+  "execshell": "/usr/local/bin/python",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "dcm2mha_cnvtr",
+  "max_number_of_workers": 1,
+  "min_cpu_limit": "2000m",
+  "min_memory_limit": "8000Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "inputFileFilter",
+      "type": "str",
+      "optional": true,
+      "default": "**/*.mha",
+      "flag": "--inputFileFilter",
+      "short_flag": "-f",
+      "action": "store",
+      "help": "Input file filter",
+      "ui_exposed": true
+    },
+    {
+      "name": "saveAsPng",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--saveAsPng",
+      "short_flag": "-s",
+      "action": "store_true",
+      "help": "If sepecified, save op file as png",
+      "ui_exposed": true
+    },
+    {
+      "name": "rotate",
+      "type": "int",
+      "optional": true,
+      "default": 0,
+      "flag": "--rotate",
+      "short_flag": "-r",
+      "action": "store",
+      "help": "Rotate input image in a anti-clockwise direction",
+      "ui_exposed": true
+    },
+    {
+      "name": "imageName",
+      "type": "str",
+      "optional": true,
+      "default": "composite.png",
+      "flag": "--imageName",
+      "short_flag": "-n",
+      "action": "store",
+      "help": "Name of the output png file",
+      "ui_exposed": true
+    },
+    {
+      "name": "filterPerc",
+      "type": "int",
+      "optional": true,
+      "default": 30,
+      "flag": "--filterPerc",
+      "short_flag": "-p",
+      "action": "store",
+      "help": "A high pass filter cutoff threshold as percentage of image intensity",
+      "ui_exposed": true
+    },
+    {
+      "name": "pftelDB",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--pftelDB",
+      "short_flag": "--pftelDB",
+      "action": "store",
+      "help": "optional pftel server DB path",
+      "ui_exposed": true
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "name": "pl-dicommake",
+  "version": "2.4.6",
+  "dock_image": "ghcr.io/fnndsc/pl-dicommake:2.4.6",
+  "public_repo": "https://github.com/fnndsc/pl-dicommake",
+  "type": "ds",
+  "title": "DICOM image make",
+  "category": "",
+  "description": "A ChRIS plugin that creates a new DICOM file from an existing DICOM and a new image",
+  "documentation": "https://github.com/FNNDSC/pl-dicommake",
+  "license": "MIT",
+  "icon": "",
+  "authors": "FNNDSC <dev@babyMRI.org>",
+  "execshell": "/usr/local/bin/python",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "dicommake",
+  "max_number_of_workers": 1,
+  "min_memory_limit": "2048Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "filterIMG",
+      "type": "str",
+      "optional": true,
+      "default": "**/*.png",
+      "flag": "--filterIMG",
+      "short_flag": "--filterIMG",
+      "action": "store",
+      "help": "Input image file filter",
+      "ui_exposed": true
+    },
+    {
+      "name": "filterDCM",
+      "type": "str",
+      "optional": true,
+      "default": "**/*.dcm",
+      "flag": "--filterDCM",
+      "short_flag": "--filterDCM",
+      "action": "store",
+      "help": "Input DICOM file filter",
+      "ui_exposed": true
+    },
+    {
+      "name": "outputSubDir",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--outputSubDir",
+      "short_flag": "--outputSubDir",
+      "action": "store",
+      "help": "if specified, save all output here (relative to outputdir)",
+      "ui_exposed": true
+    },
+    {
+      "name": "pftelDB",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--pftelDB",
+      "short_flag": "--pftelDB",
+      "action": "store",
+      "help": "optional pftel server DB path",
+      "ui_exposed": true
+    },
+    {
+      "name": "thread",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--thread",
+      "short_flag": "--thread",
+      "action": "store_true",
+      "help": "use threading to branch in parallel",
+      "ui_exposed": true
+    },
+    {
+      "name": "compress",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--compress",
+      "short_flag": "--compress",
+      "action": "store_true",
+      "help": "if specified, compress the DICOM pixel data",
+      "ui_exposed": true
+    },
+    {
+      "name": "appendToSeriesDescription",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--appendToSeriesDescription",
+      "short_flag": "--appendToSeriesDescription",
+      "action": "store",
+      "help": "optional text to append to series description",
+      "ui_exposed": true
+    }
+  ]
+}

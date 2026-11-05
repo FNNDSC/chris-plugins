@@ -1,0 +1,56 @@
+{
+  "name": "pl-phi_detector",
+  "version": "1.0.4",
+  "dock_image": "ghcr.io/fnndsc/pl-phi_detector:1.0.4",
+  "public_repo": "https://github.com/fnndsc/pl-phi_detector",
+  "type": "ds",
+  "title": "My ChRIS Plugin",
+  "category": "",
+  "description": "A ChRIS plugin to do something awesome",
+  "documentation": "https://github.com/FNNDSC/pl-phi_dete",
+  "license": "MIT",
+  "icon": "",
+  "authors": "FNNDSC <dev@babyMRI.org>",
+  "execshell": "/usr/local/bin/python3.10",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "phi_detector",
+  "max_number_of_workers": 1,
+  "min_cpu_limit": "2000m",
+  "min_memory_limit": "1000Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "pattern",
+      "type": "str",
+      "optional": true,
+      "default": "**/*.txt",
+      "flag": "--pattern",
+      "short_flag": "-p",
+      "action": "store",
+      "help": "input file filter glob",
+      "ui_exposed": true
+    },
+    {
+      "name": "fileFilter",
+      "type": "str",
+      "optional": true,
+      "default": "dcm",
+      "flag": "--fileFilter",
+      "short_flag": "-f",
+      "action": "store",
+      "help": "input file filter glob",
+      "ui_exposed": true
+    },
+    {
+      "name": "outputType",
+      "type": "str",
+      "optional": true,
+      "default": "dcm",
+      "flag": "--outputType",
+      "short_flag": "-t",
+      "action": "store",
+      "help": "output file type(extension only)",
+      "ui_exposed": true
+    }
+  ]
+}

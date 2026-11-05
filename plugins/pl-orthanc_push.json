@@ -1,0 +1,99 @@
+{
+  "name": "pl-orthanc_push",
+  "version": "1.3.2",
+  "dock_image": "ghcr.io/fnndsc/pl-orthanc_push:1.3.2",
+  "public_repo": "https://github.com/FNNDSC/pl-orthanc_push",
+  "type": "ds",
+  "title": "A ChRIS plugin app to push/upload dicoms to an orthanc server",
+  "category": "",
+  "description": "An app to push/upload dicoms to an orthanc server",
+  "documentation": "https://github.com/FNNDSC/pl-orthanc_push#readme",
+  "license": "MIT",
+  "icon": "",
+  "authors": "FNNDSC <dev@babyMRI.org>",
+  "execshell": "/usr/local/bin/python",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "orthanc_push",
+  "max_number_of_workers": 1,
+  "min_memory_limit": "2000Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "inputFileFilter",
+      "type": "str",
+      "optional": true,
+      "default": "**/*.dcm",
+      "flag": "--inputFileFilter",
+      "short_flag": "-f",
+      "action": "store",
+      "help": "Input file filter",
+      "ui_exposed": true
+    },
+    {
+      "name": "orthancUrl",
+      "type": "str",
+      "optional": true,
+      "default": "http://0.0.0.0:8042",
+      "flag": "--orthancUrl",
+      "short_flag": "-o",
+      "action": "store",
+      "help": "Orthanc server url",
+      "ui_exposed": true
+    },
+    {
+      "name": "username",
+      "type": "str",
+      "optional": true,
+      "default": "orthanc",
+      "flag": "--username",
+      "short_flag": "-u",
+      "action": "store",
+      "help": "Orthanc server url",
+      "ui_exposed": true
+    },
+    {
+      "name": "password",
+      "type": "str",
+      "optional": true,
+      "default": "orthanc",
+      "flag": "--password",
+      "short_flag": "-p",
+      "action": "store",
+      "help": "Orthanc server url",
+      "ui_exposed": true
+    },
+    {
+      "name": "pushToRemote",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--pushToRemote",
+      "short_flag": "-r",
+      "action": "store",
+      "help": "Remote modality",
+      "ui_exposed": true
+    },
+    {
+      "name": "timeout",
+      "type": "int",
+      "optional": true,
+      "default": 1000,
+      "flag": "--timeout",
+      "short_flag": "-t",
+      "action": "store",
+      "help": "Number of seconds to wait for response while sending to remote PACS",
+      "ui_exposed": true
+    },
+    {
+      "name": "pftelDB",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--pftelDB",
+      "short_flag": "--pftelDB",
+      "action": "store",
+      "help": "optional pftel server DB path",
+      "ui_exposed": true
+    }
+  ]
+}

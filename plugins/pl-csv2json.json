@@ -1,0 +1,78 @@
+{
+  "name": "pl-csv2json",
+  "version": "1.3.7",
+  "dock_image": "ghcr.io/fnndsc/pl-csv2json:1.3.7",
+  "public_repo": "https://github.com/FNNDSC/pl-csv2json",
+  "type": "ds",
+  "title": "An app to convert CSV generated from pl-lld_inference to a JSON representation",
+  "category": "",
+  "description": "An app to convert CSV generated from pl-lld_inference to a JSON representation",
+  "documentation": "https://github.com/FNNDSC/pl-csv2json#readme",
+  "license": "MIT",
+  "icon": "",
+  "authors": "FNNDSC <dev@babyMRI.org>",
+  "execshell": "/usr/local/bin/python",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "csv2json",
+  "max_number_of_workers": 1,
+  "min_cpu_limit": "2000m",
+  "min_memory_limit": "8000Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "inputFileFilter",
+      "type": "str",
+      "optional": true,
+      "default": "**/*.csv",
+      "flag": "--inputFileFilter",
+      "short_flag": "-f",
+      "action": "store",
+      "help": "Input file filter",
+      "ui_exposed": true
+    },
+    {
+      "name": "tagFileFilter",
+      "type": "str",
+      "optional": true,
+      "default": "**/*.dcm",
+      "flag": "--tagFileFilter",
+      "short_flag": "-t",
+      "action": "store",
+      "help": "dicom tag file filter",
+      "ui_exposed": true
+    },
+    {
+      "name": "outputFileStem",
+      "type": "str",
+      "optional": true,
+      "default": "csv2jsonoutput",
+      "flag": "--outputFileStem",
+      "short_flag": "-o",
+      "action": "store",
+      "help": "Output JSON file stem (no extension)",
+      "ui_exposed": true
+    },
+    {
+      "name": "addTags",
+      "type": "str",
+      "optional": true,
+      "default": "PatientID",
+      "flag": "--addTags",
+      "short_flag": "-a",
+      "action": "store",
+      "help": "comma separated tags to be included as info",
+      "ui_exposed": true
+    },
+    {
+      "name": "addDetailTags",
+      "type": "str",
+      "optional": true,
+      "default": "SeriesDescription",
+      "flag": "--addDetailTags",
+      "short_flag": "-d",
+      "action": "store",
+      "help": "comma separated tags to be included as details",
+      "ui_exposed": true
+    }
+  ]
+}

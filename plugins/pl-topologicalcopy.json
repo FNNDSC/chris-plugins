@@ -1,0 +1,58 @@
+{
+  "name": "pl-topologicalcopy",
+  "version": "2.0.0",
+  "dock_image": "docker.io/backplane/true:20260506@sha256:377a8f425b7a0ec424738ae0ddf2f83775ab95d872f7cf00bc63d4fa0d2aecdc",
+  "public_repo": "https://github.com/FNNDSC/pl-topologicalcopy",
+  "type": "ts",
+  "title": "A ChRIS ts app to copy filtered output dirs from a list of plugin instances",
+  "category": "utility",
+  "description": "A plugin ts app to copy filtered output dirs from a list of plugin instances",
+  "documentation": "https://github.com/FNNDSC/pl-topologicalcopy#readme",
+  "license": "MIT",
+  "icon": "",
+  "authors": "FNNDSC <dev@babyMRI.org>",
+  "execshell": "/true",
+  "selfpath": "no-",
+  "selfexec": "op",
+  "max_number_of_workers": 1,
+  "min_cpu_limit": "250m",
+  "max_cpu_limit": "1000m",
+  "min_memory_limit": "128Mi",
+  "max_memory_limit": "1024Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "plugininstances",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--plugininstances",
+      "short_flag": "--plugininstances",
+      "action": "store",
+      "help": "string representing a comma-separated list of plugin instance ids",
+      "ui_exposed": true
+    },
+    {
+      "name": "filter",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--filter",
+      "short_flag": "-f",
+      "action": "store",
+      "help": "string representing a comma-separated list of regular expressions to filter each of the input plugin instances' output dirs",
+      "ui_exposed": true
+    },
+    {
+      "name": "groupByInstance",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--groupByInstance",
+      "short_flag": "-g",
+      "action": "store_true",
+      "help": "if set then an output directory is created for each input plugin instance within this plugin app's output path",
+      "ui_exposed": true
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "name": "pl-irtk-reconstruction",
+  "version": "1.1.0",
+  "dock_image": "fnndsc/pl-irtk-reconstruction:1.1.0",
+  "public_repo": "https://github.com/FNNDSC/pl-irtk-reconstruction",
+  "type": "ds",
+  "title": "IRTK Reconstruction",
+  "category": "Reconstruction",
+  "description": "Fetal brain MRI Reconstruction",
+  "documentation": "https://github.com/FNNDSC/pl-irtk-reconstruction#readme",
+  "license": "GPLv2",
+  "icon": "",
+  "authors": "FNNDSC <dev@babyMRI.org>",
+  "execshell": "/usr/bin/python3",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "irtkrecon",
+  "max_number_of_workers": 1,
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "inputPathFilter",
+      "type": "str",
+      "optional": true,
+      "default": "Best_Images_crop/*.nii",
+      "flag": "--inputPathFilter",
+      "short_flag": "-p",
+      "action": "store",
+      "help": "Input files selection.",
+      "ui_exposed": true
+    },
+    {
+      "name": "csv",
+      "type": "str",
+      "optional": true,
+      "default": "quality_assessment.csv",
+      "flag": "--csv",
+      "short_flag": "-c",
+      "action": "store",
+      "help": "Location of CSV file containing quality assessment and slice thickness data. Typically, this would be the output from pl-fetal-brain-assessment v1.3.0.",
+      "ui_exposed": true
+    },
+    {
+      "name": "output",
+      "type": "str",
+      "optional": true,
+      "default": "recon.nii",
+      "flag": "--output",
+      "short_flag": "-o",
+      "action": "store",
+      "help": "Output filename.",
+      "ui_exposed": true
+    },
+    {
+      "name": "debug",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--debug",
+      "short_flag": "-d",
+      "action": "store_true",
+      "help": "Save intermediate results.",
+      "ui_exposed": true
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "name": "pl-fetal-brain-mask",
+  "version": "1.2.1",
+  "dock_image": "fnndsc/pl-fetal-brain-mask:1.2.1",
+  "public_repo": "https://github.com/FNNDSC/pl-fetal-brain-mask",
+  "type": "ds",
+  "title": "Automatic masking of fetal brain images using deep learning",
+  "category": "Segmentation",
+  "description": "Automatic masking of fetal brain images using deep learning",
+  "documentation": "https://github.com/FNNDSC/pl-fetal-brain-mask",
+  "license": "MIT",
+  "icon": "",
+  "authors": "Alejandro Valdes <dev@babyMRI.org>",
+  "execshell": "/opt/conda/bin/python",
+  "selfpath": "/opt/conda/bin",
+  "selfexec": "fetal_brain_mask",
+  "max_number_of_workers": 60,
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "inputPathFilter",
+      "type": "str",
+      "optional": true,
+      "default": "*.nii",
+      "flag": "--inputPathFilter",
+      "short_flag": "-p",
+      "action": "store",
+      "help": "selection (glob) for which files to evaluate",
+      "ui_exposed": true
+    },
+    {
+      "name": "overlay_background",
+      "type": "str",
+      "optional": true,
+      "default": "0.0,0.2",
+      "flag": "--overlay-background",
+      "short_flag": "--overlay-background",
+      "action": "store",
+      "help": "multiplier for values of masked voxels, given as a comma-separated list of numbers [0, 1). '0.0' effectively produces the extracted brain. A low, non-zero value such as '0.2' produces volumes which are helpful for visualization.",
+      "ui_exposed": true
+    },
+    {
+      "name": "no_smooth",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--no-smooth",
+      "short_flag": "-s",
+      "action": "store_true",
+      "help": "skip post-processing on images including morphological closing and defragmentation",
+      "ui_exposed": true
+    },
+    {
+      "name": "skipped_list",
+      "type": "str",
+      "optional": true,
+      "default": "mask_skipped.txt",
+      "flag": "--skipped-list",
+      "short_flag": "-l",
+      "action": "store",
+      "help": "produce an output file containing the names of files which were skipped",
+      "ui_exposed": true
+    }
+  ]
+}

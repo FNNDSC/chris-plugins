@@ -1,0 +1,36 @@
+{
+  "name": "pl-dircopy",
+  "version": "3.0.0",
+  "dock_image": "docker.io/backplane/true:20260506@sha256:377a8f425b7a0ec424738ae0ddf2f83775ab95d872f7cf00bc63d4fa0d2aecdc",
+  "public_repo": "https://github.com/FNNDSC/pl-dircopy",
+  "type": "fs",
+  "title": "A ChRIS fs app to copy obj storage directories",
+  "category": "utility",
+  "description": "A plugin fs app to copy one or more obj storage directories",
+  "documentation": "https://github.com/FNNDSC/pl-dircopy",
+  "license": "MIT",
+  "icon": "",
+  "authors": "FNNDSC <dev@babyMRI.org>",
+  "execshell": "/true",
+  "selfpath": "no-",
+  "selfexec": "op",
+  "max_number_of_workers": 1,
+  "min_cpu_limit": "250m",
+  "max_cpu_limit": "1000m",
+  "min_memory_limit": "128Mi",
+  "max_memory_limit": "1024Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "dir",
+      "type": "unextpath",
+      "optional": false,
+      "default": null,
+      "flag": "--dir",
+      "short_flag": "--dir",
+      "action": "store",
+      "help": "directories to be copied",
+      "ui_exposed": true
+    }
+  ]
+}

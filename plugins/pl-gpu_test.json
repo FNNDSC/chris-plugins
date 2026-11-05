@@ -1,0 +1,23 @@
+{
+  "name": "pl-gpu_test",
+  "version": "0.2.2",
+  "dock_image": "ghcr.io/fnndsc/pl-gpu_test:0.2.2",
+  "public_repo": "https://github.com/FNNDSC/pl-gpu_test",
+  "type": "ds",
+  "title": "An application to check the presence of GPU in the system",
+  "category": "N/A",
+  "description": "An app to check the available GPUs",
+  "documentation": "...",
+  "license": "Opensource (MIT)",
+  "icon": "",
+  "authors": "Sandip Samal (sandip.samal@childrens.harvard.edu)",
+  "execshell": "python3",
+  "selfpath": "/usr/src/gpu_test",
+  "selfexec": "gpu_test.py",
+  "max_number_of_workers": 1,
+  "min_cpu_limit": "2000m",
+  "min_memory_limit": "16000Mi",
+  "min_gpu_limit": 1,
+  "max_gpu_limit": 1,
+  "parameters": []
+}

@@ -1,0 +1,99 @@
+{
+  "name": "pl-pacs_query",
+  "version": "1.1.0",
+  "dock_image": "ghcr.io/fnndsc/pl-pacs_query:1.1.0",
+  "public_repo": "https://github.com/fnndsc/pl-pacs_query",
+  "type": "ds",
+  "title": "A ChRIS plugin to query a remote PACS",
+  "category": "",
+  "description": "A ChRIS plugin to query PACS using pfdcm",
+  "documentation": "https://github.com/FNNDSC/pl-pacs_q",
+  "license": "MIT",
+  "icon": "",
+  "authors": "FNNDSC <dev@babyMRI.org>",
+  "execshell": "/usr/local/bin/python",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "pacs_query",
+  "max_number_of_workers": 1,
+  "min_memory_limit": "100Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "src_aet",
+      "type": "str",
+      "optional": false,
+      "default": null,
+      "flag": "--src-aet",
+      "short_flag": "--src-aet",
+      "action": "store",
+      "help": "Called AET  (PACS AE title)",
+      "ui_exposed": true
+    },
+    {
+      "name": "src_ip",
+      "type": "str",
+      "optional": false,
+      "default": null,
+      "flag": "--src-ip",
+      "short_flag": "--src-ip",
+      "action": "store",
+      "help": "PACS host / IP address",
+      "ui_exposed": true
+    },
+    {
+      "name": "src_port",
+      "type": "int",
+      "optional": false,
+      "default": null,
+      "flag": "--src-port",
+      "short_flag": "--src-port",
+      "action": "store",
+      "help": "PACS DICOM port",
+      "ui_exposed": true
+    },
+    {
+      "name": "dst_aet",
+      "type": "str",
+      "optional": false,
+      "default": null,
+      "flag": "--dst-aet",
+      "short_flag": "--dst-aet",
+      "action": "store",
+      "help": "Calling AET (our AE title, must be registered on PACS)",
+      "ui_exposed": true
+    },
+    {
+      "name": "PACSdirective",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--PACSdirective",
+      "short_flag": "--PACSdirective",
+      "action": "store",
+      "help": "directive to query the PACS",
+      "ui_exposed": true
+    },
+    {
+      "name": "reportName",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--reportName",
+      "short_flag": "--reportName",
+      "action": "store",
+      "help": "name of the output report containing search results (excluding file extension)",
+      "ui_exposed": true
+    },
+    {
+      "name": "query_model",
+      "type": "str",
+      "optional": true,
+      "default": "study",
+      "flag": "--query-model",
+      "short_flag": "--query-model",
+      "action": "store",
+      "help": "Query/Retrieve model [choices: study, patient]",
+      "ui_exposed": true
+    }
+  ]
+}

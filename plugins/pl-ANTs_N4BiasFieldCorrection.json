@@ -1,0 +1,55 @@
+{
+  "name": "pl-ANTs_N4BiasFieldCorrection",
+  "version": "0.2.7.4",
+  "dock_image": "docker.io/fnndsc/pl-ants_n4biasfieldcorrection:0.2.7.4",
+  "public_repo": "https://github.com/FNNDSC/pl-ANTs_N4BiasFieldCorrection",
+  "type": "ds",
+  "title": "ANTs N4 Bias Field Correction",
+  "category": "Registration",
+  "description": "ANTs N4 Bias Field Correction",
+  "documentation": "https://github.com/FNNDSC/pl-ANTs_N4BiasFieldCorrection",
+  "license": "MIT",
+  "icon": "",
+  "authors": "FNNDSC <dev@babyMRI.org>",
+  "execshell": "/opt/conda/bin/python",
+  "selfpath": "/opt/conda/bin",
+  "selfexec": "bfc",
+  "max_number_of_workers": 1,
+  "min_memory_limit": "8000Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "inputPathFilter",
+      "type": "str",
+      "optional": true,
+      "default": "*.nii",
+      "flag": "--inputPathFilter",
+      "short_flag": "-p",
+      "action": "store",
+      "help": "selection (glob) for which files to evaluate",
+      "ui_exposed": true
+    },
+    {
+      "name": "shrink_factor",
+      "type": "int",
+      "optional": true,
+      "default": 3,
+      "flag": "--shrink-factor",
+      "short_flag": "-s",
+      "action": "store",
+      "help": "",
+      "ui_exposed": true
+    },
+    {
+      "name": "convergence",
+      "type": "str",
+      "optional": true,
+      "default": "[400x400x400,0.00]",
+      "flag": "--convergence",
+      "short_flag": "-c",
+      "action": "store",
+      "help": "",
+      "ui_exposed": true
+    }
+  ]
+}

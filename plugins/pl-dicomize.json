@@ -1,0 +1,88 @@
+{
+  "name": "pl-dicomize",
+  "version": "1.0.7",
+  "dock_image": "ghcr.io/fnndsc/pl-dicomize:1.0.7",
+  "public_repo": "https://github.com/fnndsc/pl-dicomize",
+  "type": "ds",
+  "title": "A DICOM generator plugin",
+  "category": "",
+  "description": "A ChRIS plugin to generate DICOMs using existing DICOM templates",
+  "documentation": "https://github.com/FNNDSC/pl-dico",
+  "license": "MIT",
+  "icon": "",
+  "authors": "FNNDSC <dev@babyMRI.org>",
+  "execshell": "/usr/local/bin/python",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "dicomize",
+  "max_number_of_workers": 1,
+  "min_memory_limit": "1000Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "pattern",
+      "type": "str",
+      "optional": true,
+      "default": "dcm",
+      "flag": "--pattern",
+      "short_flag": "--pattern",
+      "action": "store",
+      "help": "pattern for file names to include (you should quote this!)\n            (this flag triggers the PathMapper on the inputdir).",
+      "ui_exposed": true
+    },
+    {
+      "name": "jsonFile",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--jsonFile",
+      "short_flag": "--jsonFile",
+      "action": "store",
+      "help": "Path to JSON file",
+      "ui_exposed": true
+    },
+    {
+      "name": "tagStruct",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--tagStruct",
+      "short_flag": "--tagStruct",
+      "action": "store",
+      "help": "DICOM headers as stringified JSON",
+      "ui_exposed": true
+    },
+    {
+      "name": "copy_tags",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--copy-tags",
+      "short_flag": "--copy-tags",
+      "action": "store",
+      "help": "Comma-separated list of tags to copy from existing DICOM",
+      "ui_exposed": true
+    },
+    {
+      "name": "createFrom",
+      "type": "str",
+      "optional": true,
+      "default": "empty",
+      "flag": "--createFrom",
+      "short_flag": "--createFrom",
+      "action": "store",
+      "help": "Create new DICOM from existing: 1) dicom 2) image 3) empty",
+      "ui_exposed": true
+    },
+    {
+      "name": "conceptName",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--conceptName",
+      "short_flag": "--conceptName",
+      "action": "store",
+      "help": "Specify the header of concept sequence. Required for SR generation",
+      "ui_exposed": true
+    }
+  ]
+}
