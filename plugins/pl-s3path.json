@@ -10,7 +10,7 @@
   "license": "Opensource (MIT)",
   "authors": "FNNDSC (dev@babyMRI.org)",
   "execshell": "python3",
-  "selfpath": "",
+  "selfpath": "/usr/src/s3path",
   "selfexec": "s3path.py",
   "max_number_of_workers": 1,
   "max_gpu_limit": 0,
