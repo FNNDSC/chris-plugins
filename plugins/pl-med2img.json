@@ -1,0 +1,151 @@
+{
+  "name": "pl-med2img",
+  "version": "1.1.12",
+  "dock_image": "ghcr.io/fnndsc/pl-med2img:1.1.12",
+  "public_repo": "https://github.com/FNNDSC/pl-med2img",
+  "type": "ds",
+  "title": "A ChRIS plugin app",
+  "description": "An app to convert medical MRI image data like DICOMs and NIFTI to more standard image formats like PNG/JPG",
+  "documentation": "https://github.com/FNNDSC/pl-med2img",
+  "license": "MIT",
+  "authors": "Arushi Vyas <dev@babyMRI.org>",
+  "execshell": "/usr/bin/python3",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "med2img",
+  "max_number_of_workers": 1,
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "inputFile",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--inputFile",
+      "short_flag": "-i",
+      "action": "store",
+      "help": "name of the input file within the inputDir",
+      "ui_exposed": true
+    },
+    {
+      "name": "inputFileSubStr",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--inputFileSubStr",
+      "short_flag": "--inputFileSubStr",
+      "action": "store",
+      "help": "input file substring to tag a file in the inputDir",
+      "ui_exposed": true
+    },
+    {
+      "name": "outputFileStem",
+      "type": "str",
+      "optional": true,
+      "default": "sample",
+      "flag": "--outputFileStem",
+      "short_flag": "-o",
+      "action": "store",
+      "help": "output file stem name (with optional extension)",
+      "ui_exposed": true
+    },
+    {
+      "name": "outputFileType",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--outputFileType",
+      "short_flag": "-t",
+      "action": "store",
+      "help": "output image file format",
+      "ui_exposed": true
+    },
+    {
+      "name": "sliceToConvert",
+      "type": "str",
+      "optional": true,
+      "default": "-1",
+      "flag": "--sliceToConvert",
+      "short_flag": "-s",
+      "action": "store",
+      "help": "slice to convert (for 3D data)",
+      "ui_exposed": true
+    },
+    {
+      "name": "frameToConvert",
+      "type": "str",
+      "optional": true,
+      "default": "-1",
+      "flag": "--frameToConvert",
+      "short_flag": "-f",
+      "action": "store",
+      "help": "frame to convert (for 4D data)",
+      "ui_exposed": true
+    },
+    {
+      "name": "printElapsedTime",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--printElapsedTime",
+      "short_flag": "--printElapsedTime",
+      "action": "store_true",
+      "help": "print program run time",
+      "ui_exposed": true
+    },
+    {
+      "name": "reslice",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--reslice",
+      "short_flag": "-r",
+      "action": "store_true",
+      "help": "save images along i, j, k direction -- 3D input only",
+      "ui_exposed": true
+    },
+    {
+      "name": "showSlices",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--showSlices",
+      "short_flag": "--showSlices",
+      "action": "store_true",
+      "help": "show slices that are converted",
+      "ui_exposed": true
+    },
+    {
+      "name": "func",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--func",
+      "short_flag": "--func",
+      "action": "store",
+      "help": "apply the specified transformation function before saving",
+      "ui_exposed": true
+    },
+    {
+      "name": "synopsis",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--synopsis",
+      "short_flag": "-y",
+      "action": "store_true",
+      "help": "short synopsis",
+      "ui_exposed": true
+    },
+    {
+      "name": "convertOnlySingleDICOM",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--convertOnlySingleDICOM",
+      "short_flag": "--convertOnlySingleDICOM",
+      "action": "store_true",
+      "help": "if specified, only convert the specific input DICOM",
+      "ui_exposed": true
+    }
+  ]
+}

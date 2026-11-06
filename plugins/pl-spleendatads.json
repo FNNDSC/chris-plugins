@@ -1,0 +1,97 @@
+{
+  "name": "pl-spleendatads",
+  "version": "2.0.6",
+  "dock_image": "ghcr.io/fnndsc/pl-spleendatads:2.0.6",
+  "public_repo": "https://github.com/fnndsc/pl-spleendatads",
+  "type": "ds",
+  "title": "Spleen data downloader",
+  "description": "A ChRIS DS plugin to download a set of spleen data",
+  "documentation": "https://github.com/FNNDSC/pl-spleendatads",
+  "license": "MIT",
+  "authors": "FNNDSC <dev@babyMRI.org>",
+  "execshell": "/usr/local/bin/python",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "spleendatads",
+  "max_number_of_workers": 1,
+  "min_memory_limit": "8192Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "url",
+      "type": "str",
+      "optional": true,
+      "default": "https://msd-for-monai.s3-us-west-2.amazonaws.com/Task09_Spleen.tar",
+      "flag": "--url",
+      "short_flag": "--url",
+      "action": "store",
+      "help": "url of remote tar archive file",
+      "ui_exposed": true
+    },
+    {
+      "name": "md5",
+      "type": "str",
+      "optional": true,
+      "default": "410d4a301da4e5b2f6f86ec3ddba524e",
+      "flag": "--md5",
+      "short_flag": "--md5",
+      "action": "store",
+      "help": "md5 sum of remote resource once downloaded",
+      "ui_exposed": true
+    },
+    {
+      "name": "skipDownload",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--skipDownload",
+      "short_flag": "--skipDownload",
+      "action": "store_true",
+      "help": "If specified, skip the download. Only useful for debugging/testing really.",
+      "ui_exposed": true
+    },
+    {
+      "name": "trainingOnly",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--trainingOnly",
+      "short_flag": "--trainingOnly",
+      "action": "store_true",
+      "help": "If specified, only preserve the training data (saving about 462Mb)",
+      "ui_exposed": true
+    },
+    {
+      "name": "testingOnly",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--testingOnly",
+      "short_flag": "--testingOnly",
+      "action": "store_true",
+      "help": "If specified, only preserve the testing data (saving about 1.2Gb)",
+      "ui_exposed": true
+    },
+    {
+      "name": "copyInputDir",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--copyInputDir",
+      "short_flag": "--copyInputDir",
+      "action": "store_true",
+      "help": "If specified, copy the inputDir to outputDir",
+      "ui_exposed": true
+    },
+    {
+      "name": "man",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--man",
+      "short_flag": "--man",
+      "action": "store_true",
+      "help": "If specified, show simple manual page",
+      "ui_exposed": true
+    }
+  ]
+}

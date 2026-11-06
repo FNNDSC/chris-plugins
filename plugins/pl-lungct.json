@@ -1,0 +1,30 @@
+{
+  "name": "pl-lungct",
+  "version": "1.0.3",
+  "dock_image": "ghcr.io/fnndsc/pl-lungct:1.0.3",
+  "public_repo": "https://github.com/FNNDSC/pl-lungct",
+  "type": "fs",
+  "title": "lungct",
+  "description": "This plugin simply copies a specific lung image of interest to its output directory.",
+  "documentation": "http://wiki",
+  "license": "MIT",
+  "authors": "FNNDSC <dev@babyMRI.org>",
+  "execshell": "/usr/local/bin/python",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "lungct",
+  "max_number_of_workers": 1,
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "dir",
+      "type": "str",
+      "optional": true,
+      "default": "/usr/local/src/data/images",
+      "flag": "--dir",
+      "short_flag": "--dir",
+      "action": "store",
+      "help": "directory override",
+      "ui_exposed": true
+    }
+  ]
+}

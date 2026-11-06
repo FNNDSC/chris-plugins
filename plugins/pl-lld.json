@@ -1,0 +1,21 @@
+{
+  "name": "pl-lld",
+  "version": "0.2",
+  "dock_image": "ghcr.io/fnndsc/pl-lld:latest",
+  "public_repo": "https://github.com/FNNDSC/pl-lld",
+  "type": "ds",
+  "title": "A ChRIS plugin to measure leg length discrepancy",
+  "category": "Machine Learning",
+  "description": "An inference app to use pre-trained weights to measure length discrepancy in input leg images",
+  "documentation": "http://wiki",
+  "license": "MIT",
+  "authors": "FNNDSC <dev@babyMRI.org>",
+  "execshell": "/opt/conda/bin/python",
+  "selfpath": "/opt/conda/bin",
+  "selfexec": "lld",
+  "max_number_of_workers": 1,
+  "min_cpu_limit": "2000m",
+  "min_memory_limit": "8000Mi",
+  "max_gpu_limit": 0,
+  "parameters": []
+}

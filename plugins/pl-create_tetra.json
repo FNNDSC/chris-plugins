@@ -1,0 +1,65 @@
+{
+  "name": "pl-create_tetra",
+  "version": "1.0.0",
+  "dock_image": "ghcr.io/fnndsc/pl-create_tetra:1.0.0",
+  "public_repo": "https://github.com/FNNDSC/pl-create_tetra",
+  "type": "fs",
+  "title": "create_tetra",
+  "category": "Modeling",
+  "description": "A ChRIS fs plugin wrapper for create_tetra",
+  "documentation": "https://github.com/FNNDSC/pl-create_tetra",
+  "license": "MIT",
+  "authors": "Jennings Zhang <Jennings.Zhang@childrens.harvard.edu>",
+  "execshell": "/opt/conda/bin/python3.10",
+  "selfpath": "/opt/conda/bin",
+  "selfexec": "create_tetra_wrapper",
+  "max_number_of_workers": 1,
+  "min_memory_limit": "100Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "center",
+      "type": "str",
+      "optional": true,
+      "default": "0,0,0",
+      "flag": "--center",
+      "short_flag": "-c",
+      "action": "store",
+      "help": "center of sphere",
+      "ui_exposed": true
+    },
+    {
+      "name": "radius",
+      "type": "str",
+      "optional": true,
+      "default": "1,1,1",
+      "flag": "--radius",
+      "short_flag": "-r",
+      "action": "store",
+      "help": "radius of sphere",
+      "ui_exposed": true
+    },
+    {
+      "name": "triangles",
+      "type": "int",
+      "optional": true,
+      "default": 81920,
+      "flag": "--triangles",
+      "short_flag": "-t",
+      "action": "store",
+      "help": "number of triangles",
+      "ui_exposed": true
+    },
+    {
+      "name": "output",
+      "type": "str",
+      "optional": true,
+      "default": "sphere_81920.obj",
+      "flag": "--output",
+      "short_flag": "-o",
+      "action": "store",
+      "help": "output file name",
+      "ui_exposed": true
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "name": "pl-lung_cnp",
+  "version": "1.1.1",
+  "dock_image": "ghcr.io/fnndsc/pl-lung_cnp:1.1.1",
+  "public_repo": "https://github.com/FNNDSC/pl-lung_cnp",
+  "type": "fs",
+  "title": "A ChRIS FS plugin that carries lung images of Normal/COVID/Pneumonia exemplars",
+  "category": "Data",
+  "description": "This application houses a set of images that can be used in Normal/COVID/Pneumonia testing of COVIDNET",
+  "documentation": "http://wiki",
+  "license": "MIT",
+  "authors": "FNNDSC <dev@babyMRI.org>",
+  "execshell": "/usr/local/bin/python",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "lung_cnp",
+  "max_number_of_workers": 1,
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "dir",
+      "type": "str",
+      "optional": true,
+      "default": "/usr/local/src/data/images",
+      "flag": "--dir",
+      "short_flag": "--dir",
+      "action": "store",
+      "help": "directory override",
+      "ui_exposed": true
+    },
+    {
+      "name": "file",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--file",
+      "short_flag": "--file",
+      "action": "store",
+      "help": "copy only a specific file",
+      "ui_exposed": true
+    }
+  ]
+}

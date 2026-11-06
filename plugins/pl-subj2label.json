@@ -1,0 +1,63 @@
+{
+  "name": "pl-subj2label",
+  "version": "0.1",
+  "dock_image": "docker.io/fnndsc/pl-subj2label:latest",
+  "public_repo": "https://github.com/FNNDSC/pl-subj2label",
+  "type": "ds",
+  "title": "A ChRIS plugin app",
+  "description": "An app to combine all image slices related to a particular label from different subjects under one directory",
+  "documentation": "http://wiki",
+  "license": "Opensource (MIT)",
+  "authors": "Sandip Samal (sandip.samal@childrens.harvard.edu)",
+  "execshell": "python3",
+  "selfpath": "/usr/src/subj2label",
+  "selfexec": "subj2label.py",
+  "max_number_of_workers": 1,
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "refIn",
+      "type": "str",
+      "optional": false,
+      "default": "",
+      "flag": "--refIn",
+      "short_flag": "--refIn",
+      "action": "store",
+      "help": "name of the folder containing raw image slices within the inputDir",
+      "ui_exposed": true
+    },
+    {
+      "name": "refOut",
+      "type": "str",
+      "optional": true,
+      "default": "reference",
+      "flag": "--refOut",
+      "short_flag": "--refOut",
+      "action": "store",
+      "help": "name of the directory that will contain the raw data slices for a subject",
+      "ui_exposed": true
+    },
+    {
+      "name": "featPref",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--featPref",
+      "short_flag": "--featPref",
+      "action": "store",
+      "help": "Prefix of the directory that contains the segmented data slices for a subject",
+      "ui_exposed": true
+    },
+    {
+      "name": "featOut",
+      "type": "str",
+      "optional": true,
+      "default": "features",
+      "flag": "--featOut",
+      "short_flag": "--featOut",
+      "action": "store",
+      "help": "Name of the directory that will contain the segmented data slices for a subject",
+      "ui_exposed": true
+    }
+  ]
+}

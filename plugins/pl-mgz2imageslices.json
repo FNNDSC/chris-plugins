@@ -1,0 +1,173 @@
+{
+  "name": "pl-mgz2imageslices",
+  "version": "2.1.0",
+  "dock_image": "ghcr.io/fnndsc/pl-mgz2imageslices:2.1.0",
+  "public_repo": "https://github.com/FNNDSC/pl-mgz2imageslices",
+  "type": "ds",
+  "title": "A ChRIS plugin app",
+  "description": "An app to convert 3d mgz files to 2s slices of readable formats like PNG/JPEG",
+  "documentation": "https://github.com/FNNDSC/pl-mgz2imageslices",
+  "license": "MIT",
+  "authors": "Arushi Vyas <dev@babyMRI.org>",
+  "execshell": "/usr/local/bin/python",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "mgz2imageslices",
+  "max_number_of_workers": 1,
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "inputFile",
+      "type": "str",
+      "optional": false,
+      "default": null,
+      "flag": "--inputFile",
+      "short_flag": "-i",
+      "action": "store",
+      "help": "name of the input file within the inputDir",
+      "ui_exposed": true
+    },
+    {
+      "name": "outputFileStem",
+      "type": "str",
+      "optional": true,
+      "default": "sample",
+      "flag": "--outputFileStem",
+      "short_flag": "-o",
+      "action": "store",
+      "help": "output file",
+      "ui_exposed": true
+    },
+    {
+      "name": "outputFileType",
+      "type": "str",
+      "optional": true,
+      "default": "png",
+      "flag": "--outputFileType",
+      "short_flag": "-t",
+      "action": "store",
+      "help": "output image file format",
+      "ui_exposed": true
+    },
+    {
+      "name": "saveImages",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--saveImages",
+      "short_flag": "--saveImages",
+      "action": "store_true",
+      "help": "store png images for each slice of mgz file",
+      "ui_exposed": true
+    },
+    {
+      "name": "label",
+      "type": "str",
+      "optional": true,
+      "default": "label",
+      "flag": "--label",
+      "short_flag": "--label",
+      "action": "store",
+      "help": "prefix a label to all the label directories",
+      "ui_exposed": true
+    },
+    {
+      "name": "normalize",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--normalize",
+      "short_flag": "-n",
+      "action": "store_true",
+      "help": "normalize the pixels of output image files",
+      "ui_exposed": true
+    },
+    {
+      "name": "lookupTable",
+      "type": "str",
+      "optional": true,
+      "default": "__none__",
+      "flag": "--lookupTable",
+      "short_flag": "-l",
+      "action": "store",
+      "help": "reads name for the Label directories",
+      "ui_exposed": true
+    },
+    {
+      "name": "synopsis",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--synopsis",
+      "short_flag": "-y",
+      "action": "store_true",
+      "help": "short synopsis",
+      "ui_exposed": true
+    },
+    {
+      "name": "skipAllLabels",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--skipAllLabels",
+      "short_flag": "--skipAllLabels",
+      "action": "store_true",
+      "help": "skip all labels and create only whole Volume images",
+      "ui_exposed": true
+    },
+    {
+      "name": "skipLabelValueList",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--skipLabelValueList",
+      "short_flag": "-s",
+      "action": "store",
+      "help": "Comma separated list of labels to skip",
+      "ui_exposed": true
+    },
+    {
+      "name": "filterLabelValueList",
+      "type": "str",
+      "optional": true,
+      "default": "-1",
+      "flag": "--filterLabelValueList",
+      "short_flag": "-f",
+      "action": "store",
+      "help": "Comma separated list of voxel values to include",
+      "ui_exposed": true
+    },
+    {
+      "name": "wholeVolume",
+      "type": "str",
+      "optional": true,
+      "default": "wholeVolume",
+      "flag": "--wholeVolume",
+      "short_flag": "-w",
+      "action": "store",
+      "help": "Converts entire mgz volume to png/jpg instead of individually masked labels",
+      "ui_exposed": true
+    },
+    {
+      "name": "printElapsedTime",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--printElapsedTime",
+      "short_flag": "--printElapsedTime",
+      "action": "store_true",
+      "help": "print program run time",
+      "ui_exposed": true
+    },
+    {
+      "name": "verbose",
+      "type": "str",
+      "optional": true,
+      "default": "1",
+      "flag": "--verbose",
+      "short_flag": "--verbose",
+      "action": "store",
+      "help": "verbosity level for app",
+      "ui_exposed": true
+    }
+  ]
+}

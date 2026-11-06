@@ -1,0 +1,54 @@
+{
+  "name": "pl-png_overlay",
+  "version": "1.0.0",
+  "dock_image": "ghcr.io/fnndsc/pl-png_overlay:1.0.0",
+  "public_repo": "https://github.com/FNNDSC/pl-png_overlay",
+  "type": "ds",
+  "title": "A ChRIS plugin app to create an overlay PNG with two input PNGs",
+  "description": "An app to create an overlay PNG with two input PNGs",
+  "documentation": "http://wiki",
+  "license": "MIT",
+  "authors": "FNNDSC <dev@babyMRI.org>",
+  "execshell": "/usr/local/bin/python",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "png_overlay",
+  "max_number_of_workers": 1,
+  "min_cpu_limit": "2000m",
+  "min_memory_limit": "8000Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "background",
+      "type": "str",
+      "optional": true,
+      "default": "leg.png",
+      "flag": "--background",
+      "short_flag": "-b",
+      "action": "store",
+      "help": "Input background file name",
+      "ui_exposed": true
+    },
+    {
+      "name": "overlay",
+      "type": "str",
+      "optional": true,
+      "default": "composite.png",
+      "flag": "--overlay",
+      "short_flag": "-o",
+      "action": "store",
+      "help": "Input overlay file name",
+      "ui_exposed": true
+    },
+    {
+      "name": "outputFileName",
+      "type": "str",
+      "optional": true,
+      "default": "overlay.png",
+      "flag": "--outputFileName",
+      "short_flag": "-s",
+      "action": "store",
+      "help": "Output file name",
+      "ui_exposed": true
+    }
+  ]
+}

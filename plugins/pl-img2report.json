@@ -1,0 +1,18 @@
+{
+  "name": "pl-img2report",
+  "version": "0.1",
+  "dock_image": "docker.io/fnndsc/pl-img2report:latest",
+  "public_repo": "https://github.com/FNNDSC/pl-img2report",
+  "type": "ds",
+  "title": "A report generator for brain MRI images",
+  "description": "An app to ...",
+  "documentation": "http://wiki",
+  "license": "Opensource (MIT)",
+  "authors": "BU EC528 F20 Team <dev@babyMRI.org>",
+  "execshell": "python3",
+  "selfpath": "/usr/src/img2report",
+  "selfexec": "img2report.py",
+  "max_number_of_workers": 1,
+  "max_gpu_limit": 0,
+  "parameters": []
+}

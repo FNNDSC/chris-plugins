@@ -1,0 +1,56 @@
+{
+  "name": "pl-download-url",
+  "version": "1.0.0",
+  "dock_image": "ghcr.io/fnndsc/pl-download:1.0.0",
+  "public_repo": "https://github.com/FNNDSC/pl-download",
+  "type": "fs",
+  "title": "Downloader",
+  "category": "Utility",
+  "description": "Download a file from a URL",
+  "documentation": "https://github.com/FNNDSC/pl-download#readme",
+  "license": "MIT",
+  "authors": "FNNDSC <dev@babyMRI.org>",
+  "execshell": "/bin/download",
+  "selfpath": "--",
+  "selfexec": "dummy_selfexec",
+  "max_number_of_workers": 1,
+  "min_cpu_limit": "200m",
+  "max_cpu_limit": "4000m",
+  "max_memory_limit": "8192Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "url",
+      "type": "str",
+      "optional": false,
+      "default": null,
+      "flag": "--url",
+      "short_flag": "-u",
+      "action": "store",
+      "help": "URL to download",
+      "ui_exposed": true
+    },
+    {
+      "name": "retries",
+      "type": "int",
+      "optional": true,
+      "default": 3,
+      "flag": "--retries",
+      "short_flag": "-r",
+      "action": "store",
+      "help": "Number of retries per download",
+      "ui_exposed": true
+    },
+    {
+      "name": "concurrency",
+      "type": "int",
+      "optional": true,
+      "default": 32,
+      "flag": "--concurrency",
+      "short_flag": "-J",
+      "action": "store",
+      "help": "Maximum number of concurrent downloads",
+      "ui_exposed": true
+    }
+  ]
+}

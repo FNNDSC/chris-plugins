@@ -1,0 +1,44 @@
+{
+  "name": "pl-zerobg",
+  "version": "1.0.0",
+  "dock_image": "ghcr.io/fnndsc/pl-zerobg:1.0.0",
+  "public_repo": "https://github.com/fnndsc/pl-zerobg",
+  "type": "ds",
+  "title": "Zero MRI Background",
+  "category": "MRI",
+  "description": "Set the background intensity of a MRI to 0",
+  "documentation": "https://github.com/FNNDSC/pl-zerobg",
+  "license": "MIT",
+  "authors": "FNNDSC <dev@babyMRI.org>",
+  "execshell": "/opt/conda/bin/python3.12",
+  "selfpath": "/opt/conda/bin",
+  "selfexec": "zb",
+  "max_number_of_workers": 1,
+  "min_cpu_limit": "4000m",
+  "min_memory_limit": "4096Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "thresholds",
+      "type": "str",
+      "optional": true,
+      "default": ".nii.gz:37.0",
+      "flag": "--thresholds",
+      "short_flag": "-t",
+      "action": "store",
+      "help": "A filename glob and background intensity threshold. Multiple pairs should be comma-separated, i.e. GLOB1:THRESHOLD1,GLOB2:THRESHOLD2,...",
+      "ui_exposed": true
+    },
+    {
+      "name": "threads",
+      "type": "int",
+      "optional": true,
+      "default": 0,
+      "flag": "--threads",
+      "short_flag": "-J",
+      "action": "store",
+      "help": "Number of threads to use for parallel jobs. Pass 0 to use number of visible CPUs.",
+      "ui_exposed": true
+    }
+  ]
+}

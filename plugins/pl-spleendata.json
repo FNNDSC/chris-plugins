@@ -1,0 +1,53 @@
+{
+  "name": "pl-spleendata",
+  "version": "1.0.8",
+  "dock_image": "docker.io/fnndsc/pl-spleendata:1.0.10",
+  "public_repo": "https://github.com/fnndsc/pl-spleendata",
+  "type": "fs",
+  "title": "Spleen data downloader",
+  "description": "A ChRIS FS plugin to download a set of spleen data",
+  "documentation": "https://github.com/rudolphpienaar/pl-spleendata",
+  "license": "MIT",
+  "authors": "FNNDSC <dev@babyMRI.org>",
+  "execshell": "/usr/local/bin/python",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "spleendata",
+  "max_number_of_workers": 1,
+  "min_memory_limit": "100Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "skipDownload",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--skipDownload",
+      "short_flag": "--skipDownload",
+      "action": "store_true",
+      "help": "If specified, skip the download. Only useful for debugging/testing really.",
+      "ui_exposed": true
+    },
+    {
+      "name": "trainingOnly",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--trainingOnly",
+      "short_flag": "--trainingOnly",
+      "action": "store_true",
+      "help": "If specified, only preserve the training data (saving about 462Mb)",
+      "ui_exposed": true
+    },
+    {
+      "name": "testingOnly",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--testingOnly",
+      "short_flag": "--testingOnly",
+      "action": "store_true",
+      "help": "If specified, only preserve the testing data (saving about 1.2Gb)",
+      "ui_exposed": true
+    }
+  ]
+}

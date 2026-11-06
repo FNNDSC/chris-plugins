@@ -1,0 +1,41 @@
+{
+  "name": "pl-dice_coeff",
+  "version": "0.1",
+  "dock_image": "docker.io/fnndsc/pl-dice_coeff:latest",
+  "public_repo": "https://github.com/FNNDSC/pl-dice_coeff",
+  "type": "ds",
+  "title": "Model accuracy app",
+  "description": "An app to calculate model testing accuracy by dice coefficient",
+  "documentation": "http://wiki",
+  "license": "Opensource (MIT)",
+  "authors": "Sandip Samal (sandip.samal@childrens.harvard.edu)",
+  "execshell": "python3",
+  "selfpath": "/usr/src/dice_coeff",
+  "selfexec": "dice_coeff.py",
+  "max_number_of_workers": 1,
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "pred",
+      "type": "str",
+      "optional": false,
+      "default": null,
+      "flag": "--prediction",
+      "short_flag": "--prediction",
+      "action": "store",
+      "help": "Prediction directory name",
+      "ui_exposed": true
+    },
+    {
+      "name": "gt",
+      "type": "str",
+      "optional": false,
+      "default": null,
+      "flag": "--ground_truth",
+      "short_flag": "--ground_truth",
+      "action": "store",
+      "help": "Ground truth directory name",
+      "ui_exposed": true
+    }
+  ]
+}

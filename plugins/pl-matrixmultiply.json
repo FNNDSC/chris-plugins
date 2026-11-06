@@ -1,0 +1,31 @@
+{
+  "name": "pl-matrixmultiply",
+  "version": "0.1",
+  "dock_image": "docker.io/fnndsc/pl-matrixmultiply:latest",
+  "public_repo": "https://github.com/FNNDSC/pl-matrixmultiply",
+  "type": "ds",
+  "title": "A ChRIS plugin app",
+  "description": "An app to ...",
+  "documentation": "http://wiki",
+  "license": "Opensource (MIT)",
+  "authors": "kefan (kefan29@bu.edu)",
+  "execshell": "python3",
+  "selfpath": "/usr/src/matmultiply",
+  "selfexec": "matmultiply.py",
+  "max_number_of_workers": 1,
+  "min_gpu_limit": 1,
+  "max_gpu_limit": 1,
+  "parameters": [
+    {
+      "name": "coenum",
+      "type": "str",
+      "optional": true,
+      "default": "32",
+      "flag": "--coe",
+      "short_flag": "-c",
+      "action": "store",
+      "help": "assign coe range, default 32, assign by startNumber : stepLength : endnumber",
+      "ui_exposed": true
+    }
+  ]
+}

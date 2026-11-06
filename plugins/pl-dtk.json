@@ -1,0 +1,16 @@
+{
+  "name": "pl-dtk",
+  "version": "0.1.1",
+  "dock_image": "docker.io/fnndsc/pl-dtk:latest",
+  "public_repo": "https://github.com/FNNDSC/pl-dtk",
+  "type": "ds",
+  "title": "Diffusion toolkit",
+  "description": "A plugin app for the DiffusionToolkit",
+  "documentation": "http://wiki",
+  "license": "Opensource (MIT)",
+  "authors": "FNNDSC (dev@babyMRI.org)",
+  "execshell": "python3",
+  "selfpath": "/usr/src/dtk",
+  "selfexec": "dtk.py",
+  "parameters": []
+}

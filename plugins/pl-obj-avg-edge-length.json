@@ -1,0 +1,43 @@
+{
+  "name": "pl-obj-avg-edge-length",
+  "version": "1.0.0",
+  "dock_image": "ghcr.io/fnndsc/pl-obj-avg-edge-length:1.0.0",
+  "public_repo": "https://github.com/FNNDSC/pl-obj-avg-edge-length",
+  "type": "ds",
+  "title": "Average Edge Length",
+  "category": "Quality Control",
+  "description": "Average edge length about each vertex of a surface mesh.",
+  "documentation": "https://github.com/FNNDSC/pl-obj-avg-edge-length",
+  "license": "MIT",
+  "authors": "Jennings Zhang <Jennings.Zhang@childrens.harvard.edu>",
+  "execshell": "/opt/conda/bin/python3.10",
+  "selfpath": "/opt/conda/bin",
+  "selfexec": "edgy",
+  "max_number_of_workers": 1,
+  "min_memory_limit": "100Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "filter",
+      "type": "str",
+      "optional": true,
+      "default": "**/*.obj",
+      "flag": "--filter",
+      "short_flag": "-f",
+      "action": "store",
+      "help": "input file filter",
+      "ui_exposed": true
+    },
+    {
+      "name": "suffix",
+      "type": "str",
+      "optional": true,
+      "default": ".edgelen.txt",
+      "flag": "--suffix",
+      "short_flag": "-s",
+      "action": "store",
+      "help": "output file suffix",
+      "ui_exposed": true
+    }
+  ]
+}

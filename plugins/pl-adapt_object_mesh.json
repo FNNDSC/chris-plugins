@@ -1,0 +1,75 @@
+{
+  "name": "pl-adapt_object_mesh",
+  "version": "1.0.0",
+  "dock_image": "ghcr.io/fnndsc/pl-adapt_object_mesh:1.0.0",
+  "public_repo": "https://github.com/FNNDSC/pl-adapt_object_mesh",
+  "type": "ds",
+  "title": "adapt_object_mesh",
+  "category": "Surfaces",
+  "description": "A ChRIS plugin wrapper around adapt_object_mesh from MINC tools",
+  "documentation": "https://github.com/FNNDSC/pl-adapt_object_mesh",
+  "license": "MIT",
+  "authors": "Jennings Zhang <Jennings.Zhang@childrens.harvard.edu>",
+  "execshell": "/opt/conda/bin/python3.11",
+  "selfpath": "/opt/conda/bin",
+  "selfexec": "adapt_object_mesh_wrapper",
+  "max_number_of_workers": 1,
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "target_points",
+      "type": "int",
+      "optional": true,
+      "default": 0,
+      "flag": "--target-points",
+      "short_flag": "-t",
+      "action": "store",
+      "help": "target number of points",
+      "ui_exposed": true
+    },
+    {
+      "name": "iterations",
+      "type": "int",
+      "optional": true,
+      "default": 0,
+      "flag": "--iterations",
+      "short_flag": "-i",
+      "action": "store",
+      "help": "number of post-adaptation smoothing iterations",
+      "ui_exposed": true
+    },
+    {
+      "name": "adapt",
+      "type": "int",
+      "optional": true,
+      "default": 0,
+      "flag": "--adapt",
+      "short_flag": "-a",
+      "action": "store",
+      "help": "number of global adaptation iterations",
+      "ui_exposed": true
+    },
+    {
+      "name": "adapt_smooth",
+      "type": "int",
+      "optional": true,
+      "default": 0,
+      "flag": "--adapt-smooth",
+      "short_flag": "-s",
+      "action": "store",
+      "help": "number of smoothing iterations per adaptation iteration",
+      "ui_exposed": true
+    },
+    {
+      "name": "pattern",
+      "type": "str",
+      "optional": true,
+      "default": "**/*.obj",
+      "flag": "--pattern",
+      "short_flag": "-p",
+      "action": "store",
+      "help": "pattern for file names to include",
+      "ui_exposed": true
+    }
+  ]
+}

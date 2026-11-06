@@ -1,0 +1,31 @@
+{
+  "name": "pl-nii2mnc-u8",
+  "version": "1.0.1",
+  "dock_image": "ghcr.io/fnndsc/pl-nii2mnc-u8:1.0.1",
+  "type": "ds",
+  "title": "nii2mnc (unsigned byte)",
+  "category": "MRI Processing",
+  "description": "A ChRIS ds plugin wrapper for nii2mnc -unsigned -byte",
+  "documentation": "https://github.com/FNNDSC/pl-nii2mnc-u8",
+  "license": "MIT",
+  "authors": "Jennings Zhang <dev@babyMRI.org>",
+  "execshell": "/opt/conda/bin/python3.1",
+  "selfpath": "/opt/conda/bin",
+  "selfexec": "nii2mnc_wrapper",
+  "max_number_of_workers": 1,
+  "min_memory_limit": "500Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "pattern",
+      "type": "str",
+      "optional": true,
+      "default": "**/*.nii",
+      "flag": "--pattern",
+      "short_flag": "-p",
+      "action": "store",
+      "help": "pattern for file names to include",
+      "ui_exposed": true
+    }
+  ]
+}

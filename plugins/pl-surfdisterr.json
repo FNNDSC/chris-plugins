@@ -1,0 +1,87 @@
+{
+  "name": "pl-surfdisterr",
+  "version": "1.2.1",
+  "dock_image": "ghcr.io/fnndsc/pl-surfdisterr:1.2.1",
+  "public_repo": "https://github.com/FNNDSC/pl-surfdisterr",
+  "type": "ds",
+  "title": "Surface Distance Error",
+  "category": "Surface Extraction",
+  "description": "Distance error of a .obj mask mesh to a .mnc volume.",
+  "documentation": "https://github.com/FNNDSC/pl-surfdisterr",
+  "license": "MIT",
+  "authors": "Jennings Zhang <Jennings.Zhang@childrens.harvard.edu>",
+  "execshell": "/opt/conda/bin/python3.1",
+  "selfpath": "/opt/conda/bin",
+  "selfexec": "surfdisterr",
+  "max_number_of_workers": 1,
+  "min_memory_limit": "100Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "mask",
+      "type": "str",
+      "optional": true,
+      "default": "**/*.mnc",
+      "flag": "--mask",
+      "short_flag": "-m",
+      "action": "store",
+      "help": "pattern for mask file names to include",
+      "ui_exposed": true
+    },
+    {
+      "name": "surface",
+      "type": "str",
+      "optional": true,
+      "default": "*.obj",
+      "flag": "--surface",
+      "short_flag": "-s",
+      "action": "store",
+      "help": "pattern for surface file names to include",
+      "ui_exposed": true
+    },
+    {
+      "name": "output_suffix",
+      "type": "str",
+      "optional": true,
+      "default": ".disterr.txt",
+      "flag": "--output-suffix",
+      "short_flag": "-o",
+      "action": "store",
+      "help": "output file name suffix",
+      "ui_exposed": true
+    },
+    {
+      "name": "quiet",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--quiet",
+      "short_flag": "-q",
+      "action": "store_true",
+      "help": "disable status messages",
+      "ui_exposed": true
+    },
+    {
+      "name": "keep_chamfer",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--keep-chamfer",
+      "short_flag": "--keep-chamfer",
+      "action": "store_true",
+      "help": "keep the distance map intermediate file",
+      "ui_exposed": true
+    },
+    {
+      "name": "chamfer_suffix",
+      "type": "str",
+      "optional": true,
+      "default": ".chamfer.mnc",
+      "flag": "--chamfer-suffix",
+      "short_flag": "--chamfer-suffix",
+      "action": "store",
+      "help": "chamfer file name suffix",
+      "ui_exposed": true
+    }
+  ]
+}

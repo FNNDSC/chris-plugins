@@ -1,0 +1,74 @@
+{
+  "name": "pl-surface-volume-distance",
+  "version": "1.0.1",
+  "dock_image": "ghcr.io/fnndsc/pl-surface-volume-distance:1.0.1",
+  "type": "ds",
+  "title": "Surface Distance from Volume",
+  "category": "Surface analysis",
+  "description": "Calculate distance from .obj surface to .mnc volume",
+  "documentation": "https://github.com/FNNDSC/pl-surface-volume-distance",
+  "license": "MIT",
+  "authors": "Jennings Zhang <Jennings.Zhang@childrens.harvard.edu>",
+  "execshell": "/opt/conda/bin/python",
+  "selfpath": "/opt/conda/bin",
+  "selfexec": "surface_volume_distance",
+  "max_number_of_workers": 1,
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "mask",
+      "type": "str",
+      "optional": true,
+      "default": "*.mnc",
+      "flag": "--mask",
+      "short_flag": "-m",
+      "action": "store",
+      "help": "Glob for volume file name.",
+      "ui_exposed": true
+    },
+    {
+      "name": "surface",
+      "type": "str",
+      "optional": true,
+      "default": "*.obj",
+      "flag": "--surface",
+      "short_flag": "-s",
+      "action": "store",
+      "help": "Glob for surface file name.",
+      "ui_exposed": true
+    },
+    {
+      "name": "output_filename",
+      "type": "str",
+      "optional": true,
+      "default": "distances.txt",
+      "flag": "--output",
+      "short_flag": "-o",
+      "action": "store",
+      "help": "Output file name",
+      "ui_exposed": true
+    },
+    {
+      "name": "chamfer_filename",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--chamfer",
+      "short_flag": "-c",
+      "action": "store",
+      "help": "If specified, save the chamfer distance map to a file.",
+      "ui_exposed": true
+    },
+    {
+      "name": "label",
+      "type": "int",
+      "optional": true,
+      "default": 0,
+      "flag": "--label",
+      "short_flag": "-l",
+      "action": "store",
+      "help": "If non-0, indicates the given volume is not a binary mask but a segmentation volume where 1=CSF, 2=GM, 3=WM, and higher numbers representing deeper subcortical layers. The integer value given by --label is the compartment targeted by the surface.",
+      "ui_exposed": true
+    }
+  ]
+}

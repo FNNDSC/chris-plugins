@@ -1,0 +1,53 @@
+{
+  "name": "pl-xfm",
+  "version": "0.1.0",
+  "dock_image": "ghcr.io/fnndsc/pl-xfm:0.1.0",
+  "public_repo": "https://github.com/FNNDSC/pl-xfm",
+  "type": "ds",
+  "title": "MNI Xfm Transformations",
+  "category": "Utility",
+  "description": "A ChRIS plugin to perform XFM transformations on surfaces",
+  "documentation": "https://github.com/FNNDSC/pl-xfm",
+  "license": "MIT",
+  "authors": "Jennings Zhang <Jennings.Zhang@childrens.harvard.edu>",
+  "execshell": "/opt/conda/bin/python3.10",
+  "selfpath": "/opt/conda/bin",
+  "selfexec": "cxfm",
+  "max_number_of_workers": 1,
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "inputs",
+      "type": "str",
+      "optional": true,
+      "default": ".mnc,.obj",
+      "flag": "--inputs",
+      "short_flag": "-i",
+      "action": "store",
+      "help": "file extension of input files, comma-separated",
+      "ui_exposed": true
+    },
+    {
+      "name": "scale",
+      "type": "float",
+      "optional": false,
+      "default": null,
+      "flag": "--scale",
+      "short_flag": "-s",
+      "action": "store",
+      "help": "Scale factor",
+      "ui_exposed": true
+    },
+    {
+      "name": "rename",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--rename",
+      "short_flag": "-r",
+      "action": "store",
+      "help": "String to insert before file extension of output files. Use '%%s' to represent the value given for --scale",
+      "ui_exposed": true
+    }
+  ]
+}

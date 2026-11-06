@@ -1,0 +1,87 @@
+{
+  "name": "pl-visual-dataset",
+  "version": "0.3.1",
+  "dock_image": "ghcr.io/fnndsc/pl-visual-dataset:0.3.1",
+  "public_repo": "https://github.com/fnndsc/pl-visual-dataset",
+  "type": "ds",
+  "title": "ChRIS Visual Dataset Indexer",
+  "category": "Utility",
+  "description": "Prepare the outputs of a feed for the \"visual datasets\" feature of ChRIS_ui.",
+  "documentation": "https://github.com/FNNDSC/pl-visual-dataset",
+  "license": "MIT",
+  "authors": "FNNDSC <dev@babymri.org>",
+  "execshell": "/opt/conda/bin/python3.12",
+  "selfpath": "/opt/conda/bin",
+  "selfexec": "visualdataset",
+  "max_number_of_workers": 1,
+  "min_memory_limit": "1024Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "mode",
+      "type": "str",
+      "optional": true,
+      "default": "none",
+      "flag": "--mode",
+      "short_flag": "--mode",
+      "action": "store",
+      "help": "Use default values for --matchers and --options for a well known program's output.  [choices: freesurfer-7.3.3, malpem-1.3, none]",
+      "ui_exposed": true
+    },
+    {
+      "name": "matchers",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--matchers",
+      "short_flag": "--matchers",
+      "action": "store",
+      "help": "Regular expressions used to assign tags to files, as stringified JSON or a path to a file relative to inputdir",
+      "ui_exposed": true
+    },
+    {
+      "name": "options",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--options",
+      "short_flag": "--options",
+      "action": "store",
+      "help": "Metadata to go with tag sets, as stringified JSON or a path to a file relative to inputdir",
+      "ui_exposed": true
+    },
+    {
+      "name": "first_run_files",
+      "type": "str",
+      "optional": true,
+      "default": "[]",
+      "flag": "--first-run-files",
+      "short_flag": "--first-run-files",
+      "action": "store",
+      "help": "List of files to show on first run, as a stringified JSON list of paths relative to inputdir",
+      "ui_exposed": true
+    },
+    {
+      "name": "first_run_tags",
+      "type": "str",
+      "optional": true,
+      "default": "{}",
+      "flag": "--first-run-tags",
+      "short_flag": "--first-run-tags",
+      "action": "store",
+      "help": "Tags to show on first run as a stringified JSON object",
+      "ui_exposed": true
+    },
+    {
+      "name": "readme",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--readme",
+      "short_flag": "--readme",
+      "action": "store",
+      "help": "README file content",
+      "ui_exposed": true
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "pl-NeSVoR_pp",
+  "version": "1.0.0",
+  "dock_image": "ghcr.io/fnndsc/pl-nesvor_pp:1.0.0",
+  "public_repo": "https://github.com/FNNDSC/Fetal_Brain_MRI_Reconstruction_Pipeline",
+  "type": "ds",
+  "title": "Fetal Brain Reconstruction (Pre-populated)",
+  "category": "Demo",
+  "description": "Copies a hard-coded result of the NeSVoR fetal brain MRI reconstruction to the output directory. For testing and demo purposes only.",
+  "documentation": "https://github.com/FNNDSC/Fetal_Brain_MRI_Reconstruction_Pipeline",
+  "license": "MIT",
+  "authors": "FNNDSC <dev@babyMRI.org>",
+  "execshell": "/bin/sh",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "nesvor_pp",
+  "max_number_of_workers": 1,
+  "min_cpu_limit": "200m",
+  "max_cpu_limit": "500m",
+  "min_memory_limit": "50Mi",
+  "max_memory_limit": "100Mi",
+  "max_gpu_limit": 0,
+  "parameters": []
+}

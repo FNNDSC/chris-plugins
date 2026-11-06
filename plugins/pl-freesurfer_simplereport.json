@@ -1,0 +1,86 @@
+{
+  "name": "pl-freesurfer_simplereport",
+  "version": "1.1.12",
+  "dock_image": "ghcr.io/fnndsc/pl-freesurfer_simplereport:1.1.12",
+  "public_repo": "https://github.com/FNNDSC/pl-freesurfer_simplereport",
+  "type": "ds",
+  "title": "FreeSurfer Simple Reporting",
+  "description": "A ChRIS DS plugin that generates a report table (in various formats) off a FreeSurfer annotation/segmentation volume",
+  "documentation": "https://github.com/FNNDSC/pl-freesurfer_simplere",
+  "license": "MIT",
+  "authors": "FNNDSC <rudolph.pienaar@childrens.harvard.edu>",
+  "execshell": "/usr/local/bin/python",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "freesurfer_simplereport",
+  "max_number_of_workers": 1,
+  "min_memory_limit": "8192Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "annotation",
+      "type": "str",
+      "optional": true,
+      "default": "**/*aparc*mgz",
+      "flag": "-a",
+      "short_flag": "-a",
+      "action": "store",
+      "help": "\n                        FreeSurfer annotation volume (or glob) to analyze.\n                        These are typically in mgz format and have a string\n                        'aparc' and/or 'aseg' in their file names. If you\n                        only want to report on one annotation file, specify\n                        that file explicitly.\n                        ",
+      "ui_exposed": true
+    },
+    {
+      "name": "report_name",
+      "type": "str",
+      "optional": true,
+      "default": "volumetric_report",
+      "flag": "-r",
+      "short_flag": "-r",
+      "action": "store",
+      "help": "\n                        Basename of the report file. Note, the annotation\n                        file is appended to this basename.\n                        ",
+      "ui_exposed": true
+    },
+    {
+      "name": "report_types",
+      "type": "str",
+      "optional": true,
+      "default": "txt,html,pdf,csv",
+      "flag": "-t",
+      "short_flag": "-t",
+      "action": "store",
+      "help": "comma separated list of report types to generate",
+      "ui_exposed": true
+    },
+    {
+      "name": "internalLUTpath",
+      "type": "str",
+      "optional": true,
+      "default": "/usr/local/src/pl-freesurfer_simplereport",
+      "flag": "--internalLUTpath",
+      "short_flag": "--internalLUTpath",
+      "action": "store",
+      "help": "\n                        A path to a (typically in-container) freesurfer color\n                        lookup table.\n                        ",
+      "ui_exposed": true
+    },
+    {
+      "name": "lut",
+      "type": "str",
+      "optional": true,
+      "default": "**/FreeSurferColorLUT.txt",
+      "flag": "-l",
+      "short_flag": "-l",
+      "action": "store",
+      "help": "Lookup table filename; if \"__lut__\" then\n                        use internal/built-in lookup table, otherwise use first\n                        hit in input file space; built-in lookup table is hard coded\n                        to be\n\n                                <internalLUTpath>/FreeSurferColorLUT.txt\n                        ",
+      "ui_exposed": true
+    },
+    {
+      "name": "verbosity",
+      "type": "str",
+      "optional": true,
+      "default": "0",
+      "flag": "--verbosity",
+      "short_flag": "-v",
+      "action": "store",
+      "help": "verbosity level of app",
+      "ui_exposed": true
+    }
+  ]
+}

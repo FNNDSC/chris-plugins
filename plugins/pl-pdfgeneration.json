@@ -1,0 +1,40 @@
+{
+  "name": "pl-pdfgeneration",
+  "version": "0.2.0",
+  "dock_image": "docker.io/fnndsc/pl-pdfgeneration:latest",
+  "type": "ds",
+  "title": "PDF generation plugin",
+  "description": "An app that takes in COVID-Net prediction results and generates PDF",
+  "documentation": "https://github.com/FNNDSC/pl-pdfgeneration",
+  "license": "MIT",
+  "authors": "DarwinAI <jefferpeng@darwinai.ca>",
+  "execshell": "/usr/local/bin/python",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "pdfgeneration",
+  "max_number_of_workers": 1,
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "imagefile",
+      "type": "str",
+      "optional": false,
+      "default": null,
+      "flag": "--imagefile",
+      "short_flag": "--imagefile",
+      "action": "store",
+      "help": "Name of image file submitted to the analysis",
+      "ui_exposed": true
+    },
+    {
+      "name": "patientId",
+      "type": "str",
+      "optional": true,
+      "default": "not specified",
+      "flag": "--patientId",
+      "short_flag": "--patientId",
+      "action": "store",
+      "help": "Patient ID",
+      "ui_exposed": true
+    }
+  ]
+}

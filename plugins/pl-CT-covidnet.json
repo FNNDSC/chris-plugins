@@ -1,0 +1,30 @@
+{
+  "name": "pl-CT-covidnet",
+  "version": "0.2.0",
+  "dock_image": "docker.io/fnndsc/pl-ct-covidnet:0.2.0",
+  "public_repo": "https://github.com/FNNDSC/pl-CT-covidnet",
+  "type": "ds",
+  "title": "Plugin to run covidnet on CT images",
+  "description": "Use COVID-Net prediction on CT scan.",
+  "documentation": "https://github.com/FNNDSC/pl-CT-covidnet",
+  "license": "AGPL-3.0",
+  "authors": "DarwinAI <jeffer.peng@darwinai.ca>",
+  "execshell": "/usr/bin/python3",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "ct_covidnet",
+  "max_number_of_workers": 1,
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "imagefile",
+      "type": "str",
+      "optional": false,
+      "default": null,
+      "flag": "--imagefile",
+      "short_flag": "--imagefile",
+      "action": "store",
+      "help": "Name of CT image file to infer from",
+      "ui_exposed": true
+    }
+  ]
+}

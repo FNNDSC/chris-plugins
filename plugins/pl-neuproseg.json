@@ -1,0 +1,38 @@
+{
+  "name": "pl-neuproseg",
+  "version": "0.99.9",
+  "dock_image": "docker.io/fnndsc/pl-neuproseg:latest",
+  "public_repo": "https://github.com/FNNDSC/pl-neuproseg",
+  "type": "ds",
+  "title": "Neural Network Prostrate Segmenter",
+  "category": "NN",
+  "description": "This application applies a trained model to MRI data of prostrates and outputs a segmented volume.",
+  "documentation": "http://github.com/FNNDSC/pl-neuproseg/wiki",
+  "license": "Opensource (MIT)",
+  "authors": "FNNDSC (dev@babyMRI.org)",
+  "execshell": "python3",
+  "selfpath": "/usr/src/neuproseg",
+  "selfexec": "neuproseg.py",
+  "max_number_of_workers": 1,
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "b_multistream",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--multistream",
+      "action": "store_true",
+      "help": "Activate multistream in the segmenter algorithm."
+    },
+    {
+      "name": "b_version",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--version",
+      "action": "store_true",
+      "help": "Show version and exit."
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "name": "pl-pacsquery",
+  "version": "0.99",
+  "dock_image": "docker.io/fnndsc/pl-pacsquery:latest",
+  "public_repo": "https://github.com/FNNDSC/pl-pacsquery",
+  "type": "fs",
+  "title": "Pacs Query",
+  "description": "An app to query a PACS using an intermediary REST service.",
+  "documentation": "http://wiki",
+  "license": "Opensource (MIT)",
+  "authors": "FNNDSC (dev@babyMRI.org)",
+  "execshell": "python3",
+  "selfpath": "/usr/src/pacsquery",
+  "selfexec": "pacsquery.py",
+  "max_number_of_workers": 1,
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "str_pfdcm",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--pfdcm",
+      "action": "store",
+      "help": "The PACS Q/R intermediary service IP:port."
+    },
+    {
+      "name": "str_msg",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--msg",
+      "action": "store",
+      "help": "The actual complete JSON message to send to the Q/R intermediary service."
+    },
+    {
+      "name": "str_patientID",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--PatientID",
+      "action": "store",
+      "help": "The PatientID to query."
+    },
+    {
+      "name": "str_PACSservice",
+      "type": "str",
+      "optional": true,
+      "default": "orthanc",
+      "flag": "--PACSservice",
+      "action": "store",
+      "help": "The PACS service to use. Note this a key to a lookup in \"pfdcm\"."
+    },
+    {
+      "name": "str_summaryKeys",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--summaryKeys",
+      "action": "store",
+      "help": "If specified, generate a summary report based on a comma separated key list."
+    },
+    {
+      "name": "str_summaryFile",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--summaryFile",
+      "action": "store",
+      "help": "If specified, save (overwrite) a summary report to passed file (in outputdir)."
+    },
+    {
+      "name": "str_numberOfHitsFile",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--numberOfHitsFile",
+      "action": "store",
+      "help": "If specified, save (overwrite) the number of hits (in outputdir)."
+    },
+    {
+      "name": "str_resultFile",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--resultFile",
+      "action": "store",
+      "help": "If specified, save (overwrite) all the hits to the passed file (in outputdir)."
+    },
+    {
+      "name": "str_man",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--man",
+      "action": "store",
+      "help": "If specified, print help on the passed key entry. Use \"entries\" for all key list"
+    },
+    {
+      "name": "b_pfurlQuiet",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--pfurlQuiet",
+      "action": "store_true",
+      "help": "Silence pfurl noise."
+    },
+    {
+      "name": "b_version",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--version",
+      "action": "store_true",
+      "help": "Show ."
+    }
+  ]
+}

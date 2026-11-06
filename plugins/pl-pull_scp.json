@@ -1,0 +1,75 @@
+{
+  "name": "pl-pull_scp",
+  "version": "1.2.4",
+  "dock_image": "ghcr.io/fnndsc/pl-pull_scp:1.2.4",
+  "public_repo": "https://github.com/FNNDSC/pl-pull_scp",
+  "type": "fs",
+  "title": "A ChRIS plugin FS app that scp's data from a remote host",
+  "category": "utility",
+  "description": "This plugin application is used to recursively copy data from a remote host into an analysis root node.",
+  "documentation": "https://github.com/FNNDSC/pl-pull_scp",
+  "license": "MIT",
+  "authors": "Rudolph Pienaar -- FNNDSC <rudolph.pienaar@childrens.harvard.edu>",
+  "execshell": "/usr/local/bin/python",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "pull_scp",
+  "max_number_of_workers": 1,
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "str_username",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--username",
+      "short_flag": "--username",
+      "action": "store",
+      "help": "The username in the remote computer.",
+      "ui_exposed": true
+    },
+    {
+      "name": "str_password",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--password",
+      "short_flag": "--password",
+      "action": "store",
+      "help": "The <username>'s password in the remote computer.",
+      "ui_exposed": true
+    },
+    {
+      "name": "str_hostname",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--host",
+      "short_flag": "--host",
+      "action": "store",
+      "help": "The name of the remote computer.",
+      "ui_exposed": true
+    },
+    {
+      "name": "str_sshPubKeyFile",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--sshPubKeyFile",
+      "short_flag": "--sshPubKeyFile",
+      "action": "store",
+      "help": "The ssh public key file to use.",
+      "ui_exposed": true
+    },
+    {
+      "name": "str_filepath",
+      "type": "str",
+      "optional": false,
+      "default": "",
+      "flag": "--filepath",
+      "short_flag": "--filepath",
+      "action": "store",
+      "help": "The location in the remote computer to pull.",
+      "ui_exposed": true
+    }
+  ]
+}

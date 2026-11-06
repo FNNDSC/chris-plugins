@@ -1,0 +1,41 @@
+{
+  "name": "pl-mricnn_predict",
+  "version": "0.1",
+  "dock_image": "docker.io/fnndsc/pl-mricnn_predict:latest",
+  "public_repo": "https://github.com/FNNDSC/pl-mricnn_predict",
+  "type": "ds",
+  "title": "A neural network prediction app",
+  "description": "An app to predict segmented brain MRI images from a given unsegmented brain MRI",
+  "documentation": "http://wiki",
+  "license": "Opensource (MIT)",
+  "authors": "Sandip Samal (sandip.samal@childrens.harvard.edu)",
+  "execshell": "python3",
+  "selfpath": "/usr/src/mricnn_predict",
+  "selfexec": "mricnn_predict.py",
+  "max_number_of_workers": 1,
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "model",
+      "type": "str",
+      "optional": false,
+      "default": null,
+      "flag": "--model",
+      "short_flag": "--model",
+      "action": "store",
+      "help": "Which model do you want to train?",
+      "ui_exposed": true
+    },
+    {
+      "name": "testDir",
+      "type": "str",
+      "optional": false,
+      "default": "test",
+      "flag": "--testDir",
+      "short_flag": "--testDir",
+      "action": "store",
+      "help": "Specify the name of the directory that contains the test data",
+      "ui_exposed": true
+    }
+  ]
+}

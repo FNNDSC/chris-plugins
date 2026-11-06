@@ -1,0 +1,18 @@
+{
+  "name": "pl-mgz2labels",
+  "version": "0.1",
+  "dock_image": "docker.io/fnndsc/pl-mgz2labels:latest",
+  "public_repo": "https://github.com/FNNDSC/pl-mgz2labels",
+  "type": "ds",
+  "title": "MGZ2LABELS",
+  "description": "MGZ label-wise converter",
+  "documentation": "http://wiki",
+  "license": "Opensource (MIT)",
+  "authors": "Tingyi Zhang <tingyi97@bu.edu>",
+  "execshell": "python3",
+  "selfpath": "/usr/src/mgz2labels",
+  "selfexec": "mgz2labels.py",
+  "max_number_of_workers": 1,
+  "max_gpu_limit": 0,
+  "parameters": []
+}

@@ -1,0 +1,75 @@
+{
+  "name": "pl-coneme",
+  "version": "1.0.0",
+  "dock_image": "ghcr.io/fnndsc/pl-coneme:1.0.2",
+  "public_repo": "https://github.com/fnndsc/pl-coneme",
+  "type": "ds",
+  "title": "Coneme",
+  "description": "A ChRIS plugin to compute network measures",
+  "documentation": "https://github.com/FNNDSC/pl-coneme",
+  "license": "MIT",
+  "authors": "FNNDSC <dev@babyMRI.org>",
+  "execshell": "/usr/local/bin/python",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "coneme",
+  "max_number_of_workers": 1,
+  "min_memory_limit": "100Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "pattern",
+      "type": "str",
+      "optional": true,
+      "default": "**/*.csv",
+      "flag": "--pattern",
+      "short_flag": "-p",
+      "action": "store",
+      "help": "input file filter glob",
+      "ui_exposed": true
+    },
+    {
+      "name": "subj",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--subj",
+      "short_flag": "--subj",
+      "action": "store",
+      "help": "subject id (must appear in the file)",
+      "ui_exposed": true
+    },
+    {
+      "name": "atlas",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--atlas",
+      "short_flag": "--atlas",
+      "action": "store",
+      "help": "atlas name (must appear in the file)",
+      "ui_exposed": true
+    },
+    {
+      "name": "nnode",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--nnode",
+      "short_flag": "--nnode",
+      "action": "store",
+      "help": "number of nodes in connectome",
+      "ui_exposed": true
+    },
+    {
+      "name": "measurementfile",
+      "type": "str",
+      "optional": true,
+      "default": "measures.txt",
+      "flag": "--measurementfile",
+      "short_flag": "--measurementfile",
+      "action": "store",
+      "help": "file with additional analysis meta",
+      "ui_exposed": true
+    }
+  ]
+}

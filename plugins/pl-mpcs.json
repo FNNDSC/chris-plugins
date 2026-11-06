@@ -1,0 +1,75 @@
+{
+  "name": "pl-mpcs",
+  "version": "1.0.10",
+  "dock_image": "ghcr.io/fnndsc/pl-mpcs:1.0.12",
+  "public_repo": "https://github.com/FNNDSC/pl-mpcs",
+  "type": "ds",
+  "title": "A simple exemplar multi-party-compute (MPC) simulator plugin.",
+  "category": "MPC",
+  "description": "This app simulates an MPC compute call.",
+  "documentation": "https://github.com/FNNDSC/pl-mpcs",
+  "license": "Opensource (MIT)",
+  "authors": "Rudolph Pienaar (rudolph.pienaar@gmail.com)",
+  "execshell": "python3",
+  "selfpath": "/usr/src/mpcs",
+  "selfexec": "mpcs.py",
+  "max_number_of_workers": 1,
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "f_posRange",
+      "type": "float",
+      "optional": true,
+      "default": 1.0,
+      "flag": "--posRange",
+      "short_flag": "-p",
+      "action": "store",
+      "help": "positive range for random max deviation generation",
+      "ui_exposed": true
+    },
+    {
+      "name": "f_negRange",
+      "type": "float",
+      "optional": true,
+      "default": -1.0,
+      "flag": "--negRange",
+      "short_flag": "-n",
+      "action": "store",
+      "help": "negative range for random max deviation generation",
+      "ui_exposed": true
+    },
+    {
+      "name": "zFile",
+      "type": "str",
+      "optional": true,
+      "default": "zfile.csv",
+      "flag": "--zFile",
+      "short_flag": "-z",
+      "action": "store",
+      "help": "z-score file to read (relative to input directory)",
+      "ui_exposed": true
+    },
+    {
+      "name": "b_random",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--random",
+      "short_flag": "--random",
+      "action": "store_true",
+      "help": "if specified, generate a z-score file",
+      "ui_exposed": true
+    },
+    {
+      "name": "seed",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--seed",
+      "short_flag": "-d",
+      "action": "store",
+      "help": "random number seed",
+      "ui_exposed": true
+    }
+  ]
+}

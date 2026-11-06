@@ -1,0 +1,87 @@
+{
+  "name": "pl-subdiv-minc",
+  "version": "1.0.0",
+  "dock_image": "ghcr.io/fnndsc/pl-subdiv-minc:1.0.0",
+  "public_repo": "https://github.com/FNNDSC/pl-subdiv-minc",
+  "type": "ds",
+  "title": "Subdivide Masks",
+  "category": "MRI Processing",
+  "description": "A ChRIS plugin wrapper around mincresample for increasing the resolution of binary images.",
+  "documentation": "https://github.com/FNNDSC/pl-subdiv-minc",
+  "license": "MIT",
+  "authors": "FNNDSC <Jennings.Zhang@childrens.harvard.edu>",
+  "execshell": "/opt/conda/bin/python3.10",
+  "selfpath": "/opt/conda/bin",
+  "selfexec": "subdiv_mask",
+  "max_number_of_workers": 1,
+  "min_memory_limit": "2048Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "divisions",
+      "type": "float",
+      "optional": true,
+      "default": 2.0,
+      "flag": "--divisions",
+      "short_flag": "-d",
+      "action": "store",
+      "help": "number of cuts along voxel edge. Float values are accepted, mincresample performs interpolation.",
+      "ui_exposed": true
+    },
+    {
+      "name": "options",
+      "type": "str",
+      "optional": true,
+      "default": "-tricubic",
+      "flag": "--options",
+      "short_flag": "-o",
+      "action": "store",
+      "help": "Additional options to pass to mincresample as space-separated list, e.g. specify interpolation as -tricubic or -trilinear",
+      "ui_exposed": true
+    },
+    {
+      "name": "binarize",
+      "type": "bool",
+      "optional": true,
+      "default": true,
+      "flag": "--no-binarize",
+      "short_flag": "-n",
+      "action": "store_false",
+      "help": "Skip extra step minccalc -expr A[0]>0.5, allowing for floating point values",
+      "ui_exposed": true
+    },
+    {
+      "name": "threads",
+      "type": "int",
+      "optional": true,
+      "default": 0,
+      "flag": "--threads",
+      "short_flag": "-t",
+      "action": "store",
+      "help": "number of threads to use (pass 0 to use number of visible CPU cores)",
+      "ui_exposed": true
+    },
+    {
+      "name": "no_fail",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--no-fail",
+      "short_flag": "--no-fail",
+      "action": "store_true",
+      "help": "Exit normally even when failed to process a subject",
+      "ui_exposed": true
+    },
+    {
+      "name": "pattern",
+      "type": "str",
+      "optional": true,
+      "default": "**/*.mnc",
+      "flag": "--pattern",
+      "short_flag": "-p",
+      "action": "store",
+      "help": "input file filter glob",
+      "ui_exposed": true
+    }
+  ]
+}

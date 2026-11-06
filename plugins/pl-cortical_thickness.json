@@ -1,0 +1,97 @@
+{
+  "name": "pl-cortical_thickness",
+  "version": "1.0.0",
+  "dock_image": "ghcr.io/fnndsc/pl-cortical_thickness:latest",
+  "public_repo": "https://github.com/FNNDSC/pl-cortical_thickness",
+  "type": "ds",
+  "title": "Cortical Thickness",
+  "category": "Surfaces",
+  "description": "A ChRIS plugin wrapper for cortical_thickness and friends",
+  "documentation": "https://github.com/FNNDSC/pl-cortical_thickness",
+  "license": "MIT",
+  "authors": "FNNDSC <dev@babyMRI.org>",
+  "execshell": "/opt/conda/bin/python3.10",
+  "selfpath": "/opt/conda/bin",
+  "selfexec": "surf_results",
+  "max_number_of_workers": 1,
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "mid",
+      "type": "str",
+      "optional": true,
+      "default": "mid_81920.obj",
+      "flag": "--mid",
+      "short_flag": "--mid",
+      "action": "store",
+      "help": "mid surface output file name",
+      "ui_exposed": true
+    },
+    {
+      "name": "tlink_thickness",
+      "type": "str",
+      "optional": true,
+      "default": "tlink.txt",
+      "flag": "--tlink-thickness",
+      "short_flag": "--tlink-thickness",
+      "action": "store",
+      "help": "thickness output file name",
+      "ui_exposed": true
+    },
+    {
+      "name": "surface_angles",
+      "type": "str",
+      "optional": true,
+      "default": "surface_angles.txt",
+      "flag": "--surface_angles",
+      "short_flag": "--surface_angles",
+      "action": "store",
+      "help": "surface angles output file name",
+      "ui_exposed": true
+    },
+    {
+      "name": "rad_angles",
+      "type": "str",
+      "optional": true,
+      "default": "rad_angles.txt",
+      "flag": "--rad-angles",
+      "short_flag": "--rad-angles",
+      "action": "store",
+      "help": "angles (inverted function of surface_angles) output file name",
+      "ui_exposed": true
+    },
+    {
+      "name": "angles_between_normals",
+      "type": "str",
+      "optional": true,
+      "default": "angles_between_normals.txt",
+      "flag": "--angles-between-normals",
+      "short_flag": "--angles-between-normals",
+      "action": "store",
+      "help": "angles between normals output file name",
+      "ui_exposed": true
+    },
+    {
+      "name": "scaled_rad_angles",
+      "type": "str",
+      "optional": true,
+      "default": "scaled_rad_angles.txt",
+      "flag": "--scaled-rad-angles",
+      "short_flag": "--scaled-rad-angles",
+      "action": "store",
+      "help": "rad angles multiplied by tlink thickness output file name",
+      "ui_exposed": true
+    },
+    {
+      "name": "scaled_angles_between_normals",
+      "type": "str",
+      "optional": true,
+      "default": "scaled_angles_between_normals.txt",
+      "flag": "--scaled-angles-between-normals",
+      "short_flag": "--scaled-angles-between-normals",
+      "action": "store",
+      "help": "scaled angles between normals output file name",
+      "ui_exposed": true
+    }
+  ]
+}

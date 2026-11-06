@@ -1,0 +1,97 @@
+{
+  "name": "pl-diff_unpack",
+  "version": "1.1.4",
+  "dock_image": "ghcr.io/fnndsc/pl-diff_unpack:latest",
+  "public_repo": "https://github.com/FNNDSC/pl-diff_unpack",
+  "type": "ds",
+  "title": "diff_unpack",
+  "description": "A ChRIS DS plugin that is a thin wrapper about diff_unpack (part of TrackVis, original author Ruopeng Wang)",
+  "documentation": "https://github.com/FNNDSC/pl-diff_unpack",
+  "license": "MIT",
+  "authors": "FNNDSC <rudolph.pienaar@childrens.harvard.edu>",
+  "execshell": "/usr/local/bin/python",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "diff_unpack",
+  "max_number_of_workers": 1,
+  "min_memory_limit": "8192Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "inputFilter",
+      "type": "str",
+      "optional": true,
+      "default": "*dcm",
+      "flag": "-i",
+      "short_flag": "-i",
+      "action": "store",
+      "help": "\n        Input target filter of files to process. Default '*dcm'.\n        ",
+      "ui_exposed": true
+    },
+    {
+      "name": "output_type",
+      "type": "str",
+      "optional": true,
+      "default": "nii",
+      "flag": "-ot",
+      "short_flag": "-ot",
+      "action": "store",
+      "help": "\n        Output file type. accepted values are:\n             analyze -> analyze format 7.5\n             ni1     -> nifti format saved in seperate .hdr and .img file\n             nii     -> nifti format with one .nii file\n             nii.gz  -> nifti format with compression\n        ",
+      "ui_exposed": true
+    },
+    {
+      "name": "bin",
+      "type": "str",
+      "optional": true,
+      "default": "/usr/local/src/pl-diff_unpack/dtk/diff_unpack",
+      "flag": "--bin",
+      "short_flag": "--bin",
+      "action": "store",
+      "help": "\n        The Diffusion Toolkit binary to execute. The default location of\n\n        /usr/local/src/pl-diff_unpack/diff_unpack\n\n        represents the in-container location. If running elsewhere, say\n        on the metal, specify the location of your `diff_unpack` using this\n        flag.\n        ",
+      "ui_exposed": true
+    },
+    {
+      "name": "split",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--split",
+      "short_flag": "--split",
+      "action": "store",
+      "help": "\n        Instead of saving everything in one big multi-timepoint 4D image,\n        split it into separate files, one timepoint per file\n                        ",
+      "ui_exposed": true
+    },
+    {
+      "name": "paddings",
+      "type": "str",
+      "optional": true,
+      "default": "3",
+      "flag": "--paddings",
+      "short_flag": "--paddings",
+      "action": "store",
+      "help": "\n        Number of 0 paddings for output filename prefix when '-split' enabled.\n                        ",
+      "ui_exposed": true
+    },
+    {
+      "name": "start_number",
+      "type": "str",
+      "optional": true,
+      "default": "1",
+      "flag": "--start_number",
+      "short_flag": "--start_number",
+      "action": "store",
+      "help": "\n        Start number of the output filename numbering. default is 1, meaning\n        the first filename in the series is prefix001.suffix\n        NOTE: '-p' and '-sn' options are only effective when '-split' is\n        on, meaning output as a series of 3D image files instead of one 4D\n        file\n                        ",
+      "ui_exposed": true
+    },
+    {
+      "name": "verbosity",
+      "type": "str",
+      "optional": true,
+      "default": "0",
+      "flag": "--verbosity",
+      "short_flag": "-v",
+      "action": "store",
+      "help": "verbosity level of app",
+      "ui_exposed": true
+    }
+  ]
+}

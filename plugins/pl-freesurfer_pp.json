@@ -1,0 +1,75 @@
+{
+  "name": "pl-freesurfer_pp",
+  "version": "2.0.8",
+  "dock_image": "docker.io/fnndsc/pl-freesurfer_pp:latest",
+  "public_repo": "https://github.com/FNNDSC/pl-freesurfer_pp",
+  "type": "ds",
+  "title": "FreeSurfer Pre-Populated",
+  "category": "FreeSurfer",
+  "description": "A \"dummy\" app that contains some prior FreeSurfer output and simply copies this to the output directory.",
+  "documentation": "https://github.com/FNNDSC/pl-freesurfer_pp",
+  "license": "Opensource (MIT)",
+  "authors": "FNNDSC (dev@babyMRI.org)",
+  "execshell": "python3",
+  "selfpath": "/usr/src/freesurfer_pp",
+  "selfexec": "freesurfer_pp.py",
+  "max_number_of_workers": 1,
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "treePrint",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--treePrint",
+      "short_flag": "-T",
+      "action": "store",
+      "help": "Simple dirtree print. Specify head of target tree",
+      "ui_exposed": true
+    },
+    {
+      "name": "ageSpec",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--ageSpec",
+      "short_flag": "-a",
+      "action": "store",
+      "help": "A string in <YY>-<MM>-<DD> format that denotes an *exact* target to retrieve",
+      "ui_exposed": true
+    },
+    {
+      "name": "copySpec",
+      "type": "str",
+      "optional": true,
+      "default": "stats",
+      "flag": "--copySpec",
+      "short_flag": "-c",
+      "action": "store",
+      "help": "A comma separated string denoting the subdirs to copy",
+      "ui_exposed": true
+    },
+    {
+      "name": "processDelay",
+      "type": "str",
+      "optional": true,
+      "default": "0",
+      "flag": "--processDelay",
+      "short_flag": "-P",
+      "action": "store",
+      "help": "delay timer to simulate remote processing",
+      "ui_exposed": true
+    },
+    {
+      "name": "jsonReturn",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--jsonReturn",
+      "short_flag": "--jsonReturn",
+      "action": "store_true",
+      "help": "output final return in json",
+      "ui_exposed": true
+    }
+  ]
+}

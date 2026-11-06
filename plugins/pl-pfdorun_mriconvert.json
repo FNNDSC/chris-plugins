@@ -1,0 +1,162 @@
+{
+  "name": "pl-pfdorun_mriconvert",
+  "version": "1.0.1",
+  "dock_image": "ghcr.io/fnndsc/pl-pfdorun_mriconvert:1.0.1",
+  "public_repo": "https://github.com/FNNDSC/pl-pfdorun_mriconvert",
+  "type": "ds",
+  "title": "that recursively walks down a directory tree and runs a CLI program from mri_convert",
+  "description": "An app that recursively walks down a directory tree and runs a CLI program from mri_convert",
+  "documentation": "https://github.com/FNNDSC/pl-pfdorun_mriconvert",
+  "license": "MIT",
+  "authors": "Arushi Vyas <dev@babyMRI.org>",
+  "execshell": "/usr/local/bin/python",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "pfdorun_mriconvert",
+  "max_number_of_workers": 1,
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "inputFile",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--inputFile",
+      "short_flag": "-i",
+      "action": "store",
+      "help": "input file",
+      "ui_exposed": true
+    },
+    {
+      "name": "exec",
+      "type": "str",
+      "optional": false,
+      "default": "",
+      "flag": "--exec",
+      "short_flag": "--exec",
+      "action": "store",
+      "help": "CLI command to execute",
+      "ui_exposed": true
+    },
+    {
+      "name": "analyzeFileIndex",
+      "type": "str",
+      "optional": false,
+      "default": "-1",
+      "flag": "--analyzeFileIndex",
+      "short_flag": "--analyzeFileIndex",
+      "action": "store",
+      "help": "file index per directory to analyze",
+      "ui_exposed": true
+    },
+    {
+      "name": "fileFilter",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--fileFilter",
+      "short_flag": "--fileFilter",
+      "action": "store",
+      "help": "a list of comma separated string filters to apply across the input file space",
+      "ui_exposed": true
+    },
+    {
+      "name": "dirFilter",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--dirFilter",
+      "short_flag": "--dirFilter",
+      "action": "store",
+      "help": "a list of comma separated string filters to apply across the input dir space",
+      "ui_exposed": true
+    },
+    {
+      "name": "printElapsedTime",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--printElapsedTime",
+      "short_flag": "--printElapsedTime",
+      "action": "store_true",
+      "help": "print program run time",
+      "ui_exposed": true
+    },
+    {
+      "name": "threads",
+      "type": "str",
+      "optional": true,
+      "default": "0",
+      "flag": "--threads",
+      "short_flag": "--threads",
+      "action": "store",
+      "help": "number of threads for innermost loop processing",
+      "ui_exposed": true
+    },
+    {
+      "name": "outputLeafDir",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--outputLeafDir",
+      "short_flag": "--outputLeafDir",
+      "action": "store",
+      "help": "formatting spec for output leaf directory",
+      "ui_exposed": true
+    },
+    {
+      "name": "test",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--test",
+      "short_flag": "--test",
+      "action": "store_true",
+      "help": "test",
+      "ui_exposed": true
+    },
+    {
+      "name": "noJobLogging",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--noJobLogging",
+      "short_flag": "--noJobLogging",
+      "action": "store_true",
+      "help": "Turn off per-job logging to file system",
+      "ui_exposed": true
+    },
+    {
+      "name": "overwrite",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--overwrite",
+      "short_flag": "--overwrite",
+      "action": "store_true",
+      "help": "overwrite files if already existing",
+      "ui_exposed": true
+    },
+    {
+      "name": "followLinks",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--followLinks",
+      "short_flag": "--followLinks",
+      "action": "store_true",
+      "help": "follow symbolic links",
+      "ui_exposed": true
+    },
+    {
+      "name": "synopsis",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--synopsis",
+      "short_flag": "-y",
+      "action": "store_true",
+      "help": "short synopsis",
+      "ui_exposed": true
+    }
+  ]
+}

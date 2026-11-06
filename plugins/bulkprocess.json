@@ -1,0 +1,31 @@
+{
+  "name": "bulkprocess",
+  "version": "1.0.0",
+  "dock_image": "ghcr.io/fnndsc/bulkprocess:1.0.0",
+  "public_repo": "https://github.com/fnndsc/bulkprocess",
+  "type": "ds",
+  "title": "A bulk processor",
+  "description": "A ChRIS plugin to do bulk process some input files",
+  "documentation": "https://github.com/FNNDSC/bulkpro",
+  "license": "MIT",
+  "authors": "FNNDSC <dev@babyMRI.org>",
+  "execshell": "/usr/local/bin/python",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "bulky",
+  "max_number_of_workers": 1,
+  "min_memory_limit": "100Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "pattern",
+      "type": "str",
+      "optional": true,
+      "default": "**/*.dcm",
+      "flag": "--pattern",
+      "short_flag": "--pattern",
+      "action": "store",
+      "help": "input file filter glob",
+      "ui_exposed": true
+    }
+  ]
+}

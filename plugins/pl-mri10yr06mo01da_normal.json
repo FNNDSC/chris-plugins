@@ -1,0 +1,42 @@
+{
+  "name": "pl-mri10yr06mo01da_normal",
+  "version": "1.1.4",
+  "dock_image": "ghcr.io/fnndsc/pl-mri10yr06mo01da_normal:1.1.5",
+  "public_repo": "https://github.com/FNNDSC/pl-mri10yr06mo01da_normal",
+  "type": "fs",
+  "title": "Anonymized reference MRI",
+  "category": "Raw Data",
+  "description": "This application simply copies from embedded data a reference normal anonymized MRI of a subject aged 10 years, 06 months, 01 days.",
+  "documentation": "http://wiki",
+  "license": "Opensource (MIT)",
+  "authors": "FNNDSC (dev@babyMRI.org)",
+  "execshell": "python3",
+  "selfpath": "/usr/src/mri10yr06mo01da_normal",
+  "selfexec": "mri10yr06mo01da_normal.py",
+  "max_number_of_workers": 1,
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "splash",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--splash",
+      "short_flag": "--splash",
+      "action": "store",
+      "help": "a splash message to print",
+      "ui_exposed": true
+    },
+    {
+      "name": "dir",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--dir",
+      "short_flag": "--dir",
+      "action": "store",
+      "help": "directory override",
+      "ui_exposed": true
+    }
+  ]
+}

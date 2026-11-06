@@ -1,0 +1,190 @@
+{
+  "name": "pl-pacsretrieve",
+  "version": "1.0.0",
+  "dock_image": "docker.io/fnndsc/pl-pacsretrieve:latest",
+  "public_repo": "https://github.com/FNNDSC/pl-pacsretrieve",
+  "type": "ds",
+  "title": "PACS Retrieve",
+  "description": "An app to both query a PACS and also retrieve a series of interest.",
+  "documentation": "http://wiki",
+  "license": "Opensource (MIT)",
+  "authors": "FNNDSC (dev@babyMRI.org)",
+  "execshell": "python3",
+  "selfpath": "/usr/src/pacsretrieve",
+  "selfexec": "pacsretrieve.py",
+  "max_number_of_workers": 1,
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "str_pfdcm",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--pfdcm",
+      "action": "store",
+      "help": "The PACS Q/R intermediary service IP:port."
+    },
+    {
+      "name": "str_msg",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--msg",
+      "action": "store",
+      "help": "The actual complete JSON message to send to the Q/R intermediary service."
+    },
+    {
+      "name": "str_indexList",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--indexList",
+      "action": "store",
+      "help": "A comma separated list of indices into the priorHitsTable."
+    },
+    {
+      "name": "str_priorHitsTable",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--priorHitsTable",
+      "action": "store",
+      "help": "A JSON formatted file returned by a prior call to pacsquery."
+    },
+    {
+      "name": "str_patientID",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--PatientID",
+      "action": "store",
+      "help": "The PatientID to query."
+    },
+    {
+      "name": "str_PACSservice",
+      "type": "str",
+      "optional": true,
+      "default": "orthanc",
+      "flag": "--PACSservice",
+      "action": "store",
+      "help": "The PACS service to use. Note this a key to a lookup in \"pfdcm\"."
+    },
+    {
+      "name": "str_pullDirTemplate",
+      "type": "str",
+      "optional": true,
+      "default": "%SeriesInstanceUID",
+      "flag": "--pullDirTemplate",
+      "action": "store",
+      "help": "A template for directory names when pulled from \"pfdcm\"."
+    },
+    {
+      "name": "str_seriesSummaryKeys",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--seriesSummaryKeys",
+      "action": "store",
+      "help": "If specified, generate a summary report for series based on a comma separated key list."
+    },
+    {
+      "name": "str_seriesSummaryFile",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--seriesSummaryFile",
+      "action": "store",
+      "help": "If specified, save (overwrite) a series summary report to passed file (in outputdir)."
+    },
+    {
+      "name": "str_studySummaryKeys",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--studySummaryKeys",
+      "action": "store",
+      "help": "If specified, generate a summary report for study data based on a comma separated key list."
+    },
+    {
+      "name": "str_studySummaryFile",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--studySummaryFile",
+      "action": "store",
+      "help": "If specified, save (overwrite) a study summary report to passed file (in outputdir)."
+    },
+    {
+      "name": "str_numberOfHitsFile",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--numberOfHitsFile",
+      "action": "store",
+      "help": "If specified, save (overwrite) the number of hits (in outputdir)."
+    },
+    {
+      "name": "str_resultFile",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--resultFile",
+      "action": "store",
+      "help": "If specified, save (overwrite) all the hits to the passed file (in outputdir)."
+    },
+    {
+      "name": "str_man",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--man",
+      "action": "store",
+      "help": "If specified, print help on the passed key entry. Use \"entries\" for all key list"
+    },
+    {
+      "name": "str_action",
+      "type": "str",
+      "optional": true,
+      "default": "retrieve",
+      "flag": "--action",
+      "action": "store",
+      "help": "The action to perform. Default is \"retrieve\"."
+    },
+    {
+      "name": "b_pfurlQuiet",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--pfurlQuiet",
+      "action": "store_true",
+      "help": "Silence pfurl noise."
+    },
+    {
+      "name": "b_serviceCallQuiet",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--serviceCallQuiet",
+      "action": "store_true",
+      "help": "Silence service call comms."
+    },
+    {
+      "name": "b_jpgPreview",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--jpgPreview",
+      "action": "store_true",
+      "help": "Generate a local jpg preview of received DICOM data."
+    },
+    {
+      "name": "b_version",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--version",
+      "action": "store_true",
+      "help": "Show ."
+    }
+  ]
+}

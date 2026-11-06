@@ -1,0 +1,54 @@
+{
+  "name": "pl-parmodel-surface",
+  "version": "1.0.0",
+  "dock_image": "ghcr.io/fnndsc/pl-parmodel-surface:1.0.0",
+  "public_repo": "https://github.com/FNNDSC/pl-parmodel-surface",
+  "type": "ds",
+  "title": "Parametric Surface Functions",
+  "category": "Modeling",
+  "description": "Create surfaces from spherical functions",
+  "documentation": "https://github.com/FNNDSC/pl-parmodel-surface",
+  "license": "MIT",
+  "authors": "Jennings Zhang <Jennings.Zhang@childrens.harvard.edu>",
+  "execshell": "/opt/conda/bin/python3.10",
+  "selfpath": "/opt/conda/bin",
+  "selfexec": "parm",
+  "max_number_of_workers": 1,
+  "min_memory_limit": "500Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "equation",
+      "type": "str",
+      "optional": false,
+      "default": null,
+      "flag": "--equation",
+      "short_flag": "-e",
+      "action": "store",
+      "help": "3D function in the form r(polar, azimuth)=?",
+      "ui_exposed": true
+    },
+    {
+      "name": "input",
+      "type": "str",
+      "optional": true,
+      "default": "**/*.obj",
+      "flag": "--input",
+      "short_flag": "-i",
+      "action": "store",
+      "help": "input files glob",
+      "ui_exposed": true
+    },
+    {
+      "name": "inflate_to_sphere_implicit",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--inflate_to_sphere_implicit",
+      "short_flag": "--inflate_to_sphere_implicit",
+      "action": "store",
+      "help": "Run inflate_to_sphere_implicit with these parameters on input files before projecting the function. Output files will be renamed with stem suffixes \"_inflated\", \"_projected\". Recommended value: 200,200",
+      "ui_exposed": true
+    }
+  ]
+}

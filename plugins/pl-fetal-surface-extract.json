@@ -1,0 +1,120 @@
+{
+  "name": "pl-fetal-surface-extract",
+  "version": "2.1.1",
+  "dock_image": "ghcr.io/fnndsc/pl-fetal-surface-extract:2.1.1",
+  "public_repo": "https://github.com/fnndsc/pl-fetal-surface-extract",
+  "type": "ds",
+  "title": "Fetal CP Surface Extraction",
+  "category": "Surface Extraction",
+  "description": "Fetal brain MRI CP surface extraction using CIVET marching-cubes",
+  "documentation": "https://github.com/FNNDSC/pl-fetal-surface-extract",
+  "license": "MIT",
+  "authors": "Jennings Zhang <Jennings.Zhang@childrens.harvard.edu>",
+  "execshell": "/opt/conda/bin/python3.11",
+  "selfpath": "/opt/conda/bin",
+  "selfexec": "extract_cp",
+  "max_number_of_workers": 1,
+  "min_memory_limit": "100Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "side",
+      "type": "str",
+      "optional": true,
+      "default": "auto",
+      "flag": "--side",
+      "short_flag": "-s",
+      "action": "store",
+      "help": "brain hemisphere side. \"auto\" => infer from file name [choices: left, right, auto, none]",
+      "ui_exposed": true
+    },
+    {
+      "name": "pattern",
+      "type": "str",
+      "optional": true,
+      "default": "**/*.mnc",
+      "flag": "--pattern",
+      "short_flag": "-p",
+      "action": "store",
+      "help": "pattern for file names to include",
+      "ui_exposed": true
+    },
+    {
+      "name": "threads",
+      "type": "int",
+      "optional": true,
+      "default": 0,
+      "flag": "--threads",
+      "short_flag": "-J",
+      "action": "store",
+      "help": "number of threads to use (pass 0 to use number of visible CPU cores)",
+      "ui_exposed": true
+    },
+    {
+      "name": "keep_mask",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--keep-mask",
+      "short_flag": "-k",
+      "action": "store_true",
+      "help": "Copy input mask file to output directory",
+      "ui_exposed": true
+    },
+    {
+      "name": "no_fail",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--no-fail",
+      "short_flag": "--no-fail",
+      "action": "store_true",
+      "help": "Exit normally even when failed to process a subject",
+      "ui_exposed": true
+    },
+    {
+      "name": "inflate_to_sphere_implicit",
+      "type": "str",
+      "optional": true,
+      "default": "500,500",
+      "flag": "--inflate_to_sphere_implicit",
+      "short_flag": "--inflate_to_sphere_implicit",
+      "action": "store",
+      "help": "Parameters for inflate_to_sphere_implicit. Larger values are necessary for larger brain size.",
+      "ui_exposed": true
+    },
+    {
+      "name": "distance_threshold",
+      "type": "float",
+      "optional": true,
+      "default": 0.6,
+      "flag": "--distance-threshold",
+      "short_flag": "--distance-threshold",
+      "action": "store",
+      "help": "Maximum distance error to allow without using subsampling",
+      "ui_exposed": true
+    },
+    {
+      "name": "target_smoothness",
+      "type": "float",
+      "optional": true,
+      "default": 0.2,
+      "flag": "--target-smoothness",
+      "short_flag": "--target-smoothness",
+      "action": "store",
+      "help": "Target mean smoothness error for how many iterations of adapt_object_mesh to perform.",
+      "ui_exposed": true
+    },
+    {
+      "name": "max_smooth_iterations",
+      "type": "int",
+      "optional": true,
+      "default": 200,
+      "flag": "--max-smooth-iterations",
+      "short_flag": "--max-smooth-iterations",
+      "action": "store",
+      "help": "Maximum allowed number of smoothing iterations using adapt_object_mesh.",
+      "ui_exposed": true
+    }
+  ]
+}

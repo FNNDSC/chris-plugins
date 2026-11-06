@@ -1,0 +1,18 @@
+{
+  "name": "pl-sys_info",
+  "version": "0.2.2",
+  "dock_image": "ghcr.io/fnndsc/pl-sys_info:0.2.2",
+  "public_repo": "https://github.com/FNNDSC/pl-sys_info",
+  "type": "ds",
+  "title": "An app to display systen information",
+  "description": "An app to display systen information",
+  "documentation": "http://wiki",
+  "license": "MIT",
+  "authors": "Sandip Samal <sandip.samal@childrens.harvard.edu>",
+  "execshell": "/usr/local/bin/python",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "sys_info",
+  "max_number_of_workers": 1,
+  "max_gpu_limit": 0,
+  "parameters": []
+}

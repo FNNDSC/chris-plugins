@@ -1,0 +1,52 @@
+{
+  "name": "pl-covidnet-pdfgeneration",
+  "version": "0.3.0",
+  "dock_image": "ghcr.io/fnndsc/pl-covidnet-pdfgeneration:0.3.0",
+  "public_repo": "https://github.com/FNNDSC/pl-covidnet-pdfgeneration",
+  "type": "ds",
+  "title": "PDF generation plugin",
+  "description": "An app that takes in COVID-Net prediction results and generates PDF",
+  "documentation": "https://github.com/FNNDSC/pl-pdfgeneration",
+  "license": "MIT",
+  "authors": "DarwinAI <jefferpeng@darwinai.ca>",
+  "execshell": "/usr/local/bin/python",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "pdfgeneration",
+  "max_number_of_workers": 1,
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "inputPathFilter",
+      "type": "str",
+      "optional": true,
+      "default": "**/*.jpg",
+      "flag": "--inputPathFilter",
+      "short_flag": "--inputPathFilter",
+      "action": "store",
+      "help": "Input path filter for batch mode",
+      "ui_exposed": true
+    },
+    {
+      "name": "imagefile",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--imagefile",
+      "short_flag": "--imagefile",
+      "action": "store",
+      "help": "Name of image file submitted to the analysis",
+      "ui_exposed": true
+    },
+    {
+      "name": "patientId",
+      "type": "str",
+      "optional": true,
+      "default": "XXXXXXXX",
+      "flag": "--patientId",
+      "short_flag": "--patientId",
+      "action": "store",
+      "help": "Patient ID",
+      "ui_exposed": true
+    }
+  ]
+}
