@@ -1,0 +1,30 @@
+{
+  "name": "pl-brainmgz",
+  "version": "2.0.4",
+  "dock_image": "ghcr.io/fnndsc/pl-brainmgz:2.0.4",
+  "public_repo": "https://github.com/FNNDSC/pl-brainmgz",
+  "type": "fs",
+  "title": "brainmgz",
+  "description": "An FS app with a payload of 25 FreeSurfer brain.mgz files",
+  "documentation": "http://wiki",
+  "license": "MIT",
+  "authors": "Sandip Samal <sandip.samal@childrens.harvard.edu>",
+  "execshell": "/usr/local/bin/python",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "brainmgz",
+  "max_number_of_workers": 1,
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "dir",
+      "type": "str",
+      "optional": true,
+      "default": "/usr/local/src/data",
+      "flag": "--dir",
+      "short_flag": "--dir",
+      "action": "store",
+      "help": "directory override",
+      "ui_exposed": true
+    }
+  ]
+}

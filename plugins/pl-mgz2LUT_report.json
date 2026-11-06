@@ -1,0 +1,65 @@
+{
+  "name": "pl-mgz2LUT_report",
+  "version": "1.3.1",
+  "dock_image": "fnndsc/pl-mgz2lut_report:1.3.1",
+  "public_repo": "https://github.com/FNNDSC/pl-mgz2LUT_report",
+  "type": "ds",
+  "title": "A ChRIS plugin app",
+  "category": "",
+  "description": "An app to generate a report on volumes of various brain segments listed in a Look-up Table (Default =     FreeSurferColorLUT.txt",
+  "documentation": "https://github.com/FNNDSC/pl-mgz2LUT_report",
+  "license": "MIT",
+  "icon": "",
+  "authors": "Sandip Samal <sandip.samal@childrens.harvard.edu>",
+  "execshell": "/usr/local/bin/python",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "mgz2lut_report",
+  "max_number_of_workers": 1,
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "file_name",
+      "type": "str",
+      "optional": true,
+      "default": "aparc.a2009s+aseg.mgz",
+      "flag": "--file_name",
+      "short_flag": "--file_name",
+      "action": "store",
+      "help": "Segmented mgz file name",
+      "ui_exposed": true
+    },
+    {
+      "name": "report_name",
+      "type": "str",
+      "optional": true,
+      "default": "mgz2LUT_report",
+      "flag": "--report_name",
+      "short_flag": "--report_name",
+      "action": "store",
+      "help": "Output report name",
+      "ui_exposed": true
+    },
+    {
+      "name": "report_types",
+      "type": "str",
+      "optional": true,
+      "default": "txt",
+      "flag": "--report_types",
+      "short_flag": "--report_types",
+      "action": "store",
+      "help": "comma separated output report file types",
+      "ui_exposed": true
+    },
+    {
+      "name": "LUT",
+      "type": "str",
+      "optional": true,
+      "default": "FreeSurferColorLUT.txt",
+      "flag": "--LUT",
+      "short_flag": "--LUT",
+      "action": "store",
+      "help": "Look Up File Name",
+      "ui_exposed": true
+    }
+  ]
+}

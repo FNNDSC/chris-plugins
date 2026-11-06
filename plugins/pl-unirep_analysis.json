@@ -1,0 +1,121 @@
+{
+  "name": "pl-unirep_analysis",
+  "version": "0.3.0",
+  "dock_image": "ghcr.io/fnndsc/pl-unirep_analysis:0.3.0",
+  "public_repo": "https://github.com/FNNDSC/pl-unirep_analysis",
+  "type": "ds",
+  "title": "Unirep Analysis",
+  "category": "Utility",
+  "description": "A ChRIS plugin to run UniRep analysis",
+  "documentation": "https://github.com/FNNDSC/pl-unirep_analysis",
+  "license": "MIT",
+  "authors": "FNNDSC <dev@babyMRI.org>",
+  "execshell": "/docker-entrypoint.sh",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "unirep_analysis",
+  "max_number_of_workers": 1,
+  "min_cpu_limit": "2000m",
+  "min_memory_limit": "2000Mi",
+  "max_gpu_limit": 1,
+  "parameters": [
+    {
+      "name": "dimension",
+      "type": "int",
+      "optional": true,
+      "default": 64,
+      "flag": "--dimension",
+      "short_flag": "-d",
+      "action": "store",
+      "help": "Dimension of the model",
+      "ui_exposed": true
+    },
+    {
+      "name": "batch_size",
+      "type": "int",
+      "optional": true,
+      "default": 12,
+      "flag": "--batch_size",
+      "short_flag": "-b",
+      "action": "store",
+      "help": "Batch size of the model",
+      "ui_exposed": true
+    },
+    {
+      "name": "learning_rate",
+      "type": "float",
+      "optional": true,
+      "default": 0.001,
+      "flag": "--learning_rate",
+      "short_flag": "-l",
+      "action": "store",
+      "help": "Learning rate of the training model",
+      "ui_exposed": true
+    },
+    {
+      "name": "inputFile",
+      "type": "str",
+      "optional": true,
+      "default": "sequence.txt",
+      "flag": "--inputFile",
+      "short_flag": "-i",
+      "action": "store",
+      "help": "Input file for the analysis",
+      "ui_exposed": true
+    },
+    {
+      "name": "inputGlob",
+      "type": "str",
+      "optional": true,
+      "default": "**/*.txt",
+      "flag": "--inputGlob",
+      "short_flag": "-g",
+      "action": "store",
+      "help": "Input glob to find sequence text file",
+      "ui_exposed": true
+    },
+    {
+      "name": "modelWeightPath",
+      "type": "str",
+      "optional": true,
+      "default": "/usr/local/lib/unirep_analysis/",
+      "flag": "--modelWeightPath",
+      "short_flag": "-m",
+      "action": "store",
+      "help": "Directory containing weight files",
+      "ui_exposed": true
+    },
+    {
+      "name": "outputFile",
+      "type": "str",
+      "optional": true,
+      "default": "format.txt",
+      "flag": "--outputFile",
+      "short_flag": "-o",
+      "action": "store",
+      "help": "Output file for the analysis",
+      "ui_exposed": true
+    },
+    {
+      "name": "topModelTraining",
+      "type": "bool",
+      "optional": true,
+      "default": "False",
+      "flag": "--topModelTraining",
+      "short_flag": "-t",
+      "action": "store_true",
+      "help": "Train top model only",
+      "ui_exposed": true
+    },
+    {
+      "name": "jointModelTraining",
+      "type": "bool",
+      "optional": true,
+      "default": "False",
+      "flag": "--jointModelTraining",
+      "short_flag": "-j",
+      "action": "store_true",
+      "help": "Train top model & mLSTM",
+      "ui_exposed": true
+    }
+  ]
+}

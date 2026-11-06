@@ -1,0 +1,42 @@
+{
+  "name": "pl-pdf2img",
+  "version": "1.0.0",
+  "dock_image": "ghcr.io/fnndsc/pl-pdf2img:latest",
+  "public_repo": "https://github.com/fnndsc/pl-pdf2img",
+  "type": "ds",
+  "title": "PDF to Image",
+  "description": "A ChRIS DS plugin that simply converts input pdf files to output image files (jpg or png)",
+  "documentation": "https://github.com/FNNDSC/pl-pdf",
+  "license": "MIT",
+  "authors": "FNNDSC <dev@babyMRI.org>",
+  "execshell": "/usr/local/bin/python",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "pdf2img",
+  "max_number_of_workers": 1,
+  "min_memory_limit": "100Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "outputType",
+      "type": "str",
+      "optional": true,
+      "default": "jpg",
+      "flag": "--outputType",
+      "short_flag": "--outputType",
+      "action": "store",
+      "help": "Format of output image files",
+      "ui_exposed": true
+    },
+    {
+      "name": "pattern",
+      "type": "str",
+      "optional": true,
+      "default": "**/*.pdf",
+      "flag": "--pattern",
+      "short_flag": "--pattern",
+      "action": "store",
+      "help": "input file filter glob",
+      "ui_exposed": true
+    }
+  ]
+}

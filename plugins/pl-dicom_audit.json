@@ -1,0 +1,87 @@
+{
+  "name": "pl-dicom_audit",
+  "version": "0.2.0",
+  "dock_image": "ghcr.io/fnndsc/pl-dicom_audit:latest",
+  "public_repo": "https://github.com/fnndsc/pl-dicom_audit",
+  "type": "ds",
+  "title": "DICOM anonymization audit",
+  "category": "DICOM De-identification",
+  "description": "A ChRIS plugin that records what pl-dicom_anonymize changed and scans its output for leaks",
+  "documentation": "https://github.com/FNNDSC/pl-dicom_audit",
+  "license": "MIT",
+  "authors": "FNNDSC <dev@babyMRI.org>",
+  "execshell": "/usr/local/bin/python",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "dicom_audit",
+  "max_number_of_workers": 1,
+  "min_memory_limit": "500Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "originalDir",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--originalDir",
+      "short_flag": "--originalDir",
+      "action": "store",
+      "help": "Subdirectory of inputdir holding the original (pre-anonymization) tree. Default: auto-detect -- the one top-level subdirectory that is not the anonymized tree.",
+      "ui_exposed": true
+    },
+    {
+      "name": "anonymizedDir",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--anonymizedDir",
+      "short_flag": "--anonymizedDir",
+      "action": "store",
+      "help": "Subdirectory of inputdir holding the anonymized tree (pl-dicom_anonymize output). Default: auto-detect -- the directory containing deidentification_summary.json.",
+      "ui_exposed": true
+    },
+    {
+      "name": "acknowledgeRetainedTags",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--acknowledgeRetainedTags",
+      "short_flag": "--acknowledgeRetainedTags",
+      "action": "store",
+      "help": "Comma-separated DICOM keywords the anonymization policy keeps on purpose; the leak scan ignores matches inside these elements. Use the same value given to pl-dicom_anonymize.",
+      "ui_exposed": true
+    },
+    {
+      "name": "residualMinLength",
+      "type": "int",
+      "optional": true,
+      "default": 3,
+      "flag": "--residualMinLength",
+      "short_flag": "--residualMinLength",
+      "action": "store",
+      "help": "Shortest original value (or name component) the leak scan searches for.",
+      "ui_exposed": true
+    },
+    {
+      "name": "skipPixelCheck",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--skipPixelCheck",
+      "short_flag": "--skipPixelCheck",
+      "action": "store_true",
+      "help": "Do not check that PixelData is byte-identical between the two trees.",
+      "ui_exposed": true
+    },
+    {
+      "name": "failOnLeak",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--failOnLeak",
+      "short_flag": "--failOnLeak",
+      "action": "store_true",
+      "help": "Exit 1 if the audit finds a leak (original values in the anonymized headers, UIDs, paths or non-DICOM files), incomplete pairing (any original DICOM without a verified anonymized counterpart, or the reverse), or an integrity error (pixel mismatch, conflicting UID mapping). The audit is always written first. Without this flag the plugin exits 0 and the result is in audit_summary.json (overall_status).",
+      "ui_exposed": true
+    }
+  ]
+}

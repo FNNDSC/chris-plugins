@@ -1,0 +1,63 @@
+{
+  "name": "pl-heatmap",
+  "version": "2.0.7",
+  "dock_image": "ghcr.io/fnndsc/pl-heatmap:2.0.7",
+  "public_repo": "https://github.com/FNNDSC/pl-heatmap",
+  "type": "ds",
+  "title": "A heatmap generating app",
+  "description": "A ChRIS DS plugin that compares two different image sets         and generates useful difference image data and metrics.     ",
+  "documentation": "http://wiki",
+  "license": "MIT",
+  "authors": "FNNDSC Developers <dev@babymri.org>",
+  "execshell": "/usr/local/bin/python",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "heatmap",
+  "max_number_of_workers": 1,
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "str_inputSubDir1",
+      "type": "str",
+      "optional": false,
+      "default": "",
+      "flag": "--inputSubDir1",
+      "short_flag": "--inputSubDir1",
+      "action": "store",
+      "help": "Subdirectory (within <inputDir>) containing 1st image set",
+      "ui_exposed": true
+    },
+    {
+      "name": "str_imageFilt1",
+      "type": "str",
+      "optional": true,
+      "default": "png",
+      "flag": "--imageFilt1",
+      "short_flag": "--imageFilt1",
+      "action": "store",
+      "help": "Some string filter on the first image file",
+      "ui_exposed": true
+    },
+    {
+      "name": "str_inputSubDir2",
+      "type": "str",
+      "optional": false,
+      "default": "",
+      "flag": "--inputSubDir2",
+      "short_flag": "--inputSubDir2",
+      "action": "store",
+      "help": "Subdirectory (within <inputDir>) containing 2nd image set",
+      "ui_exposed": true
+    },
+    {
+      "name": "str_imageFilt2",
+      "type": "str",
+      "optional": true,
+      "default": "png",
+      "flag": "--imageFilt2",
+      "short_flag": "--imageFilt2",
+      "action": "store",
+      "help": "Some string filter on the second image file",
+      "ui_exposed": true
+    }
+  ]
+}

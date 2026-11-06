@@ -1,0 +1,89 @@
+{
+  "name": "pl-emerald",
+  "version": "0.3.1",
+  "dock_image": "ghcr.io/fnndsc/pl-emerald:0.3.1",
+  "public_repo": "https://github.com/fnndsc/pl-emerald",
+  "type": "ds",
+  "title": "Fetal brain masking",
+  "category": "MRI",
+  "description": "Fetal brain masking using u-net",
+  "documentation": "https://github.com/FNNDSC/pl-emerald",
+  "license": "MIT",
+  "icon": "",
+  "authors": "FNNDSC <dev@babyMRI.org>",
+  "execshell": "/usr/bin/python3",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "emerald",
+  "max_number_of_workers": 1,
+  "min_memory_limit": "6144Mi",
+  "min_gpu_limit": 1,
+  "max_gpu_limit": 1,
+  "parameters": [
+    {
+      "name": "pattern",
+      "type": "str",
+      "optional": true,
+      "default": "**/*.nii",
+      "flag": "--pattern",
+      "short_flag": "-p",
+      "action": "store",
+      "help": "Input files pattern",
+      "ui_exposed": true
+    },
+    {
+      "name": "mask_suffix",
+      "type": "str",
+      "optional": true,
+      "default": "_mask.nii",
+      "flag": "--mask-suffix",
+      "short_flag": "-m",
+      "action": "store",
+      "help": "Mask output file suffix. Provide \"\" to not save mask.",
+      "ui_exposed": true
+    },
+    {
+      "name": "outputs",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--outputs",
+      "short_flag": "-o",
+      "action": "store",
+      "help": "Background intensity multiplier and output suffix.",
+      "ui_exposed": true
+    },
+    {
+      "name": "weights",
+      "type": "str",
+      "optional": true,
+      "default": "nancy",
+      "flag": "--weights",
+      "short_flag": "-w",
+      "action": "store",
+      "help": "Which weights to use. (\"nancy\" is newer and better) [choices: nancy, emerald]",
+      "ui_exposed": true
+    },
+    {
+      "name": "post_processing",
+      "type": "bool",
+      "optional": true,
+      "default": true,
+      "flag": "--no-post-processing",
+      "short_flag": "--no-post-processing",
+      "action": "store_false",
+      "help": "Predicted mask should not be post processed (morphological closing and defragmentation)",
+      "ui_exposed": true
+    },
+    {
+      "name": "dilation_footprint",
+      "type": "str",
+      "optional": true,
+      "default": "disk(2)",
+      "flag": "--dilation-footprint",
+      "short_flag": "--dilation-footprint",
+      "action": "store",
+      "help": "Dilation footprint: either a Python expression or None.",
+      "ui_exposed": true
+    }
+  ]
+}

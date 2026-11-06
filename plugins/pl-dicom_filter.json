@@ -1,0 +1,110 @@
+{
+  "name": "pl-dicom_filter",
+  "version": "1.3.1",
+  "dock_image": "ghcr.io/fnndsc/pl-dicom_filter:1.3.1",
+  "public_repo": "https://github.com/fnndsc/pl-dicom_filter",
+  "type": "ds",
+  "title": "A ChRIS plugin to filter dicom files using dicom tags",
+  "category": "",
+  "description": "A ChRIS DS plugin template",
+  "documentation": "https://github.com/FNNDSC/python-chrisapp-template",
+  "license": "MIT",
+  "icon": "",
+  "authors": "FNNDSC <dev@babyMRI.org>",
+  "execshell": "/usr/local/bin/python",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "dicom_filter",
+  "max_number_of_workers": 1,
+  "min_memory_limit": "4096Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "dicomFilter",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--dicomFilter",
+      "short_flag": "-d",
+      "action": "store",
+      "help": "comma separated dicom tags with values",
+      "ui_exposed": true
+    },
+    {
+      "name": "fileFilter",
+      "type": "str",
+      "optional": true,
+      "default": "dcm",
+      "flag": "--fileFilter",
+      "short_flag": "-f",
+      "action": "store",
+      "help": "input file filter glob",
+      "ui_exposed": true
+    },
+    {
+      "name": "imgCount",
+      "type": "str",
+      "optional": true,
+      "default": ">=1",
+      "flag": "--imgCount",
+      "short_flag": "-m",
+      "action": "store",
+      "help": "Image count filter expression. Supports multiple conditions combined with AND.\nExamples:\n  '>=10 <=200'\n  '>5 !=13'\n  '==42'",
+      "ui_exposed": true
+    },
+    {
+      "name": "outputType",
+      "type": "str",
+      "optional": true,
+      "default": "dcm",
+      "flag": "--outputType",
+      "short_flag": "-o",
+      "action": "store",
+      "help": "output file type(extension only)",
+      "ui_exposed": true
+    },
+    {
+      "name": "textFilter",
+      "type": "str",
+      "optional": true,
+      "default": "txt",
+      "flag": "--textFilter",
+      "short_flag": "-t",
+      "action": "store",
+      "help": "Input text file filter",
+      "ui_exposed": true
+    },
+    {
+      "name": "inspectTags",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--inspectTags",
+      "short_flag": "-i",
+      "action": "store",
+      "help": "Comma separated DICOM tags",
+      "ui_exposed": true
+    },
+    {
+      "name": "phiMode",
+      "type": "str",
+      "optional": true,
+      "default": "skip",
+      "flag": "--phiMode",
+      "short_flag": "-p",
+      "action": "store",
+      "help": "PHI handling modes: detect, allow, or skip",
+      "ui_exposed": true
+    },
+    {
+      "name": "similarityThreshold",
+      "type": "float",
+      "optional": true,
+      "default": 0.95,
+      "flag": "--similarityThreshold",
+      "short_flag": "-s",
+      "action": "store",
+      "help": "A similarity threshold represents the minimum similarity between two texts",
+      "ui_exposed": true
+    }
+  ]
+}

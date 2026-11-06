@@ -1,0 +1,76 @@
+{
+  "name": "pl-gifit",
+  "version": "0.3.0",
+  "dock_image": "ghcr.io/fnndsc/pl-gifit:0.3.0",
+  "public_repo": "https://github.com/fnndsc/pl-gifit",
+  "type": "ds",
+  "title": "Surface mesh deformation",
+  "category": "Surfaces",
+  "description": "Outer to inner surface mesh deformation using a radial distance map for human fetal MRI",
+  "documentation": "https://github.com/FNNDSC/pl-gifit",
+  "license": "MIT",
+  "authors": "FNNDSC <Jennings.Zhang@childrens.harvard.edu>",
+  "execshell": "/opt/conda/bin/python3.11",
+  "selfpath": "/opt/conda/bin",
+  "selfexec": "gifit",
+  "max_number_of_workers": 1,
+  "min_memory_limit": "1024Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "no_fail",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--no-fail",
+      "short_flag": "--no-fail",
+      "action": "store_true",
+      "help": "Produce exit code 0 even if any subprocesses do not.",
+      "ui_exposed": true
+    },
+    {
+      "name": "model",
+      "type": "str",
+      "optional": true,
+      "default": "h",
+      "flag": "--model",
+      "short_flag": "-m",
+      "action": "store",
+      "help": "Name of built-in model to use, or a path to a custom CSV model.",
+      "ui_exposed": true
+    },
+    {
+      "name": "size",
+      "type": "int",
+      "optional": true,
+      "default": 81920,
+      "flag": "--size",
+      "short_flag": "-s",
+      "action": "store",
+      "help": "Output mesh size",
+      "ui_exposed": true
+    },
+    {
+      "name": "thickness_fwhm",
+      "type": "str",
+      "optional": true,
+      "default": "0,5,10",
+      "flag": "--thickness-fwhm",
+      "short_flag": "-t",
+      "action": "store",
+      "help": "List of fwhm values in mm to use for calculating thickness between surfaces",
+      "ui_exposed": true
+    },
+    {
+      "name": "threads",
+      "type": "int",
+      "optional": true,
+      "default": 0,
+      "flag": "--threads",
+      "short_flag": "-J",
+      "action": "store",
+      "help": "Number of threads to use for parallel jobs. Pass 0 to use number of visible CPUs.",
+      "ui_exposed": true
+    }
+  ]
+}

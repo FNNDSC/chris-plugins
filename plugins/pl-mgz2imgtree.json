@@ -1,0 +1,172 @@
+{
+  "name": "pl-mgz2imgtree",
+  "version": "0.1",
+  "dock_image": "docker.io/fnndsc/pl-mgz2imgtree:latest",
+  "type": "ds",
+  "title": "A ChRIS plugin app to Recursively walk down a directory tree and extract MGZ labels, creating image slices for each individual label preserving directory structure in output tree.",
+  "description": "An app to ...",
+  "documentation": "http://wiki",
+  "license": "Opensource (MIT)",
+  "authors": "FNNDSC (dev@babyMRI.org)",
+  "execshell": "python3",
+  "selfpath": "/usr/src/mgz2imgtree",
+  "selfexec": "mgz2imgtree.py",
+  "max_number_of_workers": 1,
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "inputFile",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--inputFile",
+      "short_flag": "-i",
+      "action": "store",
+      "help": "name of the input file within the inputDir",
+      "ui_exposed": true
+    },
+    {
+      "name": "outputFileStem",
+      "type": "str",
+      "optional": true,
+      "default": "sample",
+      "flag": "--outputFileStem",
+      "short_flag": "-o",
+      "action": "store",
+      "help": "output file",
+      "ui_exposed": true
+    },
+    {
+      "name": "outputFileType",
+      "type": "str",
+      "optional": true,
+      "default": "png",
+      "flag": "--outputFileType",
+      "short_flag": "-t",
+      "action": "store",
+      "help": "output image file format",
+      "ui_exposed": true
+    },
+    {
+      "name": "feature",
+      "type": "str",
+      "optional": false,
+      "default": "aparc+aseg.mgz",
+      "flag": "--feature",
+      "short_flag": "--feature",
+      "action": "store",
+      "help": "name of mgz file with features (aparc+aseg)",
+      "ui_exposed": true
+    },
+    {
+      "name": "image",
+      "type": "str",
+      "optional": false,
+      "default": "brain.mgz",
+      "flag": "--image",
+      "short_flag": "--image",
+      "action": "store",
+      "help": "name of entire image file (brain.mgz)",
+      "ui_exposed": true
+    },
+    {
+      "name": "label",
+      "type": "str",
+      "optional": true,
+      "default": "label",
+      "flag": "--label",
+      "short_flag": "--label",
+      "action": "store",
+      "help": "prefix a label to all the label directories",
+      "ui_exposed": true
+    },
+    {
+      "name": "normalize",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--normalize",
+      "short_flag": "-n",
+      "action": "store_true",
+      "help": "normalize the pixels of output image files",
+      "ui_exposed": true
+    },
+    {
+      "name": "lookuptable",
+      "type": "str",
+      "optional": true,
+      "default": "__val__",
+      "flag": "--lookuptable",
+      "short_flag": "-l",
+      "action": "store",
+      "help": "reads name for the Label directories",
+      "ui_exposed": true
+    },
+    {
+      "name": "synopsis",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--synopsis",
+      "short_flag": "-y",
+      "action": "store_true",
+      "help": "short synopsis",
+      "ui_exposed": true
+    },
+    {
+      "name": "skipLabelValueList",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--skipLabelValueList",
+      "short_flag": "-s",
+      "action": "store",
+      "help": "Comma separated list of labels to skip",
+      "ui_exposed": true
+    },
+    {
+      "name": "filterLabelValueList",
+      "type": "str",
+      "optional": true,
+      "default": "-1",
+      "flag": "--filterLabelValueList",
+      "short_flag": "-f",
+      "action": "store",
+      "help": "Comma separated list of voxel values to include",
+      "ui_exposed": true
+    },
+    {
+      "name": "wholeVolume",
+      "type": "str",
+      "optional": true,
+      "default": "wholeVolume",
+      "flag": "--wholeVolume",
+      "short_flag": "-w",
+      "action": "store",
+      "help": "Converts entire mgz volume to png/jpg instead of individually masked labels",
+      "ui_exposed": true
+    },
+    {
+      "name": "rawDirName",
+      "type": "str",
+      "optional": false,
+      "default": "rawDirName",
+      "flag": "--rawDirName",
+      "short_flag": "-r",
+      "action": "store",
+      "help": "name of directory that will contain raw mgz image slices",
+      "ui_exposed": true
+    },
+    {
+      "name": "printElapsedTime",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--printElapsedTime",
+      "short_flag": "--printElapsedTime",
+      "action": "store_true",
+      "help": "print program run time",
+      "ui_exposed": true
+    }
+  ]
+}

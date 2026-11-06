@@ -1,0 +1,54 @@
+{
+  "name": "pl-fpmmid",
+  "version": "1.1.9",
+  "dock_image": "ghcr.io/fnndsc/pl-fpmmid:1.1.9",
+  "public_repo": "https://github.com/FNNDSC/pl-fpmmid",
+  "type": "ds",
+  "title": "A ChRIS plugin app wrapper around FPMMID",
+  "description": "A ChRIS DS plugin that wraps around FPMMID",
+  "documentation": "https://github.com/FNNDSC/pl-fpmmid",
+  "license": "MIT",
+  "authors": "FNNDSC <dev@babyMRI.org>",
+  "execshell": "/usr/bin/python3",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "fpmmid",
+  "max_number_of_workers": 1,
+  "min_cpu_limit": "3000m",
+  "min_memory_limit": "32000Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "inputFileFilter",
+      "type": "str",
+      "optional": true,
+      "default": "**/*.nii.gz",
+      "flag": "--inputFileFilter",
+      "short_flag": "-i",
+      "action": "store",
+      "help": "Input file filter",
+      "ui_exposed": true
+    },
+    {
+      "name": "outputFileExtension",
+      "type": "str",
+      "optional": true,
+      "default": ".nii",
+      "flag": "--outputFileExtension",
+      "short_flag": "-o",
+      "action": "store",
+      "help": "Extension of the output brain volume",
+      "ui_exposed": true
+    },
+    {
+      "name": "preserveInputNames",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--preserveInputNames",
+      "short_flag": "-p",
+      "action": "store_true",
+      "help": "Preserves original intput file names",
+      "ui_exposed": true
+    }
+  ]
+}

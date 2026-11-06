@@ -1,0 +1,64 @@
+{
+  "name": "pl-re-sub",
+  "version": "1.1.1",
+  "dock_image": "ghcr.io/fnndsc/pl-re-sub:1.1.1",
+  "public_repo": "https://github.com/FNNDSC/pl-re-sub",
+  "type": "ds",
+  "title": "Regex Substitution",
+  "category": "Format",
+  "description": "Use regular expressions to perform find-and-replace.",
+  "documentation": "https://github.com/FNNDSC/pl-re-sub#readme",
+  "license": "MIT",
+  "authors": "FNNDSC <dev@babyMRI.org>",
+  "execshell": "/opt/pypy/bin/pypy3",
+  "selfpath": "/opt/pypy/bin",
+  "selfexec": "resub",
+  "max_number_of_workers": 1,
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "inputPathFilter",
+      "type": "str",
+      "optional": true,
+      "default": "*",
+      "flag": "--inputPathFilter",
+      "short_flag": "-p",
+      "action": "store",
+      "help": "selection (glob) for which files to evaluate.",
+      "ui_exposed": true
+    },
+    {
+      "name": "expr",
+      "type": "str",
+      "optional": false,
+      "default": null,
+      "flag": "--expression",
+      "short_flag": "-e",
+      "action": "store",
+      "help": "regular expression to match, uses Python `re` syntax",
+      "ui_exposed": true
+    },
+    {
+      "name": "repl",
+      "type": "str",
+      "optional": false,
+      "default": null,
+      "flag": "--replacement",
+      "short_flag": "-r",
+      "action": "store",
+      "help": "what to replace the matches with",
+      "ui_exposed": true
+    },
+    {
+      "name": "ifs",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--ifs",
+      "short_flag": "-s",
+      "action": "store",
+      "help": "delimiter between chained regexes",
+      "ui_exposed": true
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "pl-office-convert",
+  "version": "0.0.2",
+  "dock_image": "ghcr.io/fnndsc/pl-office-convert:0.0.2",
+  "public_repo": "https://github.com/FNNDSC/pl-office-convert",
+  "type": "ds",
+  "title": "Office File Converter",
+  "category": "Format",
+  "description": "Excel and ODS Spreadsheet to CSV Converter",
+  "documentation": "https://github.com/FNNDSC/pl-office-convert#readme",
+  "license": "MIT",
+  "authors": "FNNDSC <dev@babyMRI.org>",
+  "execshell": "/usr/local/bin/python",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "office_convert",
+  "max_number_of_workers": 1,
+  "max_gpu_limit": 0,
+  "parameters": []
+}

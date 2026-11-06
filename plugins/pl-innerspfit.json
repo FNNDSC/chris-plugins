@@ -1,0 +1,42 @@
+{
+  "name": "pl-innerspfit",
+  "version": "1.0.0",
+  "dock_image": "ghcr.io/fnndsc/pl-innerspfit:latest",
+  "type": "ds",
+  "title": "Inner subplate surface mesh deformation",
+  "category": "Surfaces",
+  "description": "Outer to inner surface mesh deformation using a radial distance map for human fetal MRI",
+  "documentation": "https://github.com/FNNDSC/pl-innerspfit",
+  "license": "MIT",
+  "authors": "FNNDSC <Jennings.Zhang@childrens.harvard.edu>",
+  "execshell": "/opt/conda/bin/python3.11",
+  "selfpath": "/opt/conda/bin",
+  "selfexec": "innerspfit",
+  "max_number_of_workers": 1,
+  "min_memory_limit": "1024Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "no_fail",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--no-fail",
+      "short_flag": "--no-fail",
+      "action": "store_true",
+      "help": "Produce exit code 0 even if any subprocesses do not.",
+      "ui_exposed": true
+    },
+    {
+      "name": "threads",
+      "type": "int",
+      "optional": true,
+      "default": 0,
+      "flag": "--threads",
+      "short_flag": "-t",
+      "action": "store",
+      "help": "Number of threads to use for parallel jobs. Pass 0 to use number of visible CPUs.",
+      "ui_exposed": true
+    }
+  ]
+}

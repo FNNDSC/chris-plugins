@@ -1,0 +1,41 @@
+{
+  "name": "pl-mricnn",
+  "version": "0.2",
+  "dock_image": "docker.io/fnndsc/pl-mricnn:latest",
+  "public_repo": "https://github.com/FNNDSC/pl-mricnn",
+  "type": "ds",
+  "title": "A 3D CNN for MRI Segmentation",
+  "description": "An app to train and infer MRI data using a CNN model",
+  "documentation": "http://wiki",
+  "license": "Opensource (MIT)",
+  "authors": "Sandip Samal (sandip.samal@childrens.harvard.edu)",
+  "execshell": "python3",
+  "selfpath": "/usr/src/mricnn",
+  "selfexec": "mricnn.py",
+  "max_number_of_workers": 1,
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "mode",
+      "type": "str",
+      "optional": false,
+      "default": null,
+      "flag": "--mode",
+      "short_flag": "--mode",
+      "action": "store",
+      "help": "What do you want to do? 1. Train 2. Infer",
+      "ui_exposed": true
+    },
+    {
+      "name": "epochs",
+      "type": "int",
+      "optional": true,
+      "default": 5,
+      "flag": "--epochs",
+      "short_flag": "--epochs",
+      "action": "store",
+      "help": "Specify the number of epochs. Default epochs is 5",
+      "ui_exposed": true
+    }
+  ]
+}

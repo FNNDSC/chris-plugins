@@ -1,0 +1,19 @@
+{
+  "name": "pl-m2i",
+  "version": "0.1",
+  "dock_image": "docker.io/fnndsc/pl-m2i:latest",
+  "public_repo": "https://github.com/FNNDSC/pl-m2i",
+  "type": "ds",
+  "title": "A simple app",
+  "category": "demo",
+  "description": "This app is just an example.",
+  "documentation": "http://wiki",
+  "license": "Opensource (MIT)",
+  "authors": "FNNDSC (dev@babyMRI.org)",
+  "execshell": "python3",
+  "selfpath": "/usr/src/m2i",
+  "selfexec": "m2i.py",
+  "max_number_of_workers": 1,
+  "max_gpu_limit": 0,
+  "parameters": []
+}

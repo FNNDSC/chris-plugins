@@ -1,0 +1,32 @@
+{
+  "name": "pl-pyvista-volume",
+  "version": "1.0.0",
+  "dock_image": "ghcr.io/fnndsc/pl-pyvista-volume:1.0.0",
+  "public_repo": "https://github.com/FNNDSC/pl-pyvista-volume",
+  "type": "ds",
+  "title": "Volume enclosed by polygonal mesh",
+  "category": "Surfaces",
+  "description": "Calculate the volume enclosed by MRI .obj surfaces using pyvista",
+  "documentation": "https://github.com/FNNDSC/pl-pyvista-volume",
+  "license": "MIT",
+  "authors": "Jennings Zhang <Jennings.Zhang@childrens.harvard.edu>",
+  "execshell": "/opt/conda/bin/python3.10",
+  "selfpath": "/opt/conda/bin",
+  "selfexec": "surfvol",
+  "max_number_of_workers": 1,
+  "min_memory_limit": "100Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "pattern",
+      "type": "str",
+      "optional": true,
+      "default": "**/*.obj",
+      "flag": "--pattern",
+      "short_flag": "-p",
+      "action": "store",
+      "help": "input filter glob for MNI surface files",
+      "ui_exposed": true
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "name": "pl-mail",
+  "version": "0.0.2",
+  "dock_image": "ghcr.io/fnndsc/pl-mail:0.0.2",
+  "public_repo": "https://github.com/fnndsc/pl-mail",
+  "type": "ds",
+  "title": "A ChRIS plugin to send email",
+  "description": "A ChRIS plugin for email",
+  "license": "MIT",
+  "authors": "FNNDSC <dev@babyMRI.org>",
+  "execshell": "/usr/local/bin/python",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "mail",
+  "max_number_of_workers": 1,
+  "min_memory_limit": "500Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "rcpt",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--rcpt",
+      "short_flag": "-r",
+      "action": "store",
+      "help": "comma separated receipients. [inputdir]/rcpt if not specified in argument.",
+      "ui_exposed": true
+    },
+    {
+      "name": "title",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--title",
+      "short_flag": "-t",
+      "action": "store",
+      "help": "email title. [inputdir]/title if not specified in argument.",
+      "ui_exposed": true
+    },
+    {
+      "name": "content",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--content",
+      "short_flag": "-c",
+      "action": "store",
+      "help": "content. [inputdir]/content if not specified in argument.",
+      "ui_exposed": true
+    },
+    {
+      "name": "sender",
+      "type": "str",
+      "optional": true,
+      "default": "noreply@fnndsc.org",
+      "flag": "--sender",
+      "short_flag": "-s",
+      "action": "store",
+      "help": "sender (from). use [inputdir]/sender if exists.",
+      "ui_exposed": true
+    },
+    {
+      "name": "mailserver",
+      "type": "str",
+      "optional": true,
+      "default": "postfix.postfix.svc.k8s.galena.fnndsc",
+      "flag": "--mailserver",
+      "short_flag": "-m",
+      "action": "store",
+      "help": "email server. use [inputdir]/mailserver if exists.",
+      "ui_exposed": true
+    }
+  ]
+}

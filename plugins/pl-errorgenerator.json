@@ -1,0 +1,56 @@
+{
+  "name": "pl-errorgenerator",
+  "version": "1.0.2",
+  "dock_image": "ghcr.io/fnndsc/pl-errorgenerator:1.0.2",
+  "public_repo": "https://github.com/FNNDSC/pl-errorgenerator",
+  "type": "ds",
+  "title": "Error generator app",
+  "category": "utility",
+  "description": "A ChRIS app that crashes on purpose",
+  "documentation": "https://github.com/FNNDSC/pl-errorgenerator",
+  "license": "MIT",
+  "icon": "",
+  "authors": "Arnav Nidumolu <arnav.nidumolu@gmail.com>",
+  "execshell": "/usr/local/bin/python",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "errorgenerator",
+  "max_number_of_workers": 1,
+  "min_cpu_limit": "2000m",
+  "min_memory_limit": "2000Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "errorType",
+      "type": "str",
+      "optional": false,
+      "default": "",
+      "flag": "--errorType",
+      "short_flag": "--errorType",
+      "action": "store",
+      "help": "raise this error",
+      "ui_exposed": true
+    },
+    {
+      "name": "customErrorMessage",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--customErrorMessage",
+      "short_flag": "--customErrorMessage",
+      "action": "store",
+      "help": "raise custom error message",
+      "ui_exposed": true
+    },
+    {
+      "name": "delayTime",
+      "type": "int",
+      "optional": true,
+      "default": 0,
+      "flag": "--delayTime",
+      "short_flag": "--delayTime",
+      "action": "store",
+      "help": "wait before raising the error",
+      "ui_exposed": true
+    }
+  ]
+}

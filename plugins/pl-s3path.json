@@ -1,0 +1,36 @@
+{
+  "name": "pl-s3path",
+  "version": "0.1.1",
+  "dock_image": "docker.io/fnndsc/pl-s3path:latest",
+  "public_repo": "https://github.com/FNNDSC/pl-s3path",
+  "type": "ds",
+  "title": "S3 Path",
+  "description": "An app to adapt pl-pacsquery output to pl-s3retrieve input",
+  "documentation": "http://wiki",
+  "license": "Opensource (MIT)",
+  "authors": "FNNDSC (dev@babyMRI.org)",
+  "execshell": "python3",
+  "selfexec": "s3path.py",
+  "max_number_of_workers": 1,
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "series_uids",
+      "type": "str",
+      "optional": true,
+      "default": ",",
+      "flag": "--seriesUIDS",
+      "action": "store",
+      "help": "Series UIDs to be retrieved"
+    },
+    {
+      "name": "prefix",
+      "type": "str",
+      "optional": false,
+      "default": null,
+      "flag": "--prefix",
+      "action": "store",
+      "help": "prefix string for the cloud objects"
+    }
+  ]
+}

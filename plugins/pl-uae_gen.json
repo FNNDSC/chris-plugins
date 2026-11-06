@@ -1,0 +1,32 @@
+{
+  "name": "pl-uae_gen",
+  "version": "1.0.3",
+  "dock_image": "ghcr.io/fnndsc/pl-uae_gen:1.0.3",
+  "public_repo": "https://github.com/fnndsc/pl-uae_gen",
+  "type": "ds",
+  "title": "pl-uae_gen",
+  "description": "Generate UAE values from the TF images",
+  "documentation": "https://github.com/FNNDSC/pl-uae_",
+  "license": "MIT",
+  "authors": "FNNDSC <dev@babyMRI.org>",
+  "execshell": "/opt/conda/bin/python3",
+  "selfpath": "/opt/conda/bin",
+  "selfexec": "uae_gen",
+  "max_number_of_workers": 1,
+  "min_memory_limit": "100Mi",
+  "min_gpu_limit": 1,
+  "max_gpu_limit": 1,
+  "parameters": [
+    {
+      "name": "pattern",
+      "type": "str",
+      "optional": true,
+      "default": "*.mat",
+      "flag": "--pattern",
+      "short_flag": "-p",
+      "action": "store",
+      "help": "input file filter glob",
+      "ui_exposed": true
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "name": "pl-ollama_infer",
+  "version": "1.1.3",
+  "dock_image": "ghcr.io/fnndsc/pl-ollama_infer:1.1.3",
+  "public_repo": "https://github.com/fnndsc/pl-ollama_infer",
+  "type": "ds",
+  "title": "A ChRIS plugin to run an `ollama` server",
+  "category": "",
+  "description": "A ChRIS plugin to run an `ollama` server",
+  "documentation": "https://github.com/FNNDSC/pl-ollama_i",
+  "license": "MIT",
+  "icon": "",
+  "authors": "FNNDSC <dev@babyMRI.org>",
+  "execshell": "/opt/venv/bin/python3",
+  "selfpath": "/opt/venv/bin",
+  "selfexec": "ollama_infer",
+  "max_number_of_workers": 1,
+  "min_memory_limit": "100Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "prompt",
+      "type": "str",
+      "optional": true,
+      "default": "test",
+      "flag": "--prompt",
+      "short_flag": "-p",
+      "action": "store",
+      "help": "input prompt for the model",
+      "ui_exposed": true
+    },
+    {
+      "name": "model",
+      "type": "str",
+      "optional": true,
+      "default": "llama3",
+      "flag": "--model",
+      "short_flag": "-m",
+      "action": "store",
+      "help": "specify which ollama model to use",
+      "ui_exposed": true
+    },
+    {
+      "name": "serviceMode",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--serviceMode",
+      "short_flag": "-s",
+      "action": "store_true",
+      "help": "If specified as true, keep the ollama server running.",
+      "ui_exposed": true
+    },
+    {
+      "name": "time",
+      "type": "int",
+      "optional": true,
+      "default": 5,
+      "flag": "--time",
+      "short_flag": "-t",
+      "action": "store",
+      "help": "wait time (in seconds) for the ollama server to be ready for inference",
+      "ui_exposed": true
+    }
+  ]
+}

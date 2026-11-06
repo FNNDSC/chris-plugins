@@ -1,0 +1,86 @@
+{
+  "name": "pl-covidnet",
+  "version": "0.3.0",
+  "dock_image": "ghcr.io/fnndsc/pl-covidnet:0.3.0",
+  "public_repo": "https://github.com/FNNDSC/pl-covidnet",
+  "type": "ds",
+  "title": "COVID-Net inference for chest x-ray",
+  "description": "Plugin to ChRIS for covidnet functionalities",
+  "documentation": "https://github.com/FNNDSC/pl-covidnet#pl-covidnet",
+  "license": "AGPL",
+  "authors": "Jeffer Peng <jeffer.peng@darwinai.ca>",
+  "execshell": "/usr/bin/python3",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "covidnet",
+  "max_number_of_workers": 1,
+  "min_memory_limit": "1024Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "metaname",
+      "type": "str",
+      "optional": true,
+      "default": "model.meta",
+      "flag": "--metaname",
+      "short_flag": "--metaname",
+      "action": "store",
+      "help": "Name of ckpt meta file",
+      "ui_exposed": true
+    },
+    {
+      "name": "inputFileFilter",
+      "type": "str",
+      "optional": true,
+      "default": "**/*.jpg",
+      "flag": "--inputFileFilter",
+      "short_flag": "--inputFileFilter",
+      "action": "store",
+      "help": "Input file filter",
+      "ui_exposed": true
+    },
+    {
+      "name": "in_tensorname",
+      "type": "str",
+      "optional": true,
+      "default": "input_1:0",
+      "flag": "--in_tensorname",
+      "short_flag": "--in_tensorname",
+      "action": "store",
+      "help": "Name of input tensor to graph",
+      "ui_exposed": true
+    },
+    {
+      "name": "out_tensorname",
+      "type": "str",
+      "optional": true,
+      "default": "norm_dense_1/Softmax:0",
+      "flag": "--out_tensorname",
+      "short_flag": "--out_tensorname",
+      "action": "store",
+      "help": "Name of output tensor from graph",
+      "ui_exposed": true
+    },
+    {
+      "name": "input_size",
+      "type": "int",
+      "optional": true,
+      "default": 480,
+      "flag": "--input_size",
+      "short_flag": "--input_size",
+      "action": "store",
+      "help": "Size of input (ex: if 480x480, --input_size 480)",
+      "ui_exposed": true
+    },
+    {
+      "name": "top_percent",
+      "type": "float",
+      "optional": true,
+      "default": 0.08,
+      "flag": "--top_percent",
+      "short_flag": "--top_percent",
+      "action": "store",
+      "help": "Percent top crop from top of image",
+      "ui_exposed": true
+    }
+  ]
+}

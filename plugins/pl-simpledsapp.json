@@ -1,0 +1,89 @@
+{
+  "name": "pl-simpledsapp",
+  "version": "2.1.5",
+  "dock_image": "ghcr.io/fnndsc/pl-simpledsapp:2.1.5",
+  "public_repo": "https://github.com/FNNDSC/pl-simpledsapp",
+  "type": "ds",
+  "title": "Simple chris ds app",
+  "category": "copy",
+  "description": "A simple ChRIS ds app demo",
+  "documentation": "https://github.com/FNNDSC/pl-simpledsapp#readme",
+  "license": "MIT",
+  "icon": "",
+  "authors": "FNNDSC <dev@babyMRI.org>",
+  "execshell": "/usr/local/bin/python",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "simpledsapp",
+  "max_number_of_workers": 1,
+  "min_cpu_limit": "2000m",
+  "min_memory_limit": "2000Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "prefix",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--prefix",
+      "short_flag": "-p",
+      "action": "store",
+      "help": "prefix for file names",
+      "ui_exposed": true
+    },
+    {
+      "name": "b_ignoreInputDir",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--ignoreInputDir",
+      "short_flag": "--ignoreInputDir",
+      "action": "store_true",
+      "help": "if set, ignore the input dir completely",
+      "ui_exposed": true
+    },
+    {
+      "name": "sleepLength",
+      "type": "str",
+      "optional": true,
+      "default": "0",
+      "flag": "--sleepLength",
+      "short_flag": "--sleepLength",
+      "action": "store",
+      "help": "time to sleep before performing plugin action",
+      "ui_exposed": true
+    },
+    {
+      "name": "dummyInt",
+      "type": "int",
+      "optional": true,
+      "default": 1,
+      "flag": "--dummyInt",
+      "short_flag": "--dummyInt",
+      "action": "store",
+      "help": "dummy integer parameter",
+      "ui_exposed": true
+    },
+    {
+      "name": "dummyFloat",
+      "type": "float",
+      "optional": true,
+      "default": 1.1,
+      "flag": "--dummyFloat",
+      "short_flag": "--dummyFloat",
+      "action": "store",
+      "help": "dummy float parameter",
+      "ui_exposed": true
+    },
+    {
+      "name": "pftelDB",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--pftelDB",
+      "short_flag": "--pftelDB",
+      "action": "store",
+      "help": "an optional pftel telemetry logger, of form '<pftelURL>/api/v1/<object>/<collection>/<event>'",
+      "ui_exposed": true
+    }
+  ]
+}

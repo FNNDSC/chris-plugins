@@ -1,0 +1,80 @@
+{
+  "name": "pl-fetal-brain-assessment",
+  "version": "1.3.1",
+  "dock_image": "docker.io/fnndsc/pl-fetal-brain-assessment:1.3.1",
+  "public_repo": "https://github.com/FNNDSC/pl-fetal-brain-assessment",
+  "type": "ds",
+  "title": "Fetal Brain Quality Assessment",
+  "category": "Statistical Operation",
+  "description": "Automatic fetal brain MRI volume cropping and quality assessment tool",
+  "documentation": "https://github.com/FNNDSC/pl-fetal-brain-assessment",
+  "license": "MIT",
+  "icon": "",
+  "authors": "Iv\u00e1n Legorreta <ilegorreta@outlook.com>",
+  "execshell": "/opt/conda/bin/python",
+  "selfpath": "/opt/conda/bin",
+  "selfexec": "fetal_brain_assessment",
+  "max_number_of_workers": 1,
+  "max_cpu_limit": "16000m",
+  "min_memory_limit": "8000Mi",
+  "max_memory_limit": "32000Mi",
+  "min_gpu_limit": 1,
+  "max_gpu_limit": 1,
+  "parameters": [
+    {
+      "name": "inputPathFilter",
+      "type": "str",
+      "optional": true,
+      "default": "*.nii",
+      "flag": "--inputPathFilter",
+      "short_flag": "-p",
+      "action": "store",
+      "help": "Selection for which files to evaluate.",
+      "ui_exposed": true
+    },
+    {
+      "name": "output_filename",
+      "type": "str",
+      "optional": true,
+      "default": "quality_assessment.csv",
+      "flag": "--output-file",
+      "short_flag": "-o",
+      "action": "store",
+      "help": "Name of output CSV file.",
+      "ui_exposed": true
+    },
+    {
+      "name": "crop_destination",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--crop-destination",
+      "short_flag": "-c",
+      "action": "store",
+      "help": "Name of directory of where to save cropped images, before selection.",
+      "ui_exposed": true
+    },
+    {
+      "name": "destination_folder",
+      "type": "str",
+      "optional": true,
+      "default": "Best_Images_crop",
+      "flag": "--destination",
+      "short_flag": "-d",
+      "action": "store",
+      "help": "Name of directory of where to save images that meet the threshold.",
+      "ui_exposed": true
+    },
+    {
+      "name": "threshold",
+      "type": "float",
+      "optional": true,
+      "default": 0.4,
+      "flag": "--threshold",
+      "short_flag": "-t",
+      "action": "store",
+      "help": "Score threshold for images to keep.",
+      "ui_exposed": true
+    }
+  ]
+}

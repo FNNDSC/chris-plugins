@@ -1,0 +1,65 @@
+{
+  "name": "pl-smoothness-error",
+  "version": "2.0.2",
+  "dock_image": "ghcr.io/fnndsc/pl-smoothness-error:2.0.2",
+  "public_repo": "https://github.com/FNNDSC/pl-smoothness-error",
+  "type": "ds",
+  "title": "Surface Smoothness Error",
+  "category": "Surface Extraction",
+  "description": "Calculate smoothness error (difference in curvature between neighbor vertices) for surfaces.",
+  "documentation": "https://github.com/FNNDSC/pl-smoothness-error",
+  "license": "MIT",
+  "authors": "Jennings Zhang <Jennings.Zhang@childrens.harvard.edu>",
+  "execshell": "/opt/conda/bin/python3.11",
+  "selfpath": "/opt/conda/bin",
+  "selfexec": "smtherr",
+  "max_number_of_workers": 1,
+  "min_memory_limit": "100Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "pattern",
+      "type": "str",
+      "optional": true,
+      "default": "**/*.obj",
+      "flag": "--pattern",
+      "short_flag": "-p",
+      "action": "store",
+      "help": "pattern for surface file names to include",
+      "ui_exposed": true
+    },
+    {
+      "name": "output_suffix",
+      "type": "str",
+      "optional": true,
+      "default": ".smtherr.txt",
+      "flag": "--output-suffix",
+      "short_flag": "-o",
+      "action": "store",
+      "help": "suffix for output files",
+      "ui_exposed": true
+    },
+    {
+      "name": "quiet",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--quiet",
+      "short_flag": "-q",
+      "action": "store_true",
+      "help": "disable status messages",
+      "ui_exposed": true
+    },
+    {
+      "name": "no_fail",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--no-fail",
+      "short_flag": "--no-fail",
+      "action": "store_true",
+      "help": "do not produce non-zero exit status on failures",
+      "ui_exposed": true
+    }
+  ]
+}

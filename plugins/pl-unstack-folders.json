@@ -1,0 +1,21 @@
+{
+  "name": "pl-unstack-folders",
+  "version": "1.0.0",
+  "dock_image": "ghcr.io/fnndsc/pl-unstack-folders:1.0.0",
+  "public_repo": "https://github.com/FNNDSC/pl-unstack-folders",
+  "type": "ds",
+  "title": "Unstack Folders",
+  "category": "",
+  "description": "Copy deeply nested files to the base level",
+  "documentation": "https://github.com/FNNDSC/pl-unstack-folders",
+  "license": "MIT",
+  "icon": "",
+  "authors": "FNNDSC <dev@babyMRI.org>",
+  "execshell": "/usr/local/bin/python",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "unstack",
+  "max_number_of_workers": 1,
+  "min_memory_limit": "100Mi",
+  "max_gpu_limit": 0,
+  "parameters": []
+}

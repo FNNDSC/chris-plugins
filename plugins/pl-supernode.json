@@ -1,0 +1,76 @@
+{
+  "name": "pl-supernode",
+  "version": "0.1.7",
+  "dock_image": "ghcr.io/fnndsc/pl-supernode:0.1.7",
+  "public_repo": "https://github.com/fnndsc/pl-supernode",
+  "type": "ds",
+  "title": "FedMed Flower SuperNode",
+  "category": "Federated Learning",
+  "description": "Flower client ChRIS plugin used in the FedMed demo",
+  "documentation": "https://github.com/FNNDSC/pl-supernode",
+  "license": "MIT",
+  "authors": "FedMed BU Team <rpsmith@bu.edu>",
+  "execshell": "/usr/local/bin/python",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "fedmed-pl-supernode",
+  "max_number_of_workers": 1,
+  "min_memory_limit": "4096Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "cid",
+      "type": "int",
+      "optional": true,
+      "default": 0,
+      "flag": "--cid",
+      "short_flag": "--cid",
+      "action": "store",
+      "help": "client id (partition id)",
+      "ui_exposed": true
+    },
+    {
+      "name": "total_clients",
+      "type": "int",
+      "optional": true,
+      "default": 3,
+      "flag": "--total-clients",
+      "short_flag": "--total-clients",
+      "action": "store",
+      "help": "logical clients",
+      "ui_exposed": true
+    },
+    {
+      "name": "superlink_host",
+      "type": "str",
+      "optional": true,
+      "default": "fedmed-pl-superlink",
+      "flag": "--superlink-host",
+      "short_flag": "--superlink-host",
+      "action": "store",
+      "help": "SuperLink host/IP",
+      "ui_exposed": true
+    },
+    {
+      "name": "data_seed",
+      "type": "int",
+      "optional": true,
+      "default": 13,
+      "flag": "--data-seed",
+      "short_flag": "--data-seed",
+      "action": "store",
+      "help": "seed for synthetic data partitioning",
+      "ui_exposed": true
+    },
+    {
+      "name": "json",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--json",
+      "short_flag": "--json",
+      "action": "store_true",
+      "help": "==SUPPRESS==",
+      "ui_exposed": true
+    }
+  ]
+}

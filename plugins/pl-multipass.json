@@ -1,0 +1,86 @@
+{
+  "name": "pl-multipass",
+  "version": "1.3.6",
+  "dock_image": "ghcr.io/fnndsc/pl-multipass:1.3.6",
+  "public_repo": "https://github.com/FNNDSC/pl-multipass",
+  "type": "ds",
+  "title": "multipass",
+  "description": "An app to make multiple passes or runs of a certain Python Utility with different args",
+  "documentation": "https://github.com/FNNDSC/pl-multipass",
+  "license": "MIT",
+  "authors": "FNNDSC/ArushiVyas <dev@babyMRI.org>",
+  "execshell": "/usr/local/bin/python",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "multipass",
+  "max_number_of_workers": 1,
+  "min_memory_limit": "2048Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "commonArgs",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--commonArgs",
+      "short_flag": "--commonArgs",
+      "action": "store",
+      "help": "Arguments common to each pass",
+      "ui_exposed": true
+    },
+    {
+      "name": "specificArgs",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--specificArgs",
+      "short_flag": "--specificArgs",
+      "action": "store",
+      "help": "Compound string of pass specific args",
+      "ui_exposed": true
+    },
+    {
+      "name": "splitExpr",
+      "type": "str",
+      "optional": true,
+      "default": "++",
+      "flag": "--splitExpr",
+      "short_flag": "--splitExpr",
+      "action": "store",
+      "help": "Expression on which to split the <specificArgs>",
+      "ui_exposed": true
+    },
+    {
+      "name": "exec",
+      "type": "str",
+      "optional": true,
+      "default": "pfdo_mgz2image",
+      "flag": "--exec",
+      "short_flag": "-e",
+      "action": "store",
+      "help": "DS app to run",
+      "ui_exposed": true
+    },
+    {
+      "name": "noJobLogging",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--noJobLogging",
+      "short_flag": "--noJobLogging",
+      "action": "store_true",
+      "help": "Turn off per-job logging to file system",
+      "ui_exposed": true
+    },
+    {
+      "name": "verbose",
+      "type": "str",
+      "optional": true,
+      "default": "1",
+      "flag": "--verbose",
+      "short_flag": "--verbose",
+      "action": "store",
+      "help": "verbosity level for app",
+      "ui_exposed": true
+    }
+  ]
+}

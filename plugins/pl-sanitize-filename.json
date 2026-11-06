@@ -1,0 +1,21 @@
+{
+  "name": "pl-sanitize-filename",
+  "version": "0.1.4",
+  "dock_image": "ghcr.io/fnndsc/pl-sanitize-filename:0.1.4",
+  "public_repo": "https://github.com/fnndsc/pl-sanitize-filename",
+  "type": "ds",
+  "title": "sanitize filenames",
+  "category": "",
+  "description": "A ChRIS DS plugin template",
+  "documentation": "https://github.com/FNNDSC/python-chrisapp-template",
+  "license": "MIT",
+  "icon": "",
+  "authors": "FNNDSC <dev@babyMRI.org>",
+  "execshell": "/usr/local/bin/python",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "commandname",
+  "max_number_of_workers": 1,
+  "min_memory_limit": "100Mi",
+  "max_gpu_limit": 0,
+  "parameters": []
+}

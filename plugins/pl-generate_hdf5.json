@@ -1,0 +1,107 @@
+{
+  "name": "pl-generate_hdf5",
+  "version": "0.1",
+  "dock_image": "docker.io/fnndsc/pl-generate_hdf5:latest",
+  "public_repo": "https://github.com/FNNDSC/pl-generate_hdf5",
+  "type": "ds",
+  "title": "A training data set generation app",
+  "description": "An app to convert original and segmented brain images in mgz format to .hdf5 format in axial, sagittal, and coronal plane",
+  "documentation": "http://wiki",
+  "license": "Opensource (MIT)",
+  "authors": "Sandip Samal (sandip.samal@childrens.harvard.edu)",
+  "execshell": "python3",
+  "selfpath": "/usr/src/generate_hdf5",
+  "selfexec": "generate_hdf5.py",
+  "max_number_of_workers": 1,
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "dataset_name",
+      "type": "str",
+      "optional": true,
+      "default": "testsuite_2.hdf5",
+      "flag": "--hdf5_name",
+      "short_flag": "--hdf5_name",
+      "action": "store",
+      "help": "path and name of hdf5-dataset (default: testsuite_2.hdf5)",
+      "ui_exposed": true
+    },
+    {
+      "name": "plane",
+      "type": "str",
+      "optional": true,
+      "default": "axial",
+      "flag": "--plane",
+      "short_flag": "--plane",
+      "action": "store",
+      "help": "Which plane to put into file (axial (default), coronal or sagittal)",
+      "ui_exposed": true
+    },
+    {
+      "name": "height",
+      "type": "int",
+      "optional": true,
+      "default": 256,
+      "flag": "--height",
+      "short_flag": "--height",
+      "action": "store",
+      "help": "Height of Image (Default 256)",
+      "ui_exposed": true
+    },
+    {
+      "name": "height",
+      "type": "int",
+      "optional": true,
+      "default": 256,
+      "flag": "--width",
+      "short_flag": "--width",
+      "action": "store",
+      "help": "Width of Image (Default 256)",
+      "ui_exposed": true
+    },
+    {
+      "name": "slice_thickness",
+      "type": "int",
+      "optional": true,
+      "default": 3,
+      "flag": "--thickness",
+      "short_flag": "--thickness",
+      "action": "store",
+      "help": "Number of pre- and succeeding slices (default: 3)",
+      "ui_exposed": true
+    },
+    {
+      "name": "pattern",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--pattern",
+      "short_flag": "--pattern",
+      "action": "store",
+      "help": "Pattern to match files in directory.",
+      "ui_exposed": true
+    },
+    {
+      "name": "image_name",
+      "type": "str",
+      "optional": true,
+      "default": "mri/orig.mgz",
+      "flag": "--image_name",
+      "short_flag": "--image_name",
+      "action": "store",
+      "help": "Default name of original images. FreeSurfer orig.mgz is default (mri/orig.mgz)",
+      "ui_exposed": true
+    },
+    {
+      "name": "gt_name",
+      "type": "str",
+      "optional": true,
+      "default": "mri/aparc.DKTatlas+aseg.mgz",
+      "flag": "--gt_name",
+      "short_flag": "--gt_name",
+      "action": "store",
+      "help": "Default name for ground truth segmentations. Default: mri/aparc.DKTatlas+aseg.mgz. If Corpus Callosum segmentation is already removed, do not set gt_nocc. (e.g. for our internal training set mri/aparc.DKTatlas+aseg.filled.mgz exists already and should be used here instead of mri/aparc.DKTatlas+aseg.mgz). ",
+      "ui_exposed": true
+    }
+  ]
+}

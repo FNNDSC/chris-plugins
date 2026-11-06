@@ -1,0 +1,30 @@
+{
+  "name": "pl-pacscopy",
+  "version": "1.0.4",
+  "dock_image": "docker.io/fnndsc/pl-pacscopy:latest",
+  "public_repo": "https://github.com/FNNDSC/pl-pacscopy",
+  "type": "fs",
+  "title": "PACS copy ",
+  "category": "PACS",
+  "description": "This is a simple application that is really just the `dircopy` plugin with a new name.",
+  "documentation": "http://wiki",
+  "license": "Opensource (MIT)",
+  "authors": "FNNDSC (dev@babyMRI.org)",
+  "execshell": "python3",
+  "selfpath": "/usr/src/pacscopy",
+  "selfexec": "pacscopy.py",
+  "max_number_of_workers": 1,
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "dir",
+      "type": "path",
+      "optional": false,
+      "default": null,
+      "flag": "--dir",
+      "action": "store",
+      "help": "directory in PACS openstorage to be copied",
+      "ui_exposed": true
+    }
+  ]
+}

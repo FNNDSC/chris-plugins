@@ -1,0 +1,54 @@
+{
+  "name": "pl-bulk-rename",
+  "version": "0.1.2",
+  "dock_image": "ghcr.io/fnndsc/pl-bulk-rename:0.1.2",
+  "public_repo": "https://github.com/FNNDSC/pl-bulk-rename",
+  "type": "ds",
+  "title": "Bulk Rename",
+  "category": "Utility",
+  "description": "A ChRIS plugin to rename paths using regex",
+  "documentation": "https://github.com/FNNDSC/pl-bulk-rename",
+  "license": "MIT",
+  "icon": "",
+  "authors": "FNNDSC <dev@babyMRI.org>",
+  "execshell": "/docker-entrypoint.sh",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "bulkrename",
+  "max_number_of_workers": 1,
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "filter",
+      "type": "str",
+      "optional": false,
+      "default": null,
+      "flag": "--filter",
+      "short_flag": "-f",
+      "action": "store",
+      "help": "Input path filter. Paths which do not match this regex are excluded.",
+      "ui_exposed": true
+    },
+    {
+      "name": "expression",
+      "type": "str",
+      "optional": false,
+      "default": null,
+      "flag": "--expression",
+      "short_flag": "-e",
+      "action": "store",
+      "help": "Regular expression to match paths. See https://docs.rs/regex/1.5.5/regex/#syntax",
+      "ui_exposed": true
+    },
+    {
+      "name": "replacement",
+      "type": "str",
+      "optional": false,
+      "default": null,
+      "flag": "--replace",
+      "short_flag": "-r",
+      "action": "store",
+      "help": "Replacement string with capture groups. See https://docs.rs/regex/1.5.5/regex/#grouping-and-flags",
+      "ui_exposed": true
+    }
+  ]
+}

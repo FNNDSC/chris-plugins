@@ -1,0 +1,121 @@
+{
+  "name": "pl-dcm2niix",
+  "version": "2.0.0",
+  "dock_image": "ghcr.io/fnndsc/pl-dcm2niix:2.0.0",
+  "public_repo": "https://github.com/fnndsc/pl-dcm2niix",
+  "type": "ds",
+  "title": "dcm2niix",
+  "category": "MRI Processing",
+  "description": "DICOM to NIFTI conversion",
+  "documentation": "https://github.com/FNNDSC/pl-dcm2niix/blob/v2.0.0/README.md",
+  "license": "MIT",
+  "icon": "",
+  "authors": "None <Jennings Zhang <jennings.zhang@childrens.harvard.edu>>",
+  "execshell": "/opt/conda-env/bin/python3.14",
+  "selfpath": "/opt/conda-env/bin",
+  "selfexec": "dcm2niixw",
+  "max_number_of_workers": 1,
+  "min_memory_limit": "2048Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "dcmdjpeg",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--dcmdjpeg",
+      "short_flag": "-j",
+      "action": "store_true",
+      "help": "Pre-process with dcmdjpeg to decode JPEG-compressed DICOM files",
+      "ui_exposed": true
+    },
+    {
+      "name": "b",
+      "type": "str",
+      "optional": true,
+      "default": "y",
+      "flag": "-b",
+      "short_flag": "-b",
+      "action": "store",
+      "help": "BIDS sidecar [choices: y, n, o]",
+      "ui_exposed": true
+    },
+    {
+      "name": "c",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "-c",
+      "short_flag": "-c",
+      "action": "store",
+      "help": "comment stored in NIfTI aux_file (up to 24 characters)",
+      "ui_exposed": true
+    },
+    {
+      "name": "d",
+      "type": "int",
+      "optional": true,
+      "default": 5,
+      "flag": "-d",
+      "short_flag": "-d",
+      "action": "store",
+      "help": "directory search depth. Convert DICOMs in sub-folders of in_folder? [choices: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9]",
+      "ui_exposed": true
+    },
+    {
+      "name": "f",
+      "type": "str",
+      "optional": true,
+      "default": "%p_%t_%s",
+      "flag": "-f",
+      "short_flag": "-f",
+      "action": "store",
+      "help": "filename (%%a=antenna (coil) name, %%b=basename, %%c=comments, %%d=description, %%e=echo number, %%f=folder name, %%g=accession number, %%i=ID of patient, %%j=seriesInstanceUID, %%k=studyInstanceUID, %%m=manufacturer, %%n=name of patient, %%o=mediaObjectInstanceUID, %%p=protocol, %%r=instance number, %%s=series number, %%t=time, %%u=acquisition number, %%v=vendor, %%x=study ID; %%z=sequence name;)",
+      "ui_exposed": true
+    },
+    {
+      "name": "m",
+      "type": "str",
+      "optional": true,
+      "default": "2",
+      "flag": "-m",
+      "short_flag": "-m",
+      "action": "store",
+      "help": "merge 2D slices from same series regardless of echo, exposure, etc. [no, yes, auto] [choices: n, y, 0, 1, 2]",
+      "ui_exposed": true
+    },
+    {
+      "name": "v",
+      "type": "str",
+      "optional": true,
+      "default": "0",
+      "flag": "-v",
+      "short_flag": "-v",
+      "action": "store",
+      "help": "verbose [no, yes, logorrheic] [choices: n, y, 0, 1, 2]",
+      "ui_exposed": true
+    },
+    {
+      "name": "x",
+      "type": "str",
+      "optional": true,
+      "default": "n",
+      "flag": "-x",
+      "short_flag": "-x",
+      "action": "store",
+      "help": "crop 3D acquisitions [choices: y, n, i]",
+      "ui_exposed": true
+    },
+    {
+      "name": "z",
+      "type": "str",
+      "optional": true,
+      "default": "n",
+      "flag": "-z",
+      "short_flag": "-z",
+      "action": "store",
+      "help": "gz compress images [y=pigz, o=optimal pigz, i=internal:miniz, n=no, 3=no,3D] [choices: y, o, i, n, 3]",
+      "ui_exposed": true
+    }
+  ]
+}

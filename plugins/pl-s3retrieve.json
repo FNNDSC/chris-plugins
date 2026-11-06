@@ -1,0 +1,63 @@
+{
+  "name": "pl-s3retrieve",
+  "version": "1.0.1",
+  "dock_image": "ghcr.io/fnndsc/pl-s3retrieve:1.0.1",
+  "public_repo": "https://github.com/FNNDSC/pl-s3retrieve",
+  "type": "ds",
+  "title": "S3 Retrieve",
+  "description": "An app to retrieve data of interest from Amazon S3 service",
+  "documentation": "http://wiki",
+  "license": "MIT",
+  "authors": "FNNDSC <dev@babyMRI.org>",
+  "execshell": "/usr/local/bin/python",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "s3retrieve",
+  "max_number_of_workers": 1,
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "bucket",
+      "type": "str",
+      "optional": false,
+      "default": null,
+      "flag": "--bucket",
+      "short_flag": "--bucket",
+      "action": "store",
+      "help": "name of the Amazon S3 bucket",
+      "ui_exposed": true
+    },
+    {
+      "name": "prefix",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--prefix",
+      "short_flag": "--prefix",
+      "action": "store",
+      "help": "retrieve directory/file prefix path in s3",
+      "ui_exposed": true
+    },
+    {
+      "name": "awskeyid",
+      "type": "str",
+      "optional": false,
+      "default": null,
+      "flag": "--awskeyid",
+      "short_flag": "--awskeyid",
+      "action": "store",
+      "help": "aws access key id",
+      "ui_exposed": true
+    },
+    {
+      "name": "awssecretkey",
+      "type": "str",
+      "optional": false,
+      "default": null,
+      "flag": "--awssecretkey",
+      "short_flag": "--awssecretkey",
+      "action": "store",
+      "help": "aws secret access key",
+      "ui_exposed": true
+    }
+  ]
+}

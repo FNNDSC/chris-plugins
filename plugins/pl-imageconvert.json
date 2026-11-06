@@ -1,0 +1,63 @@
+{
+  "name": "pl-imageconvert",
+  "version": "0.1",
+  "dock_image": "docker.io/fnndsc/pl-imageconvert:latest",
+  "public_repo": "https://github.com/FNNDSC/pl-imageconvert",
+  "type": "ds",
+  "title": "A ChRIS plugin app that acts as a Python wrapper around Linux CLI \"convert\" which works as an entrypoint around the Linux image processing ImageMagick.",
+  "description": "An app to ...",
+  "documentation": "http://wiki",
+  "license": "Opensource (MIT)",
+  "authors": "FNNDSC (dev@babyMRI.org)",
+  "execshell": "python3",
+  "selfpath": "/usr/src/imageconvert",
+  "selfexec": "imageconvert.py",
+  "max_number_of_workers": 1,
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "inputFile",
+      "type": "str",
+      "optional": false,
+      "default": null,
+      "flag": "--inputFile",
+      "short_flag": "-i",
+      "action": "store",
+      "help": "name of the input file within the inputDir",
+      "ui_exposed": true
+    },
+    {
+      "name": "outputFile",
+      "type": "str",
+      "optional": true,
+      "default": "sample",
+      "flag": "--outputFile",
+      "short_flag": "-o",
+      "action": "store",
+      "help": "output file",
+      "ui_exposed": true
+    },
+    {
+      "name": "args",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--args",
+      "short_flag": "-a",
+      "action": "store",
+      "help": "medcon arguments to pass",
+      "ui_exposed": true
+    },
+    {
+      "name": "synopsis",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--synopsis",
+      "short_flag": "-y",
+      "action": "store_true",
+      "help": "short synopsis",
+      "ui_exposed": true
+    }
+  ]
+}

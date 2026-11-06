@@ -1,0 +1,20 @@
+{
+  "name": "pl-cookie_taste",
+  "version": "1.0.0",
+  "dock_image": "ghcr.io/fnndsc/pl-cookie_taste:1.0.0",
+  "public_repo": "https://github.com/FNNDSC/pl-cookie_taste",
+  "type": "fs",
+  "title": "A test cookiecutter app",
+  "description": "A simple plugin to demonstrate a working plugin from cookiecutter-chrisapp",
+  "documentation": "http://wiki",
+  "license": "MIT",
+  "authors": "FNNDSC <dev@babyMRI.org>",
+  "execshell": "/usr/local/bin/python",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "cookie_taste",
+  "max_number_of_workers": 1,
+  "min_cpu_limit": "2000m",
+  "min_memory_limit": "8000Mi",
+  "max_gpu_limit": 0,
+  "parameters": []
+}

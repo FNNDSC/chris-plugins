@@ -1,0 +1,54 @@
+{
+  "name": "pl-img2dcm",
+  "version": "1.2.2",
+  "dock_image": "ghcr.io/fnndsc/pl-img2dcm:1.2.2",
+  "public_repo": "https://github.com/FNNDSC/pl-img2dcm",
+  "type": "ds",
+  "title": "An image to DICOM converter",
+  "description": "An app to convert an input image to a DICOM file",
+  "documentation": "http://wiki",
+  "license": "MIT",
+  "authors": "FNNDSC <dev@babyMRI.org>",
+  "execshell": "/usr/local/bin/python",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "img2dcm",
+  "max_number_of_workers": 1,
+  "min_cpu_limit": "2000m",
+  "min_memory_limit": "8000Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "inputImageFilter",
+      "type": "str",
+      "optional": true,
+      "default": "**/*.png",
+      "flag": "--inputImageFilter",
+      "short_flag": "-i",
+      "action": "store",
+      "help": "Input image file filter",
+      "ui_exposed": true
+    },
+    {
+      "name": "inputDCMFilter",
+      "type": "str",
+      "optional": true,
+      "default": "**/*.dcm",
+      "flag": "--inputDCMFilter",
+      "short_flag": "-d",
+      "action": "store",
+      "help": "Input dicom file filter",
+      "ui_exposed": true
+    },
+    {
+      "name": "pftelDB",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--pftelDB",
+      "short_flag": "--pftelDB",
+      "action": "store",
+      "help": "optional pftel server DB path",
+      "ui_exposed": true
+    }
+  ]
+}

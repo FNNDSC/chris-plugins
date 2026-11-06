@@ -1,0 +1,63 @@
+{
+  "name": "pl-surfaces-fetus",
+  "version": "1.0",
+  "dock_image": "docker.io/fnndsc/pl-surfaces-fetus:1.0",
+  "public_repo": "https://github.com/FNNDSC/pl-surfaces-fetus",
+  "type": "ds",
+  "title": "Surface extraction for fetal brain MRI",
+  "description": "Extract surfaces (.obj) for the subplate zone from pre-segmented fetal brain MRI volume (.mnc) using CIVET marching-cubes and surface_fit",
+  "documentation": "https://fnndsc.childrens.harvard.edu/conferences/2020/OHBM/Jennings/Jennings_Zhang_OHBM_2020_Subplace_Surfaces.pdf",
+  "license": "Opensource (MIT)",
+  "authors": "Jennings Zhang <Jennings.Zhang@childrens.harvard.edu>",
+  "execshell": "python3",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "surfaces_fetus",
+  "max_number_of_workers": 1,
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "age",
+      "type": "float",
+      "optional": false,
+      "default": null,
+      "flag": "--age",
+      "short_flag": "--age",
+      "action": "store",
+      "help": "gestational age estimate in weeks",
+      "ui_exposed": true
+    },
+    {
+      "name": "side",
+      "type": "str",
+      "optional": false,
+      "default": null,
+      "flag": "--side",
+      "short_flag": "--side",
+      "action": "store",
+      "help": "brain hemisphere [left, right]",
+      "ui_exposed": true
+    },
+    {
+      "name": "keep",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--keep-intermediate",
+      "short_flag": "--keep-intermediate",
+      "action": "store_true",
+      "help": "keep intermediate files (e.g. *mask.mnc, *chanfer.mnc)",
+      "ui_exposed": true
+    },
+    {
+      "name": "qc",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--qc",
+      "short_flag": "--qc",
+      "action": "store_true",
+      "help": "save surface_fit logs and produce vertex-wise quality check files",
+      "ui_exposed": true
+    }
+  ]
+}

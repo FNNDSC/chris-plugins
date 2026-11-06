@@ -1,0 +1,42 @@
+{
+  "name": "pl-radial-distance-map",
+  "version": "1.0.0",
+  "dock_image": "ghcr.io/fnndsc/pl-radial-distance-map:1.0.0",
+  "type": "ds",
+  "title": "Radial Distance Map",
+  "category": "MRI Processing",
+  "description": "Bi-directional mincchamfer",
+  "documentation": "https://github.com/FNNDSC/pl-radial-distance-map",
+  "license": "MIT",
+  "authors": "Jennings Zhang <Jennings.Zhang@childrens.harvard.edu>",
+  "execshell": "/opt/conda/bin/python3.11",
+  "selfpath": "/opt/conda/bin",
+  "selfexec": "bichamfer",
+  "max_number_of_workers": 1,
+  "min_memory_limit": "1024Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "pattern",
+      "type": "str",
+      "optional": true,
+      "default": "**/*.mnc",
+      "flag": "--pattern",
+      "short_flag": "-p",
+      "action": "store",
+      "help": "input file filter glob",
+      "ui_exposed": true
+    },
+    {
+      "name": "boundary",
+      "type": "float",
+      "optional": true,
+      "default": 10.0,
+      "flag": "--boundary",
+      "short_flag": "-b",
+      "action": "store",
+      "help": "boundary distance 0 value",
+      "ui_exposed": true
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "name": "pl-mri-preview",
+  "version": "1.2.2",
+  "dock_image": "ghcr.io/fnndsc/pl-mri-preview:1.2.2",
+  "public_repo": "https://github.com/FNNDSC/pl-mri-preview",
+  "type": "ds",
+  "title": "Brain Volume",
+  "category": "MRI",
+  "description": "A ChRIS plugin to preview the center slices of MRI",
+  "documentation": "https://github.com/FNNDSC/pl-mri-preview",
+  "license": "MIT",
+  "authors": "Jennings Zhang <Jennings.Zhang@childrens.harvard.edu>",
+  "execshell": "/opt/conda/bin/python3.1",
+  "selfpath": "/opt/conda/bin",
+  "selfexec": "mri_preview",
+  "max_number_of_workers": 1,
+  "min_memory_limit": "500Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "background",
+      "type": "float",
+      "optional": true,
+      "default": 0.0,
+      "flag": "--background",
+      "short_flag": "-b",
+      "action": "store",
+      "help": "threshold indicating background voxels",
+      "ui_exposed": true
+    },
+    {
+      "name": "inputs",
+      "type": "str",
+      "optional": true,
+      "default": ".nii,.nii.gz,.mnc,.mgz",
+      "flag": "--inputs",
+      "short_flag": "-i",
+      "action": "store",
+      "help": "file extension of input files, comma-separated",
+      "ui_exposed": true
+    },
+    {
+      "name": "outputs",
+      "type": "str",
+      "optional": true,
+      "default": ".png,.txt",
+      "flag": "--outputs",
+      "short_flag": "-o",
+      "action": "store",
+      "help": "output file extensions, comma-separated",
+      "ui_exposed": true
+    },
+    {
+      "name": "units_fallback",
+      "type": "str",
+      "optional": true,
+      "default": "unknown",
+      "flag": "--units-fallback",
+      "short_flag": "-u",
+      "action": "store",
+      "help": "voxel size units for file formats where units are unknown",
+      "ui_exposed": true
+    }
+  ]
+}

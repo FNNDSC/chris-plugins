@@ -1,0 +1,100 @@
+{
+  "name": "pl-lld_inference",
+  "version": "2.2.23",
+  "dock_image": "ghcr.io/fnndsc/pl-lld_inference:2.2.23",
+  "public_repo": "https://github.com/FNNDSC/pl-lld_inference",
+  "type": "ds",
+  "title": "A ChRIS plugin that runs an inference model to predict landmark points on leg images",
+  "category": "",
+  "description": "An app to run LLD inference",
+  "documentation": "https://github.com/FNNDSC/pl-lld_inference#readme",
+  "license": "MIT",
+  "icon": "",
+  "authors": "FNNDSC <dev@babyMRI.org>",
+  "execshell": "/opt/conda/bin/python3.7",
+  "selfpath": "/opt/conda/bin",
+  "selfexec": "lld_inference",
+  "max_number_of_workers": 1,
+  "min_cpu_limit": "3000m",
+  "min_memory_limit": "8000Mi",
+  "max_gpu_limit": 1,
+  "parameters": [
+    {
+      "name": "inputFileFilter",
+      "type": "str",
+      "optional": true,
+      "default": "**/*.mha",
+      "flag": "--inputFileFilter",
+      "short_flag": "-f",
+      "action": "store",
+      "help": "Input file filter",
+      "ui_exposed": true
+    },
+    {
+      "name": "heatmapThreshold",
+      "type": "str",
+      "optional": true,
+      "default": "0.5",
+      "flag": "--heatmapThreshold",
+      "short_flag": "--heatmapThreshold",
+      "action": "store",
+      "help": "fractional heatmap threshold",
+      "ui_exposed": true
+    },
+    {
+      "name": "compositeWeight",
+      "type": "str",
+      "optional": true,
+      "default": "0.3,0.7",
+      "flag": "--compositeWeight",
+      "short_flag": "--compositeWeight",
+      "action": "store",
+      "help": "heatmap-over-reference weighting",
+      "ui_exposed": true
+    },
+    {
+      "name": "heatmapKernel",
+      "type": "str",
+      "optional": true,
+      "default": "7",
+      "flag": "--heatmapKernel",
+      "short_flag": "--heatmapKernel",
+      "action": "store",
+      "help": "size of heatmap kernel in reference space",
+      "ui_exposed": true
+    },
+    {
+      "name": "imageType",
+      "type": "str",
+      "optional": true,
+      "default": "jpg",
+      "flag": "--imageType",
+      "short_flag": "--imageType",
+      "action": "store",
+      "help": "output image type",
+      "ui_exposed": true
+    },
+    {
+      "name": "modelType",
+      "type": "str",
+      "optional": true,
+      "default": "lld",
+      "flag": "--modelType",
+      "short_flag": "--modelType",
+      "action": "store",
+      "help": "select which model to use for inference: 1) lld 2) vv",
+      "ui_exposed": true
+    },
+    {
+      "name": "pftelDB",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--pftelDB",
+      "short_flag": "--pftelDB",
+      "action": "store",
+      "help": "optional pftel server DB path",
+      "ui_exposed": true
+    }
+  ]
+}

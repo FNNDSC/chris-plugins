@@ -1,0 +1,29 @@
+{
+  "name": "pl-git-clone",
+  "version": "1.0.0",
+  "dock_image": "docker.io/fnndsc/pl-git-clone:1.0.0",
+  "type": "fs",
+  "title": "Git Clone",
+  "description": "A ChRIS fs plugin for git clone",
+  "documentation": "https://github.com/FNNDSC/chris_plugin/tree/master/examples/pl-git-clone",
+  "license": "MIT",
+  "authors": "FNNDSC <dev@babyMRI.org>",
+  "execshell": "/usr/local/bin/python",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "git_clone_wrapper",
+  "max_number_of_workers": 1,
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "repo",
+      "type": "str",
+      "optional": false,
+      "default": null,
+      "flag": "--repo",
+      "short_flag": "-r",
+      "action": "store",
+      "help": "repository URI",
+      "ui_exposed": true
+    }
+  ]
+}

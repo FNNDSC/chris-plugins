@@ -1,0 +1,89 @@
+{
+  "name": "pl-fshack",
+  "version": "1.5.0",
+  "dock_image": "ghcr.io/fnndsc/pl-fshack:1.5.0",
+  "public_repo": "https://github.com/FNNDSC/pl-fshack",
+  "type": "ds",
+  "title": "A quick-n-dirty attempt at hacking a FreeSurfer ChRIS plugin",
+  "category": "",
+  "description": "This app houses a complete FreeSurfer distro and exposes some\n        FreeSurfer apps at the level of the plugin CLI.'",
+  "documentation": "https://github.com/FNNDSC/pl-fshack",
+  "license": "Opensource (MIT)",
+  "icon": "",
+  "authors": "FNNDSC (dev@babyMRI.org)",
+  "execshell": "python3",
+  "selfpath": "/usr/src/fshack",
+  "selfexec": "fshack.py",
+  "max_number_of_workers": 1,
+  "min_cpu_limit": "3000m",
+  "min_memory_limit": "16384Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "args",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--args",
+      "short_flag": "-a",
+      "action": "store",
+      "help": "FS arguments to pass",
+      "ui_exposed": true
+    },
+    {
+      "name": "exec",
+      "type": "str",
+      "optional": true,
+      "default": "recon-all",
+      "flag": "--exec",
+      "short_flag": "-e",
+      "action": "store",
+      "help": "FS app to run",
+      "ui_exposed": true
+    },
+    {
+      "name": "inputFile",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--inputFile",
+      "short_flag": "-i",
+      "action": "store",
+      "help": "input file (use .<ext> to find and use the first file with that extension)",
+      "ui_exposed": true
+    },
+    {
+      "name": "outputFile",
+      "type": "str",
+      "optional": true,
+      "default": "run",
+      "flag": "--outputFile",
+      "short_flag": "-o",
+      "action": "store",
+      "help": "output file",
+      "ui_exposed": true
+    },
+    {
+      "name": "no_fail",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--no-fail",
+      "short_flag": "-F",
+      "action": "store_true",
+      "help": "ignore return code of FS subprocesses and always produce a 0 exit code",
+      "ui_exposed": true
+    },
+    {
+      "name": "threads",
+      "type": "int",
+      "optional": true,
+      "default": 3,
+      "flag": "--threads",
+      "short_flag": "-t",
+      "action": "store",
+      "help": "maximum number of parallel FS programs to run simultaneously. The special value 0 means to automatically optimize based on available CPU and memory.",
+      "ui_exposed": true
+    }
+  ]
+}

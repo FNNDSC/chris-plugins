@@ -1,0 +1,121 @@
+{
+  "name": "pl-notification",
+  "version": "0.1.0",
+  "dock_image": "ghcr.io/fnndsc/pl-notification:0.1.0",
+  "public_repo": "https://github.com/FNNDSC/pl-notification",
+  "type": "ds",
+  "title": "A ChRIS plugin for notification through mail / Slack / Element",
+  "category": "",
+  "description": "A ChRIS Plugin for notification through mail / Slack / Element",
+  "documentation": "",
+  "license": "MIT",
+  "icon": "",
+  "authors": "FNNDSC <dev@babyMRI.org>",
+  "execshell": "/usr/local/bin/python",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "notification",
+  "max_number_of_workers": 1,
+  "min_memory_limit": "500Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "content",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--content",
+      "short_flag": "-c",
+      "action": "store",
+      "help": "Content of the notification. Optionally specified in [inputdir]/.notification.yaml if not specified in argument.",
+      "ui_exposed": true
+    },
+    {
+      "name": "title",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--title",
+      "short_flag": "-t",
+      "action": "store",
+      "help": "[Optional] Title of the notification. Optionally specified in [inputdir]/.notification.yaml if not specified in argument.",
+      "ui_exposed": true
+    },
+    {
+      "name": "slack_url",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--slack-url",
+      "short_flag": "-s",
+      "action": "store",
+      "help": "[Optional] slack-url if we want to send notification through Slack. Optionally specified in [inputdir]/.notification.yaml if not specified in argument.",
+      "ui_exposed": true
+    },
+    {
+      "name": "element_room",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--element-room",
+      "short_flag": "-e",
+      "action": "store",
+      "help": "[Optional] element-room (ex: ![room-id]:fedora.im) if we want to send notification through Element. Optionally specified in [inputdir]/.notification.yaml if not specified in argument.",
+      "ui_exposed": true
+    },
+    {
+      "name": "element_token",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--element-token",
+      "short_flag": "-E",
+      "action": "store",
+      "help": "[Optional] element-token if we want to send notification through Element. Required if element-url exists. Optionally specified in [inputdir]/.notification.yaml if not specified in argument.",
+      "ui_exposed": true
+    },
+    {
+      "name": "element_host",
+      "type": "str",
+      "optional": true,
+      "default": "fedora.ems.host",
+      "flag": "--element-host",
+      "short_flag": "--element-host",
+      "action": "store",
+      "help": "[Optional] element-host if we want to send notification through Element. [inputdir]/.notification.yaml is with higher priority than command-line based config.",
+      "ui_exposed": true
+    },
+    {
+      "name": "rcpt",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--rcpt",
+      "short_flag": "-r",
+      "action": "store",
+      "help": "[Optional] comma separated email receipients if we want to send notification through email. Optionally specified in [inputdir]/.notification.yaml if not specified in argument.",
+      "ui_exposed": true
+    },
+    {
+      "name": "sender",
+      "type": "str",
+      "optional": true,
+      "default": "noreply@fnndsc.org",
+      "flag": "--sender",
+      "short_flag": "-S",
+      "action": "store",
+      "help": "sender (From) in email. [inputdir]/.notification.yaml is with higher priority than command-line based config.",
+      "ui_exposed": true
+    },
+    {
+      "name": "mail_server",
+      "type": "str",
+      "optional": true,
+      "default": "postfix.postfix.svc.k8s.galena.fnndsc",
+      "flag": "--mail-server",
+      "short_flag": "-M",
+      "action": "store",
+      "help": "email server. [inputdir]/.notification.yaml is with higher priority than command-line based config.",
+      "ui_exposed": true
+    }
+  ]
+}

@@ -21,6 +21,7 @@ schema/plugin.schema.json   what a descriptor may contain
 A file in `plugins/` is exactly what CUBE's admin upload takes as its `fname` file, and what a plugin's own `chris_plugin_info` prints, with no wrapper.
 
 - **The file name is the plugin name**, so the index holds one version per plugin. Bumping a plugin is a one-file change: the version, the image tag and any parameter changes show in the diff.
+- **Names are unique ignoring case**, and spelled as the plugin's GitHub repository spells them. Some plugins were registered under more than one casing over the years (`pl-pfdicom_tagextract` and `pl-pfdicom_tagExtract`); CUBE treats those as different plugins, and two such files cannot coexist on a case-insensitive filesystem.
 - **Required:** `name`, `version`, `dock_image`, `type`, `execshell`, `selfpath`, `selfexec`, `parameters`.
 - **`dock_image` must be publicly pullable.** A plugin whose image lives only in a private registry does not belong here.
 - **Parameter types are CUBE's upload names:** `str`, `int`, `float`, `bool`, `path`, `unextpath`. A CUBE's read API shows them as `string`, `integer` and `boolean`; the upload rejects those.

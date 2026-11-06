@@ -1,0 +1,41 @@
+{
+  "name": "pl-mriunet_ser",
+  "version": "0.1",
+  "dock_image": "docker.io/fnndsc/pl-mriunet_ser:latest",
+  "public_repo": "https://github.com/FNNDSC/pl-mriunet_ser",
+  "type": "ds",
+  "title": "A chRIS plugin app",
+  "description": "An app to ...",
+  "documentation": "http://wiki",
+  "license": "Opensource (MIT)",
+  "authors": "BU EC528 F20 Team <https://github.com/BU-CLOUD-F20/Containerizing_Neural_Nets>",
+  "execshell": "python",
+  "selfpath": "/usr/src/mriunet_ser",
+  "selfexec": "mriunet_ser.py",
+  "max_number_of_workers": 1,
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "mode",
+      "type": "str",
+      "optional": false,
+      "default": null,
+      "flag": "--mode",
+      "short_flag": "--mode",
+      "action": "store",
+      "help": "What do you want to do? 1. Train 2. Infer",
+      "ui_exposed": true
+    },
+    {
+      "name": "epochs",
+      "type": "int",
+      "optional": true,
+      "default": 5,
+      "flag": "--epochs",
+      "short_flag": "--epochs",
+      "action": "store",
+      "help": "Specify the number of epochs. Default epochs is 5",
+      "ui_exposed": true
+    }
+  ]
+}

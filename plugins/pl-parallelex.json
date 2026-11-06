@@ -1,0 +1,19 @@
+{
+  "name": "pl-parallelex",
+  "version": "0.1",
+  "dock_image": "docker.io/fnndsc/pl-parallelex:latest",
+  "public_repo": "https://github.com/FNNDSC/pl-parallelex",
+  "type": "ds",
+  "title": "A parallelization ChRIS plugin",
+  "category": "Parallelization",
+  "description": "This application provides a module/framework for parallel plugin execution.",
+  "documentation": "http://wiki",
+  "license": "Opensource (MIT)",
+  "authors": "FNNDSC/Red Hat (dev@babyMRI.org)",
+  "execshell": "python3",
+  "selfpath": "/usr/src/parallelex",
+  "selfexec": "parallelex.py",
+  "max_number_of_workers": 1,
+  "max_gpu_limit": 0,
+  "parameters": []
+}

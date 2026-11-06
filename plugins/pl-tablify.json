@@ -1,0 +1,55 @@
+{
+  "name": "pl-tablify",
+  "version": "1.0.0",
+  "dock_image": "ghcr.io/fnndsc/pl-tablify:1.0.0",
+  "public_repo": "https://github.com/FNNDSC/pl-tablify",
+  "type": "ds",
+  "title": "A ChRIS plugin to generate interactive tables from structured data files.",
+  "category": "",
+  "description": "A ChRIS plugin to generate interactive tables from structured data files.",
+  "documentation": "https://github.com/FNNDSC/pl-tab",
+  "license": "MIT",
+  "icon": "",
+  "authors": "FNNDSC <dev@babyMRI.org>",
+  "execshell": "/usr/local/bin/python",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "tablify",
+  "max_number_of_workers": 1,
+  "min_memory_limit": "100Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "pattern",
+      "type": "str",
+      "optional": true,
+      "default": "**/*.json",
+      "flag": "--pattern",
+      "short_flag": "-p",
+      "action": "store",
+      "help": "input file filter glob",
+      "ui_exposed": true
+    },
+    {
+      "name": "includeHeaders",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--includeHeaders",
+      "short_flag": "-i",
+      "action": "store",
+      "help": "comma separated headers to be displayed in the output table",
+      "ui_exposed": true
+    },
+    {
+      "name": "outputFileStem",
+      "type": "str",
+      "optional": true,
+      "default": "search_results",
+      "flag": "--outputFileStem",
+      "short_flag": "-o",
+      "action": "store",
+      "help": "output file stem to store table data",
+      "ui_exposed": true
+    }
+  ]
+}

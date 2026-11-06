@@ -1,0 +1,131 @@
+{
+  "name": "pl-bestsurfreg-surface-resample",
+  "version": "1.0.0",
+  "dock_image": "ghcr.io/fnndsc/pl-bestsurfreg-surface-resample:1.0.0",
+  "public_repo": "https://github.com/FNNDSC/pl-bestsurfreg-surface-resample",
+  "type": "ds",
+  "title": "Surface Data Registration",
+  "category": "MRI",
+  "description": "ChRIS plugin wrapper for bestsurfreg.pl and surface-resample",
+  "documentation": "https://github.com/FNNDSC/pl-bestsurfreg-surface-resample",
+  "license": "MIT",
+  "authors": "FNNDSC <Jennings.Zhang@childrens.harvard.edu>",
+  "execshell": "/usr/local/bin/python",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "bsrr",
+  "max_number_of_workers": 1,
+  "min_memory_limit": "1024Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "copy",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--copy",
+      "short_flag": "-c",
+      "action": "store_true",
+      "help": "Copy all input files to output dir.",
+      "ui_exposed": true
+    },
+    {
+      "name": "pattern",
+      "type": "str",
+      "optional": true,
+      "default": "**/*.obj",
+      "flag": "--pattern",
+      "short_flag": "-p",
+      "action": "store",
+      "help": "input surface file filter glob",
+      "ui_exposed": true
+    },
+    {
+      "name": "output_fname",
+      "type": "str",
+      "optional": true,
+      "default": "{}.to_individual.txt",
+      "flag": "--output_fname",
+      "short_flag": "-o",
+      "action": "store",
+      "help": "Name for output registered surface data. {} represents the basename of the input file.",
+      "ui_exposed": true
+    },
+    {
+      "name": "target",
+      "type": "str",
+      "optional": true,
+      "default": "fetal-template-29/bh.smoothwm.mni.obj",
+      "flag": "--target",
+      "short_flag": "-t",
+      "action": "store",
+      "help": "Registration target. Should be any of an absolute path, a relative path, a path relative to the input directory, or a relative path to MNI_DATAPATH(=/opt/microminc/share).",
+      "ui_exposed": true
+    },
+    {
+      "name": "data",
+      "type": "str",
+      "optional": true,
+      "default": "fetal-template-29/bh.mask.1D.dset",
+      "flag": "--data",
+      "short_flag": "-d",
+      "action": "store",
+      "help": "Vertex-wise data (which can be a mask) to be registered from the target to each input surface. Should be any of an absolute path, a relative path, a path relative to the input directory, or a relative path to MNI_DATAPATH(=/opt/microminc/share).",
+      "ui_exposed": true
+    },
+    {
+      "name": "min_control_mesh",
+      "type": "int",
+      "optional": true,
+      "default": 80,
+      "flag": "--min_control_mesh",
+      "short_flag": "--min_control_mesh",
+      "action": "store",
+      "help": "control mesh must be no less than X nodes...",
+      "ui_exposed": true
+    },
+    {
+      "name": "max_control_mesh",
+      "type": "int",
+      "optional": true,
+      "default": 81920,
+      "flag": "--max_control_mesh",
+      "short_flag": "--max_control_mesh",
+      "action": "store",
+      "help": "control mesh must be no greater than X nodes...",
+      "ui_exposed": true
+    },
+    {
+      "name": "blur_coef",
+      "type": "float",
+      "optional": true,
+      "default": 1.25,
+      "flag": "-blur_coef",
+      "short_flag": "-blur_coef",
+      "action": "store",
+      "help": "factor to increase/decrease blurring",
+      "ui_exposed": true
+    },
+    {
+      "name": "neighbourhood_radius",
+      "type": "float",
+      "optional": true,
+      "default": 2.8,
+      "flag": "--neighbourhood_radius",
+      "short_flag": "--neighbourhood_radius",
+      "action": "store",
+      "help": "neighbourhood radius",
+      "ui_exposed": true
+    },
+    {
+      "name": "maximum_blur",
+      "type": "float",
+      "optional": true,
+      "default": 1.9,
+      "flag": "--maximum_blur",
+      "short_flag": "--maximum_blur",
+      "action": "store",
+      "help": "specify target spacing",
+      "ui_exposed": true
+    }
+  ]
+}

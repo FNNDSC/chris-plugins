@@ -1,0 +1,110 @@
+{
+  "name": "pl-dicom_anonymize",
+  "version": "1.2.0",
+  "dock_image": "ghcr.io/fnndsc/pl-dicom_anonymize:1.2.0",
+  "public_repo": "https://github.com/fnndsc/pl-dicom_anonymize",
+  "type": "ds",
+  "title": "A ChRIS plugin to anonymize DICOM files",
+  "category": "",
+  "description": "A ChRIS plugin to anonymize header metadata in DICOM files",
+  "documentation": "https://github.com/FNNDSC/pl-dicom_anony",
+  "license": "MIT",
+  "icon": "",
+  "authors": "FNNDSC <dev@babyMRI.org>",
+  "execshell": "/usr/local/bin/python",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "dicom_anonymize",
+  "max_number_of_workers": 1,
+  "min_memory_limit": "100Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "pattern",
+      "type": "str",
+      "optional": true,
+      "default": "**/*.dcm",
+      "flag": "--pattern",
+      "short_flag": "-p",
+      "action": "store",
+      "help": "input file filter glob",
+      "ui_exposed": true
+    },
+    {
+      "name": "dictionary",
+      "type": "str",
+      "optional": true,
+      "default": "{}",
+      "flag": "--dictionary",
+      "short_flag": "--dictionary",
+      "action": "store",
+      "help": "Anonymization dictionary as a JSON string, e.g. '{\"PatientName\": \"replace\"}'. Tag keys may be a standard DICOM keyword (e.g. PatientName) or a literal (group, element) tuple (e.g. \"(0x0010, 0x0010)\") for private tags. Rules from --dictionary override rules from --dictionaryFile when the same DICOM tag is specified in both. NOTE: when --dictionaryFile is also given, both dictionaries are now merged and validated together, so an invalid --dictionary here (bad JSON, unknown action name, ...) will abort the run even if --dictionaryFile alone would have been valid.",
+      "ui_exposed": true
+    },
+    {
+      "name": "keepPrivateTags",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--keepPrivateTags",
+      "short_flag": "--keepPrivateTags",
+      "action": "store_true",
+      "help": "Keep DICOM private tags",
+      "ui_exposed": true
+    },
+    {
+      "name": "copyNonDicom",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--copyNonDicom",
+      "short_flag": "--copyNonDicom",
+      "action": "store_true",
+      "help": "If set, files under inputdir that do not have the DICOM magic bytes are copied through to outputdir byte-for-byte, unexamined. Default: False -- non-DICOM files are NOT copied, because their content is never scanned for PHI and copying them through unexamined by default would silently defeat the purpose of this plugin. Counted and reported either way.",
+      "ui_exposed": true
+    },
+    {
+      "name": "skipOutputVerification",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--skipOutputVerification",
+      "short_flag": "--skipOutputVerification",
+      "action": "store_true",
+      "help": "If set, skip the plugin's independent post-write verification step (re-reading each output file and confirming identifying elements actually changed) that runs in addition to whatever dicom-anonymizer itself did. NOT recommended: this is the plugin's primary safeguard against silently emitting an identified file. Default: False (verification runs).",
+      "ui_exposed": true
+    },
+    {
+      "name": "acknowledgeRetainedTags",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--acknowledgeRetainedTags",
+      "short_flag": "--acknowledgeRetainedTags",
+      "action": "store",
+      "help": "Comma-separated list of DICOM keyword names (e.g. 'InstitutionName,ReferringPhysicianName') that you have intentionally configured --dictionary/--dictionaryFile to KEEP unchanged, and are explicitly acknowledging as retained rather than de-identified. Without this, the plugin's independent output verification treats any of the core identifying elements (see README.md) surviving unchanged as a failure -- even if you configured that yourself -- because the plugin cannot otherwise distinguish 'I meant to keep this' from 'de-identification silently failed to remove this'. Default: '' (no exceptions; every core identifying element must change).",
+      "ui_exposed": true
+    },
+    {
+      "name": "dictionaryFile",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--dictionaryFile",
+      "short_flag": "--dictionaryFile",
+      "action": "store",
+      "help": "[upstream: --dictionary] Path to a JSON file (see upstream docs: https://github.com/KitwareMedical/dicom-anonymizer#change-the-value-of-a-tag-with-a-json-dictionary) of additional/overriding {tag: action} rules. The path must be reachable inside the container -- typically a file that lives inside inputdir; give the path as inputdir-relative or absolute. Rules from --dictionary are applied on top of --dictionaryFile; when the same tag is specified in both, --dictionary takes precedence. Default: None (no dictionary overrides; PS3.15 2023e defaults apply).",
+      "ui_exposed": true
+    },
+    {
+      "name": "continueOnError",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--continueOnError",
+      "short_flag": "--continueOnError",
+      "action": "store_true",
+      "help": "If set, keep processing remaining files after a per-file failure instead of stopping immediately. Regardless of this flag, if ANY file fails, the plugin's overall exit status is non-zero (a partially-successful run is never reported as success). Default: False (stop at first failure).",
+      "ui_exposed": true
+    }
+  ]
+}

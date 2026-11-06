@@ -1,0 +1,108 @@
+{
+  "name": "pl-fetal-cp-surface-extract",
+  "version": "1.2.0",
+  "dock_image": "ghcr.io/fnndsc/pl-fetal-cp-surface-extract:1.2.0",
+  "type": "ds",
+  "title": "Fetal CP Surface Extraction",
+  "category": "Surface Extraction",
+  "description": "Fetal brain MRI CP surface extraction using CIVET marching-cubes",
+  "documentation": "https://github.com/FNNDSC/pl-fetal-cp-surface-extract",
+  "license": "MIT",
+  "authors": "Jennings Zhang <Jennings.Zhang@childrens.harvard.edu>",
+  "execshell": "/opt/conda/bin/python3.10",
+  "selfpath": "/opt/conda/bin",
+  "selfexec": "extract_cp",
+  "max_number_of_workers": 1,
+  "min_memory_limit": "100Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "side",
+      "type": "str",
+      "optional": true,
+      "default": "auto",
+      "flag": "--side",
+      "short_flag": "-s",
+      "action": "store",
+      "help": "brain hemisphere side. \"auto\" => infer from file name [choices: left, right, auto, none]",
+      "ui_exposed": true
+    },
+    {
+      "name": "pattern",
+      "type": "str",
+      "optional": true,
+      "default": "**/*.mnc",
+      "flag": "--pattern",
+      "short_flag": "-p",
+      "action": "store",
+      "help": "pattern for file names to include",
+      "ui_exposed": true
+    },
+    {
+      "name": "subsample",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--subsample",
+      "short_flag": "--subsample",
+      "action": "store_true",
+      "help": "Use -subsample option for spehre_mesh, use with narrow sulci",
+      "ui_exposed": true
+    },
+    {
+      "name": "mincmorph_iterations",
+      "type": "int",
+      "optional": true,
+      "default": 5,
+      "flag": "--mincmorph-iterations",
+      "short_flag": "--mincmorph-iterations",
+      "action": "store",
+      "help": "Number of mincmorph iterations. Mincmorph is a mask preprocessing step which repairs disconnected voxels. A larger value may improve results for messy masks, but at the cost of accuracy.",
+      "ui_exposed": true
+    },
+    {
+      "name": "adapt_object_mesh",
+      "type": "str",
+      "optional": true,
+      "default": "0,50,0,0",
+      "flag": "--adapt_object_mesh",
+      "short_flag": "--adapt_object_mesh",
+      "action": "store",
+      "help": "Parameters for adapt_object_mesh, which does mesh smoothing.",
+      "ui_exposed": true
+    },
+    {
+      "name": "inflate_to_sphere_implicit",
+      "type": "str",
+      "optional": true,
+      "default": "200,200",
+      "flag": "--inflate_to_sphere_implicit",
+      "short_flag": "--inflate_to_sphere_implicit",
+      "action": "store",
+      "help": "Parameters for inflate_to_sphere_implicit. Larger values are necessary for larger brain size.",
+      "ui_exposed": true
+    },
+    {
+      "name": "keep_mask",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--keep-mask",
+      "short_flag": "-k",
+      "action": "store_true",
+      "help": "Copy input mask file to output directory",
+      "ui_exposed": true
+    },
+    {
+      "name": "no_fail",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--no-fail",
+      "short_flag": "--no-fail",
+      "action": "store_true",
+      "help": "Exit normally even when failed to process a subject",
+      "ui_exposed": true
+    }
+  ]
+}

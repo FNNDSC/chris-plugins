@@ -1,0 +1,34 @@
+{
+  "name": "pl-dsdircopy",
+  "version": "1.0.2",
+  "dock_image": "ghcr.io/fnndsc/pl-dsdircopy:1.0.2",
+  "public_repo": "https://github.com/FNNDSC/pl-dsdircopy",
+  "type": "ds",
+  "title": "A ChRIS ds app to copy obj storage directories",
+  "category": "copy",
+  "description": "A plugin ds app to copy one or more obj storage directories",
+  "documentation": "https://github.com/FNNDSC/pl-dsdircopy",
+  "license": "MIT",
+  "icon": "",
+  "authors": "FNNDSC <dev@babyMRI.org>",
+  "execshell": "/usr/local/bin/python",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "dsdircopy",
+  "max_number_of_workers": 1,
+  "min_cpu_limit": "50m",
+  "max_cpu_limit": "1000m",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "dir",
+      "type": "unextpath",
+      "optional": false,
+      "default": null,
+      "flag": "--dir",
+      "short_flag": "--dir",
+      "action": "store",
+      "help": "directories to be copied",
+      "ui_exposed": true
+    }
+  ]
+}

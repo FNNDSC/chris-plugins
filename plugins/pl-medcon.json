@@ -1,0 +1,52 @@
+{
+  "name": "pl-medcon",
+  "version": "1.0.5",
+  "dock_image": "ghcr.io/fnndsc/pl-medcon:1.0.5",
+  "public_repo": "https://github.com/FNNDSC/pl-medcon",
+  "type": "ds",
+  "title": "A ChRIS plugin app",
+  "description": "An app to convert NIfTI volumes to DICOM files",
+  "documentation": "https://github.com/FNNDSC/pl-medcon",
+  "license": "MIT",
+  "authors": "Arushi Vyas <dev@babyMRI.org>",
+  "execshell": "/usr/local/bin/python",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "medcon",
+  "max_number_of_workers": 1,
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "args",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--args",
+      "short_flag": "-a",
+      "action": "store",
+      "help": "medcon arguments to pass",
+      "ui_exposed": true
+    },
+    {
+      "name": "do",
+      "type": "str",
+      "optional": true,
+      "default": "nifti2dicom",
+      "flag": "--do",
+      "short_flag": "--do",
+      "action": "store",
+      "help": "functionality of medcon to be used",
+      "ui_exposed": true
+    },
+    {
+      "name": "inputFile",
+      "type": "str",
+      "optional": false,
+      "default": "",
+      "flag": "--inputFile",
+      "short_flag": "-i",
+      "action": "store",
+      "help": "input file",
+      "ui_exposed": true
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "name": "pl-mri_sag_anon_192",
+  "version": "1.0.2",
+  "dock_image": "docker.io/fnndsc/pl-mri_sag_anon_192:1.0.2",
+  "public_repo": "https://github.com/FNNDSC/pl-mri_sag_anon_192",
+  "type": "fs",
+  "title": "Anonymous sagittal neuro MRI image set of 192 slices",
+  "category": "data",
+  "description": "This application copies a set of image slices to the output directory.",
+  "documentation": "http://wiki",
+  "license": "MIT",
+  "icon": "",
+  "authors": "FNNDSC <dev@babyMRI.org>",
+  "execshell": "/usr/local/bin/python",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "mri_sag_anon_192",
+  "max_number_of_workers": 1,
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "dir",
+      "type": "str",
+      "optional": true,
+      "default": "/usr/local/src/data/dcm",
+      "flag": "--dir",
+      "short_flag": "--dir",
+      "action": "store",
+      "help": "directory override",
+      "ui_exposed": true
+    }
+  ]
+}

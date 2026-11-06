@@ -1,0 +1,42 @@
+{
+  "name": "pl-datetree",
+  "version": "1.0.0",
+  "dock_image": "ghcr.io/fnndsc/pl-datetree:latest",
+  "public_repo": "https://github.com/fnndsc/pl-datetree",
+  "type": "ds",
+  "title": "Metadata Harvester",
+  "description": "A file directory script that takes in a date range and output directory and creates a nested dir structure",
+  "documentation": "https://github.com/FNNDSC/pl-datetree",
+  "license": "MIT",
+  "authors": "FNNDSC <dev@babyMRI.org>",
+  "execshell": "/usr/local/bin/python",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "datetree",
+  "max_number_of_workers": 1,
+  "min_memory_limit": "100Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "startdate",
+      "type": "str",
+      "optional": false,
+      "default": null,
+      "flag": "--startdate",
+      "short_flag": "-s",
+      "action": "store",
+      "help": "the start date",
+      "ui_exposed": true
+    },
+    {
+      "name": "enddate",
+      "type": "str",
+      "optional": false,
+      "default": null,
+      "flag": "--enddate",
+      "short_flag": "-e",
+      "action": "store",
+      "help": "the end date",
+      "ui_exposed": true
+    }
+  ]
+}

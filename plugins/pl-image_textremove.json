@@ -1,0 +1,89 @@
+{
+  "name": "pl-image_textremove",
+  "version": "1.3.0",
+  "dock_image": "ghcr.io/fnndsc/pl-image_textremove:1.3.0",
+  "public_repo": "https://github.com/fnndsc/pl-image_textremove",
+  "type": "ds",
+  "title": "Remove text from image",
+  "category": "",
+  "description": "A ChRIS plugin to remove text from images",
+  "documentation": "https://github.com/FNNDSC/pl-image_textRemove",
+  "license": "MIT",
+  "icon": "",
+  "authors": "FNNDSC <dev@babyMRI.org>",
+  "execshell": "/usr/local/bin/python",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "image_textRemove",
+  "max_number_of_workers": 1,
+  "min_cpu_limit": "2000m",
+  "min_memory_limit": "4096Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "fileFilter",
+      "type": "str",
+      "optional": true,
+      "default": "png",
+      "flag": "--fileFilter",
+      "short_flag": "-f",
+      "action": "store",
+      "help": "input file filter(only the extension)",
+      "ui_exposed": true
+    },
+    {
+      "name": "outputType",
+      "type": "str",
+      "optional": true,
+      "default": "png",
+      "flag": "--outputType",
+      "short_flag": "-o",
+      "action": "store",
+      "help": "output file type(only the extension)",
+      "ui_exposed": true
+    },
+    {
+      "name": "filterTextFromJSON",
+      "type": "str",
+      "optional": true,
+      "default": "anonymizedTags.json",
+      "flag": "--filterTextFromJSON",
+      "short_flag": "-j",
+      "action": "store",
+      "help": "A dictionary of dicom tags and their values",
+      "ui_exposed": true
+    },
+    {
+      "name": "threshold",
+      "type": "float",
+      "optional": true,
+      "default": 0.8,
+      "flag": "--threshold",
+      "short_flag": "-t",
+      "action": "store",
+      "help": "threshold of similarity ration between two words",
+      "ui_exposed": true
+    },
+    {
+      "name": "singleImageMode",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--singleImageMode",
+      "short_flag": "-s",
+      "action": "store_true",
+      "help": "If set true, run OCR on each individual image",
+      "ui_exposed": true
+    },
+    {
+      "name": "pftelDB",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--pftelDB",
+      "short_flag": "--pftelDB",
+      "action": "store",
+      "help": "optional pftel server DB path",
+      "ui_exposed": true
+    }
+  ]
+}

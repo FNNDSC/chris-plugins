@@ -1,7 +1,36 @@
 # Plugins deliberately left out of plugins/, each with the reason.
 # A plugin leaves the index by moving here, never by silent deletion.
-#
-# - name: pl-example
-#   version: 1.2.3          # last known version
-#   reason: image no longer pullable from any public registry
-[]
+
+- name: pl-antsreg
+  reason: its 2019 image prints a descriptor with no version, title or metadata; CUBE requires a version
+- name: pl-dicomtag
+  reason: image exists but its Python 2 code fails to run; prints no descriptor
+- name: pl-fshack-infant
+  version: 1.0.2
+  reason: no public image under fnndsc/ on ghcr.io or Docker Hub
+- name: pl-fshack_ghcr
+  version: 1.2.0
+  reason: registered under a test name; the plugin is pl-fshack
+- name: pl-image-register
+  reason: image exists but crashes on import; prints no descriptor
+- name: pl-infantfs
+  version: 7.1.1.1
+  reason: no public image under fnndsc/ on ghcr.io or Docker Hub
+- name: pl-matmultiply
+  reason: image's command cannot be run; prints no descriptor
+- name: pl-nirs-demo-app
+  reason: image exists but a native library fails to load; prints no descriptor
+- name: pl-pfdicom_tagsub_ghcr
+  version: 3.2.0
+  reason: registered under a test name; the plugin is pl-pfdicom_tagSub
+- name: pl-publish-test
+  version: 1.0.5
+  reason: a test of the publishing pipeline, not a plugin
+- name: pl-sclai
+  version: 0.1.0
+  reason: image exists but crashes on import; prints no descriptor
+- name: pl-trainseg
+  reason: chris_plugin_info rejects its own parameters (unsupported type 'list')
+- name: pl-unirep_analysis:cpu
+  version: 0.3.0
+  reason: a CPU build of pl-unirep_analysis registered under its own name; ':' cannot be in a file name

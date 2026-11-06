@@ -1,0 +1,66 @@
+{
+  "name": "pl-nii2mnc",
+  "version": "1.1.0",
+  "dock_image": "ghcr.io/fnndsc/pl-nii2mnc:1.1.0",
+  "public_repo": "https://github.com/FNNDSC/pl-nii2mnc",
+  "type": "ds",
+  "title": "nii2mnc",
+  "category": "MRI Processing",
+  "description": "A ChRIS ds plugin wrapper for nii2mnc, which converts NIFTI (.nii, .nii.gz) to MINC (.mnc)",
+  "documentation": "https://github.com/FNNDSC/pl-nii2mnc",
+  "license": "MIT",
+  "icon": "",
+  "authors": "Jennings Zhang <Jennings.Zhang@childrens.harvard.edu>",
+  "execshell": "/usr/local/bin/python",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "niis2mncs",
+  "max_number_of_workers": 1,
+  "min_memory_limit": "4096Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "pattern",
+      "type": "str",
+      "optional": true,
+      "default": "**/*.nii,**/*.nii.gz",
+      "flag": "--pattern",
+      "short_flag": "-p",
+      "action": "store",
+      "help": "pattern for file names to include",
+      "ui_exposed": true
+    },
+    {
+      "name": "unsigned",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--unsigned",
+      "short_flag": "-u",
+      "action": "store_true",
+      "help": "Write integer voxel data in unsigned format.",
+      "ui_exposed": true
+    },
+    {
+      "name": "byte",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--byte",
+      "short_flag": "-b",
+      "action": "store_true",
+      "help": "Write voxel data in 8-bit integer format.",
+      "ui_exposed": true
+    },
+    {
+      "name": "rename",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--rename",
+      "short_flag": "-r",
+      "action": "store",
+      "help": "Rename output files.",
+      "ui_exposed": true
+    }
+  ]
+}

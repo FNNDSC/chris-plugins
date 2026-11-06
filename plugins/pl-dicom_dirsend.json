@@ -1,0 +1,88 @@
+{
+  "name": "pl-dicom_dirsend",
+  "version": "1.2.1",
+  "dock_image": "ghcr.io/fnndsc/pl-dicom_dirsend:1.2.1",
+  "public_repo": "https://github.com/fnndsc/pl-dicom_dirsend",
+  "type": "ds",
+  "title": "A ChRIS plugin to send DICOMs to a remote PACS store",
+  "category": "",
+  "description": "A ChRIS plugin to send DICOMs to a remote PACS store",
+  "documentation": "https://github.com/FNNDSC/pl-dicom_dirSend",
+  "license": "MIT",
+  "icon": "",
+  "authors": "FNNDSC <dev@babyMRI.org>",
+  "execshell": "/usr/local/bin/python",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "dicom_dirSend",
+  "max_number_of_workers": 1,
+  "min_memory_limit": "100Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "fileFilter",
+      "type": "str",
+      "optional": true,
+      "default": "dcm",
+      "flag": "--fileFilter",
+      "short_flag": "-f",
+      "action": "store",
+      "help": "input file filter glob",
+      "ui_exposed": true
+    },
+    {
+      "name": "host",
+      "type": "str",
+      "optional": true,
+      "default": "0.0.0.0",
+      "flag": "--host",
+      "short_flag": "-n",
+      "action": "store",
+      "help": "Host IP",
+      "ui_exposed": true
+    },
+    {
+      "name": "port",
+      "type": "str",
+      "optional": true,
+      "default": "4242",
+      "flag": "--port",
+      "short_flag": "-p",
+      "action": "store",
+      "help": "Host port",
+      "ui_exposed": true
+    },
+    {
+      "name": "aeTitle",
+      "type": "str",
+      "optional": true,
+      "default": "ChRIS",
+      "flag": "--aeTitle",
+      "short_flag": "-a",
+      "action": "store",
+      "help": "my AE title",
+      "ui_exposed": true
+    },
+    {
+      "name": "calledAETitle",
+      "type": "str",
+      "optional": true,
+      "default": "CHRISLOCAL",
+      "flag": "--calledAETitle",
+      "short_flag": "-c",
+      "action": "store",
+      "help": "called AE title of peer",
+      "ui_exposed": true
+    },
+    {
+      "name": "singleInstanceMode",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--singleInstanceMode",
+      "short_flag": "-s",
+      "action": "store_true",
+      "help": "called AE title of peer",
+      "ui_exposed": true
+    }
+  ]
+}

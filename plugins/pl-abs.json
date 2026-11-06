@@ -1,0 +1,55 @@
+{
+  "name": "pl-abs",
+  "version": "1.0.1",
+  "dock_image": "ghcr.io/fnndsc/pl-abs:1.0.1",
+  "public_repo": "https://github.com/FNNDSC/pl-abs",
+  "type": "ds",
+  "title": "Absolute Value",
+  "category": "Utility",
+  "description": "A ChRIS plugin to calculate absolute value of numbers in data files",
+  "documentation": "https://github.com/FNNDSC/pl-abs",
+  "license": "MIT",
+  "authors": "Jennings Zhang <Jennings.Zhang@childrens.harvard.edu>",
+  "execshell": "/docker-entrypoint.sh",
+  "selfpath": "/usr/local/bin",
+  "selfexec": "abs",
+  "max_number_of_workers": 1,
+  "min_cpu_limit": "100m",
+  "min_memory_limit": "100Mi",
+  "max_gpu_limit": 0,
+  "parameters": [
+    {
+      "name": "input_files",
+      "type": "str",
+      "optional": true,
+      "default": ".txt",
+      "flag": "--input-files",
+      "short_flag": "-i",
+      "action": "store",
+      "help": "File extensions of files to include.",
+      "ui_exposed": true
+    },
+    {
+      "name": "output_suffix",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--output-suffix",
+      "short_flag": "-o",
+      "action": "store",
+      "help": "File extensions of files to include.",
+      "ui_exposed": true
+    },
+    {
+      "name": "copy",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--copy",
+      "short_flag": "-c",
+      "action": "store_true",
+      "help": "Copy ignored files to output dir",
+      "ui_exposed": true
+    }
+  ]
+}
