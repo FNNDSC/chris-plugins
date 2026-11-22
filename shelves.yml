@@ -1,0 +1,123 @@
+# Which apps stand on which shelf. An app may stand on several, or on none.
+# Every name under apps is a file in plugins/. A descriptor's own category
+# is left as its author wrote it; this file is the index's view.
+
+- shelf: Models
+  says: Apps that run a trained model.
+  apps:
+    - pl-CT-covidnet
+    - pl-NeSVoR-reconstruct
+    - pl-covidnet
+    - pl-dcm_txtlocr
+    - pl-dicom_pixel_redact
+    - pl-emerald
+    - pl-fastsurfer_inference
+    - pl-fetal-brain-assessment
+    - pl-fetal-brain-mask
+    - pl-fpmmid
+    - pl-freesurfer
+    - pl-lld
+    - pl-lld_inference
+    - pl-malpem
+    - pl-monai_spleenseg
+    - pl-mricnn
+    - pl-mricnn_predict
+    - pl-mriunet_ser
+    - pl-neuproseg
+    - pl-ollama_infer
+    - pl-phi_detector
+    - pl-unirep_analysis
+    - pl-whisper
+
+- shelf: Normalization
+  says: Apps that bring images to a common form.
+  apps:
+    - pl-ANTs_N4BiasFieldCorrection
+    - pl-bestsurfreg-surface-resample
+    - pl-freesurfer
+    - pl-images-register
+    - pl-n4biasfieldcorrection
+    - pl-zerobg
+
+- shelf: Segmentation
+  says: Apps that label the structures in an image.
+  apps:
+    - pl-civet
+    - pl-emerald
+    - pl-fastsurfer_inference
+    - pl-fetal-brain-mask
+    - pl-fpmmid
+    - pl-freesurfer
+    - pl-fshack
+    - pl-malpem
+    - pl-monai_spleenseg
+    - pl-mricnn
+    - pl-mricnn_predict
+    - pl-mriunet_ser
+    - pl-neuproseg
+    - pl-reconall
+
+- shelf: Conversion
+  says: Apps that turn one file format into another.
+  apps:
+    - pl-csv2json
+    - pl-dcm2mha_cnvtr
+    - pl-dcm2niix
+    - pl-ffmpeg
+    - pl-generate_hdf5
+    - pl-imageconvert
+    - pl-img2dcm
+    - pl-med2img
+    - pl-medcon
+    - pl-mgz2imageslices
+    - pl-mgz2imgtree
+    - pl-mgz_converter
+    - pl-mni2common
+    - pl-nii2mnc
+    - pl-nii2mnc-u8
+    - pl-office-convert
+    - pl-pdf2img
+    - pl-pfdo_med2img
+    - pl-pfdo_mgz2img
+    - pl-pfdorun_mriconvert
+
+- shelf: De-identification
+  says: Apps that find or remove what identifies a patient.
+  apps:
+    - pl-dcm_txtlocr
+    - pl-dicom_anonymize
+    - pl-dicom_audit
+    - pl-dicom_headeredit
+    - pl-dicom_pixel_redact
+    - pl-dyanon
+    - pl-image_textremove
+    - pl-pfdicom_tagSub
+    - pl-phi_detector
+
+- shelf: Reporting
+  says: Apps that turn results into a report, a table or a figure.
+  apps:
+    - pl-covidnet-pdfgeneration
+    - pl-dicom_info
+    - pl-freesurfer_simplereport
+    - pl-img2report
+    - pl-mgz2LUT_report
+    - pl-pdfgeneration
+    - pl-pfdicom_tagExtract
+    - pl-surfigures
+    - pl-tablify
+
+- shelf: PACS
+  says: Apps that query, retrieve from or send to a PACS.
+  apps:
+    - pl-dicom_dirsend
+    - pl-dy_regiflow
+    - pl-dypxflow
+    - pl-orthanc_push
+    - pl-pacs_query
+    - pl-pacs_retrieve
+    - pl-pacscopy
+    - pl-pacsdatequery
+    - pl-pacsquery
+    - pl-pacsretrieve
+    - pl-reg_chxr
