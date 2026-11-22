@@ -1,0 +1,55 @@
+---
+authors: Rudolph Pienaar <rudolph.pienaar@childrens.harvard.edu>
+name: "DICOM anonymization, extract, image conversion v20231027"
+description: Anonymize an input directory of DICOM files -- with sub branches containing extracted DICOM tag info, as well as image conversion (JPG and NIfTI).
+category: Medical Imaging
+locked: false
+run: never
+plugin_tree:
+  - title: root-group-copy
+    plugin: pl-simpledsapp v2.1.5
+    previous: ~
+    plugin_parameter_defaults:
+      prefix: 0-
+  - title: dicom-to-nifti
+    plugin: pl-dcm2niix v2.0.0
+    previous: root-group-copy
+    plugin_parameter_defaults:
+      d: 9
+  - title: dicom-to-jpg
+    plugin: pl-pfdo_med2img v1.2.2
+    previous: root-group-copy
+    plugin_parameter_defaults:
+      verbose: "1"
+      rot: "000"
+      outputFileType: jpg
+      preserveDICOMinputName: true
+      reslice: true
+      fileFilter: dcm
+      analyzeFileIndex: f
+  - title: tags-on-original-dicom-node
+    plugin: pl-pfdicom_tagExtract v3.2.4
+    previous: root-group-copy
+    plugin_parameter_defaults:
+      fileFilter: ".dcm"
+      outputFileType: "raw,json,html,dict,col,csv"
+      imageScale: "3:none"
+      outputFileStem: originalTags
+      imageFile: "m:%_nospc|-_ProtocolName.jpg"
+  - title: dicom-anonymized
+    plugin: pl-dicom_headeredit v1.1.8
+    previous: root-group-copy
+    plugin_parameter_defaults:
+      fileFilter: ".dcm"
+      tagInfo: "PatientName,%_name|patientID_PatientName ++ PatientID,%_md5|7_PatientID ++ AccessionNumber,%_md5|8_AccessionNumber ++ PatientBirthDate,%_strmsk|******01_PatientBirthDate ++ re:.*hysician,%_md5|4_#tag ++ re:.*stitution,#tag ++ re:.*ddress,#tag"
+      splitToken: "++"
+      splitKeyValue: ","
+  - title: tags-on-anon-dicom-node
+    plugin: pl-pfdicom_tagExtract v3.2.4
+    previous: dicom-anonymized
+    plugin_parameter_defaults:
+      fileFilter: ".dcm"
+      outputFileStem: anonymizedTags
+      imageScale: "3:none"
+      outputFileType: "raw,json,html,dict,col,csv"
+      imageFile: "m:%_nospc|-_ProtocolName.jpg"

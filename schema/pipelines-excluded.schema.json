@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/FNNDSC/chris-plugins/schema/pipelines-excluded.schema.json",
+  "title": "Excluded pipelines",
+  "description": "Pipeline source files deliberately not brought into pipelines/, each with the reason.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["source", "reason"],
+    "additionalProperties": false,
+    "properties": {
+      "source": { "type": "string", "minLength": 1, "description": "The file's name where it was found." },
+      "reason": { "type": "string", "minLength": 1 }
+    }
+  }
+}

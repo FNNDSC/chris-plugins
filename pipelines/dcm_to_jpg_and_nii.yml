@@ -1,0 +1,29 @@
+---
+authors: Rudolph Pienaar <rudolph.pienaar@childrens.harvard.edu>
+name: "All DCM to JPG (reslice) and NIfTI (dcm2niix) v20220804-1"
+description: "Convert all input DICOMs in parent node to JPG (per series organization), reslicing into x/y/z and also convert to NIfTI"
+category: Imaging
+locked: false
+run: never
+plugin_tree:
+  - title: root-group-copy
+    plugin: pl-simpledsapp v2.1.5
+    previous: ~
+    plugin_parameter_defaults:
+      prefix: 0-
+  - title: DCM_to_JPG
+    plugin: pl-pfdo_med2img v1.2.2
+    previous: root-group-copy
+    plugin_parameter_defaults:
+      outputFileType: jpg
+      analyzeFileIndex: f
+      fileFilter: dcm
+      preserveDICOMinputName: true
+      verbose: "1"
+      reslice: true
+      rot: "000"
+  - title: dicom-to-nifti
+    plugin: pl-dcm2niix v2.0.0
+    previous: root-group-copy
+    plugin_parameter_defaults:
+      d: 9

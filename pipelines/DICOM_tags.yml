@@ -1,0 +1,17 @@
+---
+authors: Rudolph Pienaar <rudolph.pienaar@childrens.harvard.edu>
+name: DICOM tags v20220804-1
+description: Explicitly generate extracted DICOM tag info and save in a raw text and html format.
+category: Medical Imaging
+locked: false
+run: never
+plugin_tree:
+  - title: DICOM tag report
+    plugin: pl-pfdicom_tagExtract v3.2.4
+    previous: ~
+    plugin_parameter_defaults:
+      outputFileStem: tagInfo
+      imageScale: "3:none"
+      fileFilter: dcm
+      imageFile: "m:%_nospc|-_ProtocolName.jpg"
+      outputFileType: "raw,html,json,csv"
