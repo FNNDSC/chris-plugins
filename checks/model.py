@@ -91,17 +91,20 @@ class Plugin:
         version: The one version the index holds.
         path: The descriptor's file, relative to the index root.
         parameters: The plugin's parameters, in descriptor order.
+        type: ``ds``, ``fs`` or ``ts``. A ``ts`` plugin joins several nodes
+            of a pipeline, which changes what a pipeline may say of it.
 
     Example:
         >>> plugin = Plugin("pl-a", "1.0.0", "plugins/pl-a.json", ())
-        >>> plugin.version
-        '1.0.0'
+        >>> (plugin.version, plugin.type)
+        ('1.0.0', 'ds')
     """
 
     name: str
     version: str
     path: str
     parameters: tuple[Parameter, ...]
+    type: str = "ds"
 
 
 @dataclass(frozen=True)
@@ -159,6 +162,7 @@ def plugin_build(descriptor: Mapping[str, object], path: str) -> Plugin:
         >>> descriptor = {
         ...     "name": "pl-a",
         ...     "version": "1.0.0",
+        ...     "type": "ds",
         ...     "parameters": [{"name": "prefix", "type": "str", "default": "x"}],
         ... }
         >>> plugin_build(descriptor, "plugins/pl-a.json").parameters
@@ -178,6 +182,7 @@ def plugin_build(descriptor: Mapping[str, object], path: str) -> Plugin:
         version=cast("str", descriptor["version"]),
         path=path,
         parameters=parameters,
+        type=cast("str", descriptor["type"]),
     )
 
 

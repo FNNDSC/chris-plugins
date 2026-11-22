@@ -1,8 +1,9 @@
 """Run every check on the index and report what fails.
 
 This is what a pull request runs. It reads ``plugins/``, holds each
-descriptor to its schema, then runs the checks that judge the set and the
-check that keeps credentials out.
+descriptor to its schema, then runs the checks that judge the set, the
+check that keeps credentials out, and the checks of each pipeline against
+the plugins it is made of.
 
 Key components:
     - findings_collect: run every check against one index root.
@@ -25,11 +26,17 @@ from pathlib import Path
 
 from checks.credentials import ExceptionsLoaded, defaults_check, exceptions_check, exceptions_load
 from checks.model import Finding, PluginsLoaded, plugins_load
+from checks.pipelines import (
+    PipelinesLoaded,
+    excludedSources_check,
+    pipelines_check,
+    pipelines_load,
+)
 from checks.plugins import excluded_check, excludedNames_load, fileNames_check, nameCases_check
 
 EXIT_CLEAN: int = 0
 EXIT_FINDINGS: int = 1
-DESCRIPTION: str = "Check the ChRIS plugin index: schemas, names and credentials."
+DESCRIPTION: str = "Check the ChRIS plugin index: plugins, pipelines and credentials."
 
 
 def findings_collect(root: Path) -> list[Finding]:
@@ -47,6 +54,7 @@ def findings_collect(root: Path) -> list[Finding]:
     """
     loaded: PluginsLoaded = plugins_load(root)
     excused: ExceptionsLoaded = exceptions_load(root)
+    piped: PipelinesLoaded = pipelines_load(root)
     return [
         *loaded.findings,
         *fileNames_check(loaded.plugins),
@@ -55,6 +63,9 @@ def findings_collect(root: Path) -> list[Finding]:
         *excused.findings,
         *defaults_check(loaded.plugins, excused.exceptions),
         *exceptions_check(loaded.plugins, excused.exceptions),
+        *piped.findings,
+        *pipelines_check(piped.pipelines, loaded.plugins, excused.exceptions),
+        *excludedSources_check(root),
     ]
 
 
