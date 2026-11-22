@@ -121,3 +121,9 @@
     - pl-pacsquery
     - pl-pacsretrieve
     - pl-reg_chxr
+
+- shelf: Federated learning
+  says: Apps that train one model across several sites, each keeping its own data.
+  apps:
+    - pl-superlink
+    - pl-supernode
