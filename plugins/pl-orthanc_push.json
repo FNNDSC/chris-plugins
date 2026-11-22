@@ -55,7 +55,7 @@
       "name": "password",
       "type": "str",
       "optional": true,
-      "default": "orthanc",
+      "default": "",
       "flag": "--password",
       "short_flag": "-p",
       "action": "store",
