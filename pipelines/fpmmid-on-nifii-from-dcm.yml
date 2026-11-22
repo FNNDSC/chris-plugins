@@ -12,7 +12,7 @@ plugin_tree:
     plugin_parameter_defaults:
       prefix: 0-
   - title: DCM_to_JPG
-    plugin: pl-pfdo_med2img v1.2.2
+    plugin: pl-pfdo_med2img v1.2.3
     previous: root-group-copy
     plugin_parameter_defaults:
       outputFileType: jpg

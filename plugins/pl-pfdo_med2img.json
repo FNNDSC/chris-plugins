@@ -1,7 +1,7 @@
 {
   "name": "pl-pfdo_med2img",
-  "version": "1.2.2",
-  "dock_image": "fnndsc/pl-pfdo_med2img:1.2.2",
+  "version": "1.2.3",
+  "dock_image": "fnndsc/pl-pfdo_med2img:1.2.3",
   "public_repo": "https://github.com/FNNDSC/pl-pfdo_med2img",
   "type": "ds",
   "title": "A ChRIS plugin app",
