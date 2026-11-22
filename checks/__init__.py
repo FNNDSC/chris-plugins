@@ -5,6 +5,7 @@ Key components:
     - model: read plugin descriptors into typed models.
     - plugins: the rules the plugin schema cannot express.
     - credentials: keep credentials out of the index.
+    - shelves: hold ``shelves.yml`` to the index.
     - style_check: hold this package to the Python style guide.
 
 Typical usage:

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/FNNDSC/chris-plugins/schema/shelves.schema.json",
+  "title": "Shelves",
+  "description": "Which apps stand on which shelf. A shelf groups apps by what they are for; an app may stand on several shelves or on none.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["shelf", "says", "apps"],
+    "additionalProperties": false,
+    "properties": {
+      "shelf": { "type": "string", "minLength": 1, "description": "The shelf's name, unique ignoring case." },
+      "says": { "type": "string", "minLength": 1, "description": "One sentence that is true of everything on the shelf." },
+      "apps": {
+        "type": "array",
+        "uniqueItems": true,
+        "items": { "type": "string", "minLength": 1, "description": "A plugin in plugins/, spelled as its file is named." }
+      }
+    }
+  }
+}
