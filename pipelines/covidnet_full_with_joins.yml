@@ -10,7 +10,7 @@ plugin_tree:
     plugin: pl-simpledsapp v2.1.5
     previous: ~
   - title: Convert Original DICOM to JPG
-    plugin: pl-pfdo_med2img v1.2.2
+    plugin: pl-pfdo_med2img v1.2.3
     previous: root
     plugin_parameter_defaults:
       fileFilter: dcm

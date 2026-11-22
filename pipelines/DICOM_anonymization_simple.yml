@@ -7,7 +7,7 @@ locked: false
 run: never
 plugin_tree:
   - title: dicom-anonymization
-    plugin: pl-dicom_headeredit v1.1.8
+    plugin: pl-dicom_headeredit v1.2.0
     previous: ~
     plugin_parameter_defaults:
       fileFilter: ".dcm"
