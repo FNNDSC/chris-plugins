@@ -1,0 +1,73 @@
+---
+authors: Rudolph Pienaar <dev@babymri.org>
+name: "PNG-to-DICOM and push to PACS v20230324"
+description: "Perform QA-check, convert all input PNGs to `.dcm` files, push to a PACS"
+category: Imaging
+locked: false
+run: never
+needs:
+  - node: pacs-push
+    parameter: host
+    kind: site
+  - node: pacs-push
+    parameter: calledAETitle
+    kind: site
+  - node: send-to-modlink
+    parameter: host
+    kind: site
+  - node: send-to-modlink
+    parameter: port
+    kind: site
+  - node: send-to-modlink
+    parameter: calledAETitle
+    kind: site
+plugin_tree:
+  - title: QA-Check
+    plugin: pl-lld_chxr v1.2.2
+    previous: ~
+    plugin_parameter_defaults:
+      fileFilter: 'analysis.json'
+      measurementsUnit: 'cm'
+      splitToken: ':'
+      splitKeyValue: '='
+      limbDifference: 15
+      femurDifference: 50
+      tibiaDifference: 50
+      addText: "Research AI annotation unsuccessful.\nNo further action required."
+      addTextSize: 1.5
+      addTextColor: cyan
+      addTextPos: top
+      addLineSpace: 1.2
+  - title: image-to-DICOM
+    plugin: pl-dicommake v2.4.6
+    previous: QA-Check
+    plugin_parameter_defaults:
+      outputSubDir: "data"
+      thread: true
+      compress: true
+      filterIMG: '**/*.jpg'
+      filterDCM: '**/*.dcm'
+      appendToSeriesDescription: "AI annotated image"
+  - title: pacs-push
+    plugin: pl-dicom_dirsend v1.2.1
+    previous: image-to-DICOM
+    plugin_parameter_defaults:
+      fileFilter: "dcm"
+      host: __SUPPLY__
+      port: "104"
+      aeTitle: "ChRIS"
+      calledAETitle: __SUPPLY__
+  - title: structured-report
+    plugin: pl-dicomize v1.0.7
+    previous: QA-Check
+    plugin_parameter_defaults:
+      createFrom: "empty"
+      jsonFile: "*-report.json"
+      conceptName: "LLD Measurements"
+  - title: send-to-modlink
+    plugin: pl-dicom_dirsend v1.2.1
+    previous: structured-report
+    plugin_parameter_defaults:
+      host: __SUPPLY__
+      port: __SUPPLY__
+      calledAETitle: __SUPPLY__

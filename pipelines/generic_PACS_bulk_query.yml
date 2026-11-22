@@ -1,0 +1,28 @@
+---
+authors: Sandip Samal <dev@babymri.org>
+name: "Generic PACS bulk query pipeline using CUBE 20260914"
+description: "Query any PACS for DICOM images using a csv file to specify a list of MRNs and other PACS directives"
+category: Imaging
+locked: false
+run: never
+needs:
+  - node: PACS-query
+    parameter: src_aet
+    kind: site
+  - node: PACS-query
+    parameter: dst_aet
+    kind: site
+  - node: PACS-query
+    parameter: src_ip
+    kind: site
+plugin_tree:
+  - title: PACS-query
+    plugin: pl-pacs_query v1.1.0
+    previous: ~
+    plugin_parameter_defaults:
+      src_aet: __SUPPLY__
+      dst_aet: __SUPPLY__
+      src_ip: __SUPPLY__
+      # The standard DICOM port. src_port is an int, which cannot hold __SUPPLY__;
+      # a site whose PACS listens elsewhere must change it.
+      src_port: 104

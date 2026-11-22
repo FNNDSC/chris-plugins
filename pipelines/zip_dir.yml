@@ -1,0 +1,15 @@
+---
+authors: Sandip Samal <sandip.samal@childrens.harvard.edu>
+name: zip v20240311
+description: Zip the content of an input directory.
+category: Utility
+locked: false
+run: never
+plugin_tree:
+  - title: file-to-zip
+    plugin: pl-pfdorun v2.2.17
+    previous: ~
+    plugin_parameter_defaults:
+      maxDepth: "0"
+      exec: "zip -r %outputDir/parent.zip %inputDir"
+      noJobLogging: true

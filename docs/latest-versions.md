@@ -48,7 +48,7 @@ Ten of the twenty pipelines name one of these plugins and were moved: the five F
 ImportError: cannot import name 'pftree' from 'pftree'
 ```
 
-It ships `pftree` 4.1.1, and the `pfdicom` it ships needs `pftree` below 4. Every run of this version fails, and so does every run of the two pipelines that use it. It needs a rebuild with `pftree<4`.
+It ships `pftree` 4.1.1, and the `pfdicom` it ships needs `pftree` below 4. Every run of this version fails, and so does every run of a pipeline that uses it: two when this was written, seven since the second batch of pipelines came in (`grep -l 'pl-dicom_headeredit' pipelines/*.yml`). It needs a rebuild with `pftree<4`: [FNNDSC/pl-dicom_headerEdit#4](https://github.com/FNNDSC/pl-dicom_headerEdit/issues/4).
 
 Because the image cannot print its own descriptor, the one here was read by installing `pftree<4` in a throwaway container of that image and running `chris_plugin_info` there. It is the parameter list of the code the image ships, not of a program that runs.
 

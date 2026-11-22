@@ -1,0 +1,154 @@
+---
+authors: Sandip Samal <sandip.samal@childrens.harvard.edu>
+name: "Ultra Sound DICOM anonymization and PHI removal and anon only v20261019"
+description:
+  Remove PHI burned on US DICOM images, anonymize the dicom headers and zip the results
+  in parallel
+category: Medical Imaging
+locked: false
+run: never
+plugin_tree:
+  - title: root-group-copy-2
+    plugin: pl-simpledsapp v2.1.5
+    previous: ~
+    plugin_parameter_defaults:
+      prefix: 0-
+  - title: multiframe-dcms-2
+    plugin: pl-dicom_filter v1.3.1
+    previous: root-group-copy-2
+    plugin_parameter_defaults:
+      outputType: dcm
+      dicomFilter: '"SOPClassUID"="Ultrasound Multi-frame Image Storage"'
+  - title: image-dcms-2
+    plugin: pl-dicom_filter v1.3.1
+    previous: root-group-copy-2
+    plugin_parameter_defaults:
+      outputType: dcm
+      dicomFilter: '"SOPClassUID"="Ultrasound Image Storage"'
+  - title: report-dcms-2
+    plugin: pl-dicom_filter v1.3.1
+    previous: root-group-copy-2
+    plugin_parameter_defaults:
+      outputType: dcm
+      dicomFilter: '"SOPClassUID"="Secondary Capture Image Storage"'
+  - title: unpacked-dcms-2
+    plugin: pl-dicom_unpack v1.3.5
+    previous: multiframe-dcms-2
+    plugin_parameter_defaults:
+      fileFilter: dcm
+  - title: phi-removed-dicoms
+    plugin: pl-dicom_pixel_redact v1.0.3
+    previous: image-dcms-2
+    plugin_parameter_defaults:
+      pattern: "**/*.dcm"
+      propagate_match_tags: "PatientID,PatientName,PatientBirthDate,AccessionNumber,InstitutionName,StudyDate"
+  - title: phi-removed-unpacked-dicoms
+    plugin: pl-dicom_pixel_redact v1.0.3
+    previous: unpacked-dcms-2
+    plugin_parameter_defaults:
+      pattern: "**/*.dcm"
+      propagate_match_tags: "PatientID,PatientName,PatientBirthDate,AccessionNumber,InstitutionName,StudyDate"
+  - title: repacked-dcms-2
+    plugin: pl-dicom_repack v1.3.1
+    previous: phi-removed-unpacked-dicoms
+    plugin_parameter_defaults:
+      fileFilter: dcm
+  - title: report-dcms-anonymized-name-only
+    plugin: pl-pfdicom_tagSub v3.3.5
+    previous: report-dcms-2
+    plugin_parameter_defaults:
+      fileFilter: ".dcm"
+      tagInfo: "PatientName,ANON"
+      splitToken: "++"
+      splitKeyValue: ","
+  - title: report-dcms-anonymized-full
+    plugin: pl-pfdicom_tagSub v3.3.5
+    previous: report-dcms-2
+    plugin_parameter_defaults:
+      fileFilter: ".dcm"
+      splitToken: ","
+      splitKeyValue: "="
+      tagInfo: "PatientName         =  %_name|patientID_PatientName,
+        PatientID           =  %_md5|7_PatientID,
+        AccessionNumber     =  %_md5|8_AccessionNumber,
+        PatientBirthDate    =  20240101,
+        StudyDate           =  20240101,
+        SeriesDate          =  20240101,
+        ContentDate         =  20240101,
+        re:.*hysician       =  %_md5|4_#tag,
+        re:.*stitution      =  #tag,
+        re:.*ddress         =  #tag
+        "
+  - title: report-file-to-tar
+    plugin: pl-pfdorun v2.2.17
+    previous: report-dcms-anonymized-full
+    plugin_parameter_defaults:
+      maxDepth: "0"
+      exec: "zip -r %outputDir/parent.zip %inputDir"
+      noJobLogging: true
+  - title: image-dcms-anonymized-name-only
+    plugin: pl-pfdicom_tagSub v3.3.5
+    previous: phi-removed-dicoms
+    plugin_parameter_defaults:
+      fileFilter: ".dcm"
+      tagInfo: "PatientName,ANON"
+      splitToken: "++"
+      splitKeyValue: ","
+  - title: image-dcms-anonymized-full
+    plugin: pl-pfdicom_tagSub v3.3.5
+    previous: phi-removed-dicoms
+    plugin_parameter_defaults:
+      fileFilter: ".dcm"
+      splitToken: ","
+      splitKeyValue: "="
+      tagInfo: "PatientName         =  %_name|patientID_PatientName,
+        PatientID           =  %_md5|7_PatientID,
+        AccessionNumber     =  %_md5|8_AccessionNumber,
+        PatientBirthDate    =  20240101,
+        StudyDate           =  20240101,
+        SeriesDate          =  20240101,
+        ContentDate         =  20240101,
+        re:.*hysician       =  %_md5|4_#tag,
+        re:.*stitution      =  #tag,
+        re:.*ddress         =  #tag
+        "
+  - title: image-file-to-tar
+    plugin: pl-pfdorun v2.2.17
+    previous: image-dcms-anonymized-full
+    plugin_parameter_defaults:
+      maxDepth: "0"
+      exec: "zip -r %outputDir/parent.zip %inputDir"
+      noJobLogging: true
+  - title: repacked-dcms-anonymized-name-only
+    plugin: pl-pfdicom_tagSub v3.3.5
+    previous: repacked-dcms-2
+    plugin_parameter_defaults:
+      fileFilter: ".dcm"
+      tagInfo: "PatientName,ANON"
+      splitToken: "++"
+      splitKeyValue: ","
+  - title: repacked-dcms-anonymized-full
+    plugin: pl-pfdicom_tagSub v3.3.5
+    previous: repacked-dcms-2
+    plugin_parameter_defaults:
+      fileFilter: ".dcm"
+      splitToken: ","
+      splitKeyValue: "="
+      tagInfo: "PatientName         =  %_name|patientID_PatientName,
+        PatientID           =  %_md5|7_PatientID,
+        AccessionNumber     =  %_md5|8_AccessionNumber,
+        PatientBirthDate    =  20240101,
+        StudyDate           =  20240101,
+        SeriesDate          =  20240101,
+        ContentDate         =  20240101,
+        re:.*hysician       =  %_md5|4_#tag,
+        re:.*stitution      =  #tag,
+        re:.*ddress         =  #tag
+        "
+  - title: repacked-file-to-tar
+    plugin: pl-pfdorun v2.2.17
+    previous: repacked-dcms-anonymized-full
+    plugin_parameter_defaults:
+      maxDepth: "0"
+      exec: "zip -r %outputDir/parent.zip %inputDir"
+      noJobLogging: true
