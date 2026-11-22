@@ -1,0 +1,60 @@
+---
+authors: Sandip Samal <sandip.samal@childrens.harvard.edu>
+name: DICOM anonymization and Orthanc push 20241217
+description: Anonymize all DICOM files in a parent node and push the results to an Orthanc instance.
+category: Medical Imaging
+locked: false
+run: never
+needs:
+  - node: push-to-orthanc
+    parameter: orthancUrl
+    kind: site
+  - node: push-to-orthanc
+    parameter: username
+    kind: site
+  - node: push-to-orthanc
+    parameter: password
+    kind: secret
+  - node: push-to-orthanc
+    parameter: pushToRemote
+    kind: site
+plugin_tree:
+  - title: dicom-filter
+    plugin: pl-dicom_filter v1.3.1
+    previous: ~
+    plugin_parameter_defaults:
+      dicomFilter: ''
+      imgCount: ""
+  - title: text-detection
+    plugin: pl-dcm_txtlocr v1.1.5
+    previous: dicom-filter
+    plugin_parameter_defaults:
+      textOutputDir: "text_data"
+  - title: phi-filter
+    plugin: pl-dicom_filter v1.3.1
+    previous: text-detection
+    plugin_parameter_defaults:
+      phiMode: "detect"
+      inspectTags: "PatientID,PatientName,PatientBirthDate,StudyDate,InstitutionName"
+  - title: preserved-dicom-anonymization
+    plugin: pl-pfdicom_tagSub v3.3.5
+    previous: phi-filter
+    plugin_parameter_defaults:
+      fileFilter: ".dcm"
+      tagStruct: ''
+  - title: full-dicom-anonymization
+    plugin: pl-dicomize v1.0.7
+    previous: preserved-dicom-anonymization
+    plugin_parameter_defaults:
+      pattern: "dcm"
+      createFrom: "dicom"
+  - title: push-to-orthanc
+    plugin: pl-orthanc_push v1.3.2
+    previous: full-dicom-anonymization
+    plugin_parameter_defaults:
+      inputFileFilter: "**/*dcm"
+      orthancUrl: __SUPPLY__
+      username: __SUPPLY__
+      password: __SUPPLY__
+      pushToRemote: __SUPPLY__
+      timeout: 5

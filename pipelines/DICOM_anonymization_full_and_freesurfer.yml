@@ -1,0 +1,87 @@
+---
+authors: Rudolph Pienaar <rudolph.pienaar@childrens.harvard.edu>
+name: "DICOM anonymization, tag extract, image conversion, FreeSurfer (simple) v20240405"
+description: Anonymize an input directory of DICOM files -- with sub branches containing extracted DICOM tag info, as well as image conversion (JPG and NIfTI), and a separate sub branch for FreeSurfer v7.4.1 (no reporting nor overlays). Limit to 2 in-node FS threads.
+category: Medical Imaging
+locked: false
+run: never
+plugin_tree:
+  - title: root-group-copy
+    plugin: pl-simpledsapp v2.1.5
+    previous: ~
+    plugin_parameter_defaults:
+      prefix: 0-
+  - title: dicom-to-nifti
+    plugin: pl-dcm2niix v2.0.0
+    previous: root-group-copy
+    plugin_parameter_defaults:
+      d: 9
+  - title: dicom-to-jpg
+    plugin: pl-pfdo_med2img v1.2.3
+    previous: root-group-copy
+    plugin_parameter_defaults:
+      verbose: "1"
+      rot: "000"
+      outputFileType: jpg
+      preserveDICOMinputName: true
+      reslice: true
+      fileFilter: dcm
+      analyzeFileIndex: f
+  - title: tags-on-original-dicom
+    plugin: pl-pfdicom_tagExtract v3.2.4
+    previous: root-group-copy
+    plugin_parameter_defaults:
+      outputFileType: "raw,html"
+      imageScale: "3:none"
+      fileFilter: dcm
+      outputFileStem: originalTags
+      imageFile: "m:%_nospc|-_ProtocolName.jpg"
+  - title: dicom-anonymize
+    plugin: pl-pfdicom_tagSub v3.3.5
+    previous: root-group-copy
+    plugin_parameter_defaults:
+      fileFilter: ".dcm"
+      splitToken: ","
+      splitKeyValue:  "="
+      tagInfo: "PatientName         =  %_name|patientID_PatientName,
+                PatientID           =  %_md5|7_PatientID,
+                AccessionNumber     =  %_md5|8_AccessionNumber,
+                PatientBirthDate    =  %_strmsk|******01_PatientBirthDate,
+                re:.*hysician       =  %_md5|4_#tag,
+                re:.*stitution      =  #tag,
+                re:.*ddress         =  #tag"
+  - title: tags-on-anon-dicom
+    plugin: pl-pfdicom_tagExtract v3.2.4
+    previous: dicom-anonymize
+    plugin_parameter_defaults:
+      fileFilter: dcm
+      outputFileStem: anonymizedTags
+      imageScale: "3:none"
+      outputFileType: "raw,json,html,dict,col,csv"
+      imageFile: "m:%_nospc|-_ProtocolName.jpg"
+  - title: bulk-rename
+    # This bulk-rename shortens the long directory path names that ChRIS
+    # typically generates. Too-long names run the risk of exceeding the
+    # Linux FS 255 char limit. Also, some FS apps hit a buffer-overflow
+    # error when attemtping to read too-long filenames.
+    # See https://github.com/FNNDSC/ChRIS_ultron_backEnd/issues/418
+    plugin: pl-bulk-rename v0.1.2
+    previous: dicom-anonymize
+    plugin_parameter_defaults:
+      filter: ^.*\.dcm$
+      expression: .*/(.*/.*)
+      replacement: $1
+  - title: FreeSurfer-v7.4.1
+    plugin: pl-fshack v1.5.2
+    previous: bulk-rename
+    plugin_parameter_defaults:
+      exec: recon-all
+      inputFile: ".dcm"
+      args: "ARGS: -all"
+      threads: 2
+  - title: Visual-Data
+    plugin: pl-visual-dataset v0.3.1
+    previous: FreeSurfer-v7.4.1
+    plugin_parameter_defaults:
+      mode: "freesurfer-7.3.3"
+      readme: "FreeSurfer v7.3.2 analysis of data from https://zenodo.org/records/3677090"

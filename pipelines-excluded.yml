@@ -40,3 +40,23 @@
   reason: its one node is pl-dypi, which is not in plugins/
 - source: selfaware-dcm2png.json
   reason: its one node is pl-dypi, which is not in plugins/
+- source: Research_PACS_bulk_query.yml
+  reason: the same pipeline as generic_PACS_bulk_query.yml, which is held, once one site's PACS values are lifted
+- source: PACS_query_bulk.yml
+  reason: the same query written for pl-pacs_query 1.0.9 (PACSurl, PACSname); generic_PACS_bulk_query.yml is its 1.1.0 form
+- source: dicom_filter.yml
+  reason: an earlier form of DICOM_anonymization_and_orthanc_push.yml, which is held, under the same name
+- source: DICOM_push_to_FIONA.yml
+  reason: one node pushing to one site's destination; nothing remains once the site's values are lifted
+- source: DICOM_push_to_SYNAPSERESEARCH.yml
+  reason: one node pushing to one site's destination; nothing remains once the site's values are lifted
+- source: push_to_PACSDCM.yml
+  reason: one node sending to one site's PACS; nothing remains once the site's values are lifted
+- source: BLT_anonymization.yml
+  reason: one project's transfer between two named sites
+- source: DICOM_anonymization_and_niftii_with_neuro_push.yml
+  reason: three of its nodes are pl-neurofiles-push, which is not in plugins/, writing to one site's file system
+- source: Large_sequence_DICOM_anon_with_neuro_push.yml
+  reason: three of its nodes are pl-neurofiles-push, which is not in plugins/, writing to one site's file system
+- source: zip_and_push.yml
+  reason: built on pl-neurofiles-push, which is not in plugins/
