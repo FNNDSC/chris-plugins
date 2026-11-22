@@ -99,7 +99,7 @@
       "name": "orthancPassword",
       "type": "str",
       "optional": true,
-      "default": "orthanc",
+      "default": "",
       "flag": "--orthancPassword",
       "short_flag": "--orthancPassword",
       "action": "store",
