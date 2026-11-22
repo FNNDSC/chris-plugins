@@ -19,6 +19,17 @@
   "max_gpu_limit": 0,
   "parameters": [
     {
+      "name": "inputFile",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--inputFile",
+      "short_flag": "-i",
+      "action": "store",
+      "help": "input file",
+      "ui_exposed": true
+    },
+    {
       "name": "fileFilter",
       "type": "str",
       "optional": true,
@@ -118,14 +129,157 @@
       "ui_exposed": true
     },
     {
-      "name": "inputFile",
+      "name": "followLinks",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--followLinks",
+      "short_flag": "--followLinks",
+      "action": "store_true",
+      "help": "follow symbolic links",
+      "ui_exposed": true
+    },
+    {
+      "name": "verbose",
+      "type": "str",
+      "optional": true,
+      "default": "1",
+      "flag": "--verbose",
+      "short_flag": "--verbose",
+      "action": "store",
+      "help": "verbosity level for app",
+      "ui_exposed": true
+    },
+    {
+      "name": "inputFileSubStr",
       "type": "str",
       "optional": true,
       "default": "",
-      "flag": "--inputFile",
-      "short_flag": "-i",
+      "flag": "--inputFileSubStr",
+      "short_flag": "--inputFileSubStr",
       "action": "store",
-      "help": "input file",
+      "help": "input file substring",
+      "ui_exposed": true
+    },
+    {
+      "name": "outputFileStem",
+      "type": "str",
+      "optional": true,
+      "default": "output.jpg",
+      "flag": "--outputFileStem",
+      "short_flag": "-o",
+      "action": "store",
+      "help": "output file",
+      "ui_exposed": true
+    },
+    {
+      "name": "outputFileType",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--outputFileType",
+      "short_flag": "-t",
+      "action": "store",
+      "help": "output image type",
+      "ui_exposed": true
+    },
+    {
+      "name": "convertOnlySingleDICOM",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--convertOnlySingleDICOM",
+      "short_flag": "--convertOnlySingleDICOM",
+      "action": "store_true",
+      "help": "if specified, only convert the specific input DICOM",
+      "ui_exposed": true
+    },
+    {
+      "name": "preserveDICOMinputName",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--preserveDICOMinputName",
+      "short_flag": "--preserveDICOMinputName",
+      "action": "store_true",
+      "help": "if specified, save output files with the basename of their input DICOM",
+      "ui_exposed": true
+    },
+    {
+      "name": "sliceToConvert",
+      "type": "str",
+      "optional": true,
+      "default": "-1",
+      "flag": "--sliceToConvert",
+      "short_flag": "-s",
+      "action": "store",
+      "help": "slice to convert (for 3D data)",
+      "ui_exposed": true
+    },
+    {
+      "name": "frameToConvert",
+      "type": "str",
+      "optional": true,
+      "default": "-1",
+      "flag": "--frameToConvert",
+      "short_flag": "-f",
+      "action": "store",
+      "help": "frame to convert (for 4D data)",
+      "ui_exposed": true
+    },
+    {
+      "name": "reslice",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--reslice",
+      "short_flag": "-r",
+      "action": "store_true",
+      "help": "save images along i,j,k directions -- 3D input only",
+      "ui_exposed": true
+    },
+    {
+      "name": "showSlices",
+      "type": "bool",
+      "optional": true,
+      "default": false,
+      "flag": "--showSlices",
+      "short_flag": "--showSlices",
+      "action": "store_true",
+      "help": "show slices that are converted",
+      "ui_exposed": true
+    },
+    {
+      "name": "func",
+      "type": "str",
+      "optional": true,
+      "default": "",
+      "flag": "--func",
+      "short_flag": "--func",
+      "action": "store",
+      "help": "apply transformation function before saving",
+      "ui_exposed": true
+    },
+    {
+      "name": "rot",
+      "type": "str",
+      "optional": true,
+      "default": "110",
+      "flag": "--rot",
+      "short_flag": "--rot",
+      "action": "store",
+      "help": "3D slice/dimenstion rotation vector",
+      "ui_exposed": true
+    },
+    {
+      "name": "rotAngle",
+      "type": "str",
+      "optional": true,
+      "default": "90",
+      "flag": "--rotAngle",
+      "short_flag": "--rotAngle",
+      "action": "store",
+      "help": "3D slice/dimenstion rotation angle",
       "ui_exposed": true
     }
   ]

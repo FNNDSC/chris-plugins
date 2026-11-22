@@ -1,0 +1,45 @@
+---
+authors: Rudolph Pienaar <rudolph.pienaar@childrens.harvard.edu>
+name: FreeSurfer Only Skull Stripping with report and overlay v20230803
+description: "Run FreeSurfer v7.3.2 autorecon1 (recon-all -autorecon1) across an input data space (can be multidir) -- and postprocess with a simple report and also overlay imaging. Limited to two in-node parallel threads. Parent input space is bulk-renamed to reduce long directory paths."
+category: Medical Imaging
+locked: false
+run: never
+plugin_tree:
+  - title: FreeSurfer-v7.3.2
+    plugin: pl-fshack v1.5.0
+    previous: ~
+    memory_limit: 1000Mi
+    plugin_parameter_defaults:
+      inputFile: ".dcm"
+      exec: recon-all
+      outputFile: FreeSurferAutorecon1
+      args: "ARGS: -autorecon1"
+      threads: 2
+  - title: FreeSurfer-report
+    plugin: pl-freesurfer_simplereport v1.1.12
+    previous: FreeSurfer-v7.3.2
+    plugin_parameter_defaults:
+      verbosity: "1"
+      annotation: "**/brainmask.mgz"
+  - title: segmentation-vols-to-jpg
+    plugin: pl-multipass v1.3.6
+    previous: FreeSurfer-v7.3.2
+    plugin_parameter_defaults:
+      commonArgs: "--printElapsedTime --verbosity 5 --saveImages --skipAllLabels --outputFileStem sample --outputFileType png"
+      noJobLogging: true
+      splitExpr: ++
+      exec: pfdo_mgz2image
+      verbose: "1"
+      specificArgs: "--inputFile FreeSurferAutorecon1/mri/brainmask.mgz --wholeVolume brainVolume ++ --inputFile FreeSurferAutorecon1/mri/brainmask.mgz --wholeVolume segVolume --lookupTable    __fs__"
+  - title: overlay-jpgs
+    plugin: pl-pfdorun v2.2.17
+    previous: segmentation-vols-to-jpg
+    memory_limit: 1000Mi
+    plugin_parameter_defaults:
+      analyzeFileIndex: "-1"
+      fileFilter: png
+      exec: composite -dissolve 90 -gravity Center %inputWorkingDir/%inputWorkingFile %inputWorkingDir/../../brainmask.mgz/label-segVolume/%inputWorkingFile -alpha Set                %outputWorkingDir/%inputWorkingFile
+      noJobLogging: true
+      dirFilter: label-brainVolume
+      verbose: "5"

@@ -1,0 +1,42 @@
+# Files of FNNDSC/CHRIS_docs pipelines/source (at 914db92) deliberately not
+# brought into pipelines/, each with the reason. A file named neither here
+# nor in pipelines/ has not been sorted yet.
+
+- source: cmd.sh
+  reason: a shell script, not a pipeline
+- source: run-MainThread.log
+  reason: a log file, not a pipeline
+- source: plugins_20251205.yml
+  reason: a list of 393 plugin versions written as a pipeline; plugins/ is that list now
+- source: fs_plugins_20251205.yml
+  reason: a list of 14 fs plugins written as a pipeline; plugins/ is that list now
+- source: DICOM_anonymization_full.json
+  reason: the older JSON form of DICOM_anonymization_full.yml, which is held
+- source: DICOM_anonymization_simple.json
+  reason: the older JSON form of DICOM_anonymization_simple.yml, which is held
+- source: DICOM_tags.json
+  reason: the older JSON form of DICOM_tags.yml, which is held
+- source: freesurfer_reconall.json
+  reason: the older JSON form of freesurfer_reconall.yml, which is held
+- source: freesurfer_autorecon1.json
+  reason: the older JSON form of freesurfer_autorecon1.yml, which is held
+- source: fetal_reconstruction.json
+  reason: the JSON form of fetal_brain_reconstruction.yml, which is held
+- source: LLD_workflow-outdated.yml
+  reason: superseded, as its name says; LLD_full.yml is the workflow held
+- source: LLD_workflow_part_1of4.yml
+  reason: one of four parts of an earlier leg-length workflow; LLD_full.yml holds the whole
+- source: LLD_workflow_part_2of4.yml
+  reason: one of four parts of an earlier leg-length workflow; LLD_full.yml holds the whole
+- source: LLD_workflow_part_3of4.yml
+  reason: one of four parts of an earlier leg-length workflow; LLD_full.yml holds the whole
+- source: LLD_workflow_part_4of4.yml
+  reason: one of four parts of an earlier leg-length workflow; LLD_full.yml holds the whole
+- source: demo_pipeline_spec.yml
+  reason: a one-node demonstration of the file format
+- source: simpledsapp_simpledsapp.yml
+  reason: a sample, described as such
+- source: selfaware-covidnet.json
+  reason: its one node is pl-dypi, which is not in plugins/
+- source: selfaware-dcm2png.json
+  reason: its one node is pl-dypi, which is not in plugins/

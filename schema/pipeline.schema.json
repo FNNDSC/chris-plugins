@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/FNNDSC/chris-plugins/schema/pipeline.schema.json",
+  "title": "ChRIS pipeline",
+  "description": "One pipeline, in the YAML form CUBE's pipeline source upload accepts, with two keys CUBE does not know: run and needs. A consumer removes those two before upload. Lengths follow ChRIS_ultron_backEnd pipelines/models.py.",
+  "type": "object",
+  "required": ["name", "authors", "category", "description", "locked", "run", "plugin_tree"],
+  "additionalProperties": false,
+  "properties": {
+    "name": { "type": "string", "minLength": 1, "maxLength": 100, "description": "Unique ignoring case." },
+    "authors": { "type": "string", "maxLength": 200 },
+    "category": { "type": "string", "maxLength": 100 },
+    "description": { "type": "string", "maxLength": 800 },
+    "locked": { "type": "boolean" },
+    "run": {
+      "description": "Whether the pipeline has been run at the plugin versions it now names: never, or where and when.",
+      "oneOf": [
+        { "const": "never" },
+        {
+          "type": "object",
+          "required": ["cube", "date"],
+          "additionalProperties": false,
+          "properties": {
+            "cube": { "type": "string", "minLength": 1, "description": "The CUBE it ran on." },
+            "date": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$" }
+          }
+        }
+      ]
+    },
+    "needs": {
+      "description": "The values whoever runs the pipeline must supply. Each names a parameter the tree sets to __SUPPLY__.",
+      "type": "array",
+      "items": { "$ref": "#/$defs/need" }
+    },
+    "plugin_tree": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/node" } }
+  },
+  "$defs": {
+    "need": {
+      "type": "object",
+      "required": ["node", "parameter", "kind"],
+      "additionalProperties": false,
+      "properties": {
+        "node": { "type": "string", "minLength": 1, "description": "The title of a node in plugin_tree." },
+        "parameter": { "type": "string", "minLength": 1 },
+        "kind": {
+          "description": "secret: a credential. site: a host, a PACS name, a storage path or another value that belongs to one site.",
+          "enum": ["secret", "site"]
+        }
+      }
+    },
+    "node": {
+      "type": "object",
+      "required": ["title", "plugin", "previous"],
+      "additionalProperties": false,
+      "properties": {
+        "title": { "type": "string", "minLength": 1, "maxLength": 100, "description": "Unique within the pipeline." },
+        "plugin": {
+          "description": "A plugin in plugins/ at the version held there: '<name> v<version>'.",
+          "type": "string",
+          "pattern": "^[^ ]+ v[^ ]+$"
+        },
+        "previous": { "type": ["string", "null"], "description": "The title of the node this one follows; null for the root." },
+        "plugin_parameter_defaults": {
+          "type": "object",
+          "additionalProperties": { "type": ["string", "number", "boolean"] }
+        },
+        "cpu_limit": { "type": ["string", "integer"] },
+        "memory_limit": { "type": ["string", "integer"] },
+        "number_of_workers": { "type": "integer", "minimum": 1 },
+        "gpu_limit": { "type": "integer", "minimum": 0 }
+      }
+    }
+  }
+}
