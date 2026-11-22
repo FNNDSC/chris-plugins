@@ -1,7 +1,7 @@
 {
   "name": "pl-mri_sag_anon_192",
-  "version": "1.0.2",
-  "dock_image": "docker.io/fnndsc/pl-mri_sag_anon_192:1.0.2",
+  "version": "1.0.3",
+  "dock_image": "docker.io/fnndsc/pl-mri_sag_anon_192:1.0.3",
   "public_repo": "https://github.com/FNNDSC/pl-mri_sag_anon_192",
   "type": "fs",
   "title": "Anonymous sagittal neuro MRI image set of 192 slices",

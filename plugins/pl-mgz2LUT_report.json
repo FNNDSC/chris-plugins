@@ -1,7 +1,7 @@
 {
   "name": "pl-mgz2LUT_report",
-  "version": "1.3.1",
-  "dock_image": "fnndsc/pl-mgz2lut_report:1.3.1",
+  "version": "1.3.2",
+  "dock_image": "fnndsc/pl-mgz2lut_report:1.3.2",
   "public_repo": "https://github.com/FNNDSC/pl-mgz2LUT_report",
   "type": "ds",
   "title": "A ChRIS plugin app",
