@@ -26,4 +26,4 @@ jobs:
           ruff format --check .
           python checks/style_check.py checks
       - name: Doctests
-        run: python -m doctest checks/model.py checks/plugins.py checks/credentials.py checks/pipelines.py checks/index.py
+        run: python -m doctest checks/model.py checks/plugins.py checks/credentials.py checks/pipelines.py checks/shelves.py checks/index.py

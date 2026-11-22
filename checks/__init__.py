@@ -6,6 +6,7 @@ Key components:
     - plugins: the rules the plugin schema cannot express.
     - credentials: keep credentials out of the index.
     - pipelines: hold each pipeline to the plugins it is made of.
+    - shelves: hold ``shelves.yml`` to the index.
     - style_check: hold this package to the Python style guide.
 
 Typical usage:

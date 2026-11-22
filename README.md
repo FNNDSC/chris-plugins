@@ -15,6 +15,7 @@ plugins/<name>.json         one file per plugin: its full descriptor, latest ver
 excluded.yml                plugins deliberately left out, with the reason
 pipelines/<file>.yml        one file per pipeline, made of the plugins above
 pipelines-excluded.yml      pipelines deliberately left out, with the reason
+shelves.yml                 which apps stand on which shelf: models, conversion, ...
 credential-exceptions.yml   parameters named like a credential that are not one
 schema/                     what each of these files may contain
 checks/                     the checks every pull request must pass
@@ -68,6 +69,20 @@ plugin_tree:
 
 A reader that lists pipelines beside apps takes `name`, `description`, `authors` and `category`, and from each node its `title`, its `previous` and the first word of `plugin`, which is the name of a file in `plugins/`.
 
+## Shelves
+
+`shelves.yml` says what the apps are for. A descriptor cannot: its form is CUBE's, and `category` is free text that most plugins leave empty.
+
+```yaml
+- shelf: Models
+  says: Apps that run a trained model.
+  apps:
+    - pl-lld_inference
+    - pl-monai_spleenseg
+```
+
+An app may stand on several shelves or on none, and the list of shelves is flat. Every name under `apps` is a file in `plugins/`. `says` is one sentence that is true of everything on the shelf; an app it is not true of belongs elsewhere.
+
 ## Filling a CUBE
 
 The intended path is mise: `plugin add --json <file, directory or URL>`, which compares the CUBE with the index, shows what it will add, and does nothing on a replay. It is being built (HARBOR-planning#183).
@@ -116,7 +131,7 @@ pip install jsonschema pyyaml
 python -m checks.index
 ```
 
-They hold that each descriptor fits `schema/plugin.schema.json`, that its file is named for its plugin, that no two names differ only by case, that nothing is both in `plugins/` and in `excluded.yml`, and that no credential-named parameter carries a default. They hold each pipeline to `schema/pipeline.schema.json` and to the rules under [A pipeline](#a-pipeline). A clean run prints nothing.
+They hold that each descriptor fits `schema/plugin.schema.json`, that its file is named for its plugin, that no two names differ only by case, that nothing is both in `plugins/` and in `excluded.yml`, that no credential-named parameter carries a default, and that every app on a shelf is in `plugins/`. They hold each pipeline to `schema/pipeline.schema.json` and to the rules under [A pipeline](#a-pipeline). A clean run prints nothing.
 
 ## License
 

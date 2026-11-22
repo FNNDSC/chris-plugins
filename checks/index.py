@@ -2,8 +2,8 @@
 
 This is what a pull request runs. It reads ``plugins/``, holds each
 descriptor to its schema, then runs the checks that judge the set, the
-check that keeps credentials out, and the checks of each pipeline against
-the plugins it is made of.
+check that keeps credentials out, the checks of each pipeline against the
+plugins it is made of, and the check of the shelves.
 
 Key components:
     - findings_collect: run every check against one index root.
@@ -33,10 +33,11 @@ from checks.pipelines import (
     pipelines_load,
 )
 from checks.plugins import excluded_check, excludedNames_load, fileNames_check, nameCases_check
+from checks.shelves import ShelvesLoaded, shelfApps_check, shelfNames_check, shelves_load
 
 EXIT_CLEAN: int = 0
 EXIT_FINDINGS: int = 1
-DESCRIPTION: str = "Check the ChRIS plugin index: plugins, pipelines and credentials."
+DESCRIPTION: str = "Check the ChRIS plugin index: plugins, pipelines, credentials and shelves."
 
 
 def findings_collect(root: Path) -> list[Finding]:
@@ -55,6 +56,7 @@ def findings_collect(root: Path) -> list[Finding]:
     loaded: PluginsLoaded = plugins_load(root)
     excused: ExceptionsLoaded = exceptions_load(root)
     piped: PipelinesLoaded = pipelines_load(root)
+    shelved: ShelvesLoaded = shelves_load(root)
     return [
         *loaded.findings,
         *fileNames_check(loaded.plugins),
@@ -66,6 +68,9 @@ def findings_collect(root: Path) -> list[Finding]:
         *piped.findings,
         *pipelines_check(piped.pipelines, loaded.plugins, excused.exceptions),
         *excludedSources_check(root),
+        *shelved.findings,
+        *shelfNames_check(shelved.shelves),
+        *shelfApps_check(shelved.shelves, loaded.plugins),
     ]
 
 
