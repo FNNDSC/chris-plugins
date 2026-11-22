@@ -19,6 +19,7 @@
     - pl-lld
     - pl-lld_inference
     - pl-malpem
+    - pl-mnist_cnn
     - pl-monai_spleenseg
     - pl-mricnn
     - pl-mricnn_predict
